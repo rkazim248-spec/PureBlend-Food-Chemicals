@@ -19,9 +19,10 @@ export function Hero({ banner }: { banner?: Banner | null }) {
 
   return (
     <section className="relative bg-brand-950 py-20 text-white">
-      <Image src={banner.imageUrl} alt={banner.imageAlt} fill priority sizes="100vw" className="object-cover opacity-30" />
+      <Image src={banner.imageUrl} alt={banner.imageAlt} fill priority sizes="100vw" className="object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/70 to-brand-950/20" />
       <Container className="relative">
-        <Heading level={1} className="max-w-2xl text-white">{banner.title}</Heading>
+        <Heading level={1} className="max-w-xl text-white">{banner.title}</Heading>
         {banner.description && <p className="mt-4 max-w-xl text-brand-100">{banner.description}</p>}
         {banner.linkUrl && (
           <ButtonLink href={banner.linkUrl} className="mt-8">{banner.linkLabel ?? "Learn more"}</ButtonLink>

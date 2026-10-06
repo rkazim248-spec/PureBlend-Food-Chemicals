@@ -91,3 +91,11 @@ Why the folder structure is slightly simpler than the original proposal: Next.js
 - All Phase 2 routes verified on the production server: pages return 200, unknown product and unknown URL return the custom 404.
 - `tsc --noEmit` = 0, eslint clean, `next build` succeeds from the repository root.
 
+
+### Phase 7 Refinement Notes
+- Typography: Manrope app-wide, balanced heading wrapping, tighter tracking, 1.2 heading / 1.6 body line-height.
+- Hero: subtle left-to-right brand-950 overlay for readable text over imagery (no flashy effects).
+- Cards: consistent padding + subtle hover elevation via --shadow-raised.
+- Admin: active nav item highlighted with aria-current; table rows get neutral-50 hover.
+- Selection color set to brand tint. No gradients/glassmorphism/neon added.
+

@@ -7,7 +7,7 @@ import type { Product } from "@/lib/api/types";
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
   return (
-    <Card className="flex h-full flex-col gap-3">
+    <Card className="flex h-full flex-col gap-3 transition-shadow duration-200 hover:shadow-raised">
       {image && (
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-neutral-100">
           <Image src={image.url} alt={image.alt} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" />

@@ -165,7 +165,7 @@ export function EntityManager<T extends { id: string }>({
               </thead>
               <tbody className="divide-y divide-neutral-100">
                 {filtered.map((item) => (
-                  <tr key={item.id}>
+                  <tr key={item.id} className="transition-colors hover:bg-neutral-50">
                     {columns.map((c) => <td key={c.label} className="px-4 py-3 text-neutral-800">{c.render(item)}</td>)}
                     {toggleStatus && (
                       <td className="px-4 py-3">

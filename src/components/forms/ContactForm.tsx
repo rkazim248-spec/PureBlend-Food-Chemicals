@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { Alert } from "@/components/ui/Alert";
-import { apiRequest } from "@/lib/api/client";
-import { endpoints } from "@/lib/api/endpoints";
+import { submitContact } from "@/lib/api";
 import { ApiError } from "@/lib/api/types";
 
 export function ContactForm() {
@@ -35,10 +34,7 @@ export function ContactForm() {
     setStatus("sending");
     setServerMessage(null);
     try {
-      await apiRequest(endpoints.contact.submit, {
-        method: "POST",
-        body: { name: name.trim(), email: email.trim(), subject: subject.trim(), message: message.trim(), honeypot },
-      });
+      await submitContact({ name: name.trim(), email: email.trim(), subject: subject.trim(), message: message.trim(), honeypot });
       setStatus("success");
       setName(""); setEmail(""); setSubject(""); setMessage("");
     } catch (err) {

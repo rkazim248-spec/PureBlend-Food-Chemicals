@@ -5,16 +5,27 @@ import { Heading } from "@/components/ui/Heading";
 import { ProductGrid } from "@/components/marketing/ProductGrid";
 import { OfferSection } from "@/components/marketing/OfferSection";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { devBanner, devOffers, devProducts } from "@/data/dev-fixtures";
+import { getBanners, getOffers, getProducts } from "@/lib/api";
+import { ErrorState } from "@/components/ui/ErrorState";
 
-/*
- * NOTE: Sections use isolated development fixtures while backend APIs are not
- * wired. Copy marked as placeholder is replaceable — no invented business facts.
- */
-export default function HomePage() {
+/* Data flows exclusively through src/lib/api services — no fixtures or fetch here. */
+
+export default async function HomePage() {
+  // Parallel data fetching — no waterfalls. Errors surface as a clear state.
+  const [bannersResult, productsResult, offersResult] = await Promise.allSettled([
+    getBanners(),
+    getProducts(),
+    getOffers(),
+  ]);
+
+  const banners = bannersResult.status === "fulfilled" ? bannersResult.value : [];
+  const products = productsResult.status === "fulfilled" ? productsResult.value : [];
+  const offers = offersResult.status === "fulfilled" ? offersResult.value : [];
+  const failed = [bannersResult, productsResult, offersResult].some((r) => r.status === "rejected");
+
   return (
     <>
-      <Hero banner={devBanner} />
+      <Hero banner={banners[0] ?? null} />
 
       <Section>
         <Container className="grid items-start gap-8 lg:grid-cols-2">
@@ -45,7 +56,11 @@ export default function HomePage() {
             <ButtonLink href="/products" variant="ghost">View all →</ButtonLink>
           </div>
           <div className="mt-8">
-            <ProductGrid products={devProducts} />
+            {failed && productsResult.status === "rejected" ? (
+              <ErrorState message="Unable to load products right now." action={<ButtonLink href="/products" variant="secondary">Browse products</ButtonLink>} />
+            ) : (
+              <ProductGrid products={products} />
+            )}
           </div>
         </Container>
       </Section>
@@ -54,7 +69,11 @@ export default function HomePage() {
         <Container>
           <Heading level={2}>Current offers</Heading>
           <div className="mt-8">
-            <OfferSection offers={devOffers} />
+            {failed && offersResult.status === "rejected" ? (
+              <ErrorState message="Unable to load offers right now." />
+            ) : (
+              <OfferSection offers={offers} />
+            )}
           </div>
         </Container>
       </Section>

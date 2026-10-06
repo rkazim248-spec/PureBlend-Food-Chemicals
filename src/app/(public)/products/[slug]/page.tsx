@@ -4,28 +4,56 @@ import { ProductDetail } from "@/components/marketing/ProductDetail";
 import { ProductGrid } from "@/components/marketing/ProductGrid";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { devProducts } from "@/data/dev-fixtures";
+import { getProductBySlug, getProducts } from "@/lib/api";
+import { ErrorState } from "@/components/ui/ErrorState";
 import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const product = devProducts.find((p) => p.slug === slug);
-  if (!product) return pageMetadata({ title: "Product not found", description: "", path: `/products/${slug}` });
-  return pageMetadata({
-    title: product.seo?.metaTitle ?? product.name,
-    description: product.seo?.metaDescription ?? product.description,
-    path: `/products/${slug}`,
-  });
+  try {
+    const product = await getProductBySlug(slug);
+    if (!product) return pageMetadata({ title: "Product not found", description: "", path: `/products/${slug}` });
+    return pageMetadata({
+      title: product.seo?.metaTitle ?? product.name,
+      description: product.seo?.metaDescription ?? product.description,
+      path: `/products/${slug}`,
+    });
+  } catch {
+    return pageMetadata({ title: "Product", description: "", path: `/products/${slug}` });
+  }
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  // TODO: replace with getProductBySlug(slug) API call when backend is available.
-  const product = devProducts.find((p) => p.slug === slug);
+
+  let product = null;
+  let loadError = false;
+  try {
+    product = await getProductBySlug(slug);
+  } catch {
+    loadError = true;
+  }
+
+  if (loadError) {
+    return (
+      <Section>
+        <Container>
+          <ErrorState message="Unable to load this product right now. Please try again later." />
+        </Container>
+      </Section>
+    );
+  }
+
   if (!product) notFound();
 
-  const related = devProducts.filter((p) => p.slug !== slug && p.category?.slug === product.category?.slug);
+  let related: Awaited<ReturnType<typeof getProducts>> = [];
+  try {
+    const all = await getProducts();
+    related = all.filter((p) => p.slug !== slug && p.category?.slug === product.category?.slug);
+  } catch {
+    related = [];
+  }
 
   return (
     <Section>

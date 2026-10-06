@@ -4,9 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Spinner } from "@/components/ui/Spinner";
-import { endpoints } from "@/lib/api/endpoints";
-import { apiRequest } from "@/lib/api/client";
-import type { ChatResponse } from "@/lib/api/types";
+import { sendChatMessage } from "@/lib/api";
 
 interface ChatMessage {
   id: number;
@@ -40,10 +38,7 @@ export function ChatWindow({ onClose }: { onClose: () => void }) {
     setSending(true);
 
     try {
-      const res = await apiRequest<ChatResponse>(endpoints.chat.send, {
-        method: "POST",
-        body: { message, conversationId },
-      });
+      const res = await sendChatMessage(message, conversationId);
       setConversationId(res.conversationId);
       setMessages((m) => [
         ...m,

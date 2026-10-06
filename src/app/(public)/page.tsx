@@ -49,7 +49,7 @@ export default async function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-neutral-50">
+      <Section className="bg-surface-muted">
         <Container>
           <div className="flex items-end justify-between gap-4">
             <Heading level={2}>Product showcase</Heading>

@@ -6,17 +6,17 @@
 /* ------------------------------------------------------------------ */
 
 @theme {
-  /* Brand palette — PureBlend specified system */
+  /* Brand palette — specified system */
   --color-brand-50: #eef7f1;
   --color-brand-100: #d5ece0;
   --color-brand-200: #aed8c2;
   --color-brand-300: #7abfa0;
   --color-brand-400: #3f9a72;
-  --color-brand-500: #1f7a5a;   /* Premium Emerald */
-  --color-brand-600: #12372a;   /* Deep Forest Green */
+  --color-brand-500: #1f7a5a;   /* Primary Hover / Emerald Green */
+  --color-brand-600: #12372a;   /* Primary Brand / Deep Forest Green */
   --color-brand-700: #0f2f23;
   --color-brand-800: #0d281e;
-  --color-brand-900: #0d211a;   /* Dark Section */
+  --color-brand-900: #0d211a;   /* Dark Sections/Footer / Deep Green */
   --color-brand-950: #0d211a;
 
   /* Accent — Warm Gold, used sparingly */
@@ -48,16 +48,16 @@
   --color-neutral-950: #020617;
 
   /* Semantic */
-  --color-success-600: #15803d;
+  --color-success-600: #16845b;
   --color-warning-600: #b45309;
-  --color-danger-600: #b91c1c;
+  --color-danger-600: #c83e3e;
   --color-info-600: #0369a1;
 
   /* Surfaces / text (specified system) */
   --color-background: #f8faf7;
   --color-surface: #ffffff;
-  --color-surface-muted: #eef4f0;
-  --color-border: #dde7e0;
+  --color-surface-muted: #eaf3ee;
+  --color-border: #d8e2dc;
   --color-foreground: #17211d;
   --color-foreground-muted: #52615a;
 

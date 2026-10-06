@@ -9,7 +9,9 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'", // Next.js requires inline scripts for hydration
+      // Next.js requires inline scripts for hydration, and Turbopack dev mode
+      // requires eval — but eval must NEVER be allowed in production.
+      `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "production" ? "" : " 'unsafe-eval'"}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self'",

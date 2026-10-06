@@ -1,0 +1,1 @@
+import { AdminModuleShell } from "@/components/admin/AdminModuleShell"; export default function Page() { return <AdminModuleShell title="Content" description="Edit page content blocks (about, privacy, terms)." />; }

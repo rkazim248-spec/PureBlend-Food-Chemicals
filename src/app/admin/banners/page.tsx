@@ -1,0 +1,1 @@
+import { AdminModuleShell } from "@/components/admin/AdminModuleShell"; export default function Page() { return <AdminModuleShell title="Banners" description="Manage the homepage banner carousel." />; }

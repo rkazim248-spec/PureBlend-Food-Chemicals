@@ -1,0 +1,1 @@
+import { AdminModuleShell } from "@/components/admin/AdminModuleShell"; export default function Page() { return <AdminModuleShell title="Offers" description="Manage promotional offers and discounts." />; }

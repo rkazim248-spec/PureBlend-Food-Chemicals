@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* PureBlend design tokens (Tailwind v4 CSS-first configuration)        */
+/* Direction: professional, trustworthy, modern, premium, food-science  */
+/* ------------------------------------------------------------------ */
+
+@theme {
+  /* Brand palette (team proposal — see docs/03-frontend/design-system.md) */
+  --color-brand-50: #eef7f3;
+  --color-brand-100: #d6ece2;
+  --color-brand-200: #aed8c6;
+  --color-brand-300: #7bbda3;
+  --color-brand-400: #4f9d7f;
+  --color-brand-500: #2f8264;
+  --color-brand-600: #0f6b4f;
+  --color-brand-700: #0d5741;
+  --color-brand-800: #0c4534;
+  --color-brand-900: #0a382b;
+  --color-brand-950: #04231a;
+
+  /* Accent (warm amber for CTAs / highlights) */
+  --color-accent-50: #fdf6ea;
+  --color-accent-100: #fae9c8;
+  --color-accent-200: #f4d18d;
+  --color-accent-300: #edb75a;
+  --color-accent-400: #e8a33d;
+  --color-accent-500: #d4881f;
+  --color-accent-600: #b56c15;
+  --color-accent-700: #924f15;
+  --color-accent-800: #774017;
+  --color-accent-900: #633616;
+
+  /* Neutrals (slate-tinted) */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* Semantic */
+  --color-success-600: #15803d;
+  --color-warning-600: #b45309;
+  --color-danger-600: #b91c1c;
+  --color-info-600: #0369a1;
+
+  /* Surfaces / text */
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-foreground: #0f172a;
+  --color-foreground-muted: #475569;
+
+  /* Typography */
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06), 0 1px 3px rgb(15 23 42 / 0.08);
+  --shadow-raised: 0 8px 24px rgb(15 23 42 / 0.10);
+  --shadow-modal: 0 24px 48px rgb(15 23 42 / 0.18);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+
+  /* Breakpoints (sm/md/lg/xl/2xl aligned with strategy) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1536px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

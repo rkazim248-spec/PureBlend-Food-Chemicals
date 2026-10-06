@@ -1,0 +1,1 @@
+import { AdminModuleShell } from "@/components/admin/AdminModuleShell"; export default function Page() { return <AdminModuleShell title="SEO" description="Manage per-entity meta titles and descriptions." />; }

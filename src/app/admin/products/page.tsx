@@ -1,0 +1,1 @@
+import { AdminModuleShell } from "@/components/admin/AdminModuleShell"; export default function Page() { return <AdminModuleShell title="Products" description="Create, edit, publish, and delete products." />; }

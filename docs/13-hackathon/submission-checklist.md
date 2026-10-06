@@ -1,0 +1,22 @@
+# Submission Checklist
+
+- [ ] Live URL working
+- [ ] Admin credentials documented and ready to share securely
+- [ ] Repository accessible to judges
+- [ ] README with setup/run/build/test/deploy instructions
+- [ ] Architecture documentation (`docs/`) complete and current
+- [ ] Database documentation present
+- [ ] Environment variable documentation (placeholders only)
+- [ ] RAG testing instructions (scenarios A–F)
+- [ ] SMTP testing instructions
+- [ ] Admin testing instructions
+- [ ] Responsive testing evidence
+- [ ] Browser testing evidence
+- [ ] Security review done (no secrets, protected admin)
+- [ ] Performance review done
+- [ ] SEO review done
+- [ ] Accessibility review done
+- [ ] No exposed secrets anywhere
+- [ ] No broken links
+- [ ] No console errors
+- [ ] No fake/demo-only functionality

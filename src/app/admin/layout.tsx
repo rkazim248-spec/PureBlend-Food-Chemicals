@@ -1,5 +1,6 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
+import { AdminGuard } from "@/components/admin/AdminGuard";
 
 /*
  * TEMPORARY development note: no authentication guard is active yet.
@@ -12,7 +13,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <AdminTopbar />
       <div className="flex flex-1 flex-col lg:flex-row">
         <AdminSidebar />
-        <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+          <AdminGuard>{children}</AdminGuard>
+        </main>
       </div>
     </div>
   );

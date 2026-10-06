@@ -55,6 +55,13 @@ export async function getFaqs(): Promise<Faq[]> {
 
 export async function sendChatMessage(message: string, conversationId?: string): Promise<ChatResponse> {
   // Never call an AI provider directly — always via the backend RAG endpoint.
+  if (config.useMockData) {
+    // Dev-only: no fake RAG answers. Tell the developer the backend is not wired.
+    return {
+      conversationId: conversationId ?? "dev-conversation",
+      reply: "The assistant backend is not connected in development. Wire the RAG service and answers will appear here.",
+    };
+  }
   return apiRequest<ChatResponse>(endpoints.chat.send, {
     method: "POST",
     body: { message, conversationId },

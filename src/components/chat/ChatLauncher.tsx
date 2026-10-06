@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { ChatWindow } from "./ChatWindow";
+import dynamic from "next/dynamic";
+
+// Lazy-load the chat window so the initial public page stays light.
+const ChatWindow = dynamic(() => import("./ChatWindow").then((m) => m.ChatWindow), {
+  ssr: false,
+});
 
 export function ChatLauncher() {
   const [open, setOpen] = useState(false);

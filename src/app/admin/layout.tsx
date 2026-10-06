@@ -1,6 +1,12 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
 import { AdminGuard } from "@/components/admin/AdminGuard";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: { index: false, follow: false },
+};
 
 /*
  * TEMPORARY development note: no authentication guard is active yet.

@@ -4,11 +4,11 @@ import { config } from "@/lib/config";
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-neutral-200 bg-neutral-950 text-neutral-300">
+    <footer className="mt-auto border-t border-brand-800 bg-brand-950 text-brand-100">
       <Container className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="font-extrabold text-white">PureBlend</p>
-          <p className="mt-2 text-sm text-neutral-400">Food chemicals and food-ingredient solutions.</p>
+          <p className="mt-2 text-sm text-brand-300">Food chemicals and food-ingredient solutions.</p>
         </div>
         <nav aria-label="Footer">
           <h2 className="text-sm font-bold uppercase tracking-wide text-white">Company</h2>
@@ -43,9 +43,9 @@ export function Footer() {
           </nav>
         )}
       </Container>
-      <div className="border-t border-neutral-800 py-4">
+      <div className="border-t border-brand-800 py-4">
         <Container>
-          <p className="text-xs text-neutral-500">© {new Date().getFullYear()} PureBlend Food Chemicals. All rights reserved.</p>
+          <p className="text-xs text-brand-400">© {new Date().getFullYear()} PureBlend Food Chemicals. All rights reserved.</p>
         </Container>
       </div>
     </footer>

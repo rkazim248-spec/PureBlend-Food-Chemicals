@@ -6,30 +6,33 @@
 /* ------------------------------------------------------------------ */
 
 @theme {
-  /* Brand palette (team proposal — see docs/03-frontend/design-system.md) */
-  --color-brand-50: #eef7f3;
-  --color-brand-100: #d6ece2;
-  --color-brand-200: #aed8c6;
-  --color-brand-300: #7bbda3;
-  --color-brand-400: #4f9d7f;
-  --color-brand-500: #2f8264;
-  --color-brand-600: #0f6b4f;
-  --color-brand-700: #0d5741;
-  --color-brand-800: #0c4534;
-  --color-brand-900: #0a382b;
-  --color-brand-950: #04231a;
+  /* Brand palette — PureBlend specified system */
+  --color-brand-50: #eef7f1;
+  --color-brand-100: #d5ece0;
+  --color-brand-200: #aed8c2;
+  --color-brand-300: #7abfa0;
+  --color-brand-400: #3f9a72;
+  --color-brand-500: #1f7a5a;   /* Premium Emerald */
+  --color-brand-600: #12372a;   /* Deep Forest Green */
+  --color-brand-700: #0f2f23;
+  --color-brand-800: #0d281e;
+  --color-brand-900: #0d211a;   /* Dark Section */
+  --color-brand-950: #0d211a;
 
-  /* Accent (warm amber for CTAs / highlights) */
-  --color-accent-50: #fdf6ea;
-  --color-accent-100: #fae9c8;
-  --color-accent-200: #f4d18d;
-  --color-accent-300: #edb75a;
-  --color-accent-400: #e8a33d;
-  --color-accent-500: #d4881f;
-  --color-accent-600: #b56c15;
-  --color-accent-700: #924f15;
-  --color-accent-800: #774017;
-  --color-accent-900: #633616;
+  /* Accent — Warm Gold, used sparingly */
+  --color-accent-50: #fbf6e4;
+  --color-accent-100: #f5ebc4;
+  --color-accent-200: #ecdaa0;
+  --color-accent-300: #e0c76e;
+  --color-accent-400: #c9a227;  /* Warm Gold */
+  --color-accent-500: #a8861d;
+  --color-accent-600: #8a6c17;
+  --color-accent-700: #6c5413;
+  --color-accent-800: #4f3e10;
+  --color-accent-900: #342a0b;
+
+  /* Soft Sage surface tint */
+  --color-sage: #dcefe7;
 
   /* Neutrals (slate-tinted) */
   --color-neutral-50: #f8fafc;
@@ -50,16 +53,16 @@
   --color-danger-600: #b91c1c;
   --color-info-600: #0369a1;
 
-  /* Surfaces / text */
-  --color-background: #ffffff;
+  /* Surfaces / text (specified system) */
+  --color-background: #f8faf7;
   --color-surface: #ffffff;
-  --color-surface-muted: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-foreground: #0f172a;
-  --color-foreground-muted: #475569;
+  --color-surface-muted: #eef4f0;
+  --color-border: #dde7e0;
+  --color-foreground: #17211d;
+  --color-foreground-muted: #52615a;
 
   /* Typography */
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 
   /* Radius */

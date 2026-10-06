@@ -2,10 +2,10 @@ import { cn } from "@/lib/utils";
 import type { HTMLAttributes } from "react";
 
 const levelClasses = {
-  1: "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
-  2: "text-2xl sm:text-3xl font-bold tracking-tight",
-  3: "text-xl sm:text-2xl font-bold",
-  4: "text-lg font-bold",
+  1: "text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight font-display",
+  2: "text-2xl sm:text-4xl font-bold tracking-tight font-display",
+  3: "text-xl sm:text-2xl font-bold font-display",
+  4: "text-lg font-bold font-display",
 } as const;
 
 interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {

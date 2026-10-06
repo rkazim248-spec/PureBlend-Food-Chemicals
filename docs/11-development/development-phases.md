@@ -124,3 +124,11 @@ Backend-team dependencies (documented in `/docs/05-backend-integration`): produc
 - RAG: no prompt-editing surface, plain-text rendering, no provider keys in client, unsupported-question behavior enforced by contract.
 - Verified: `tsc --noEmit` = 0, eslint clean, production build succeeds with new headers config.
 
+
+## Implementation Notes — Phase 10 (Deployment readiness reality check)
+
+- Verified locally: production build succeeds (`next build`), typecheck = 0, eslint clean, dev smoke tests previously passed.
+- NOT done in this workspace and marked BLOCKED: live deployment, real SMTP delivery, RAG in production, database provisioning, admin-account provisioning, custom domain/HTTPS, responsive pass on a deployed URL. These require hosting/provider credentials and the backend teammate's API.
+- Reproducibility documented below in `/docs/12-deployment/deployment-checklist.md` (existing) — install `npm ci`, configure `.env` from `.env.example`, `npm run build`, `npm start` behind HTTPS.
+- Credential handoff: jury admin credentials and real SMTP/RAG/DB secrets must be delivered through the official submission channel, never committed.
+

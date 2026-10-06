@@ -24,3 +24,11 @@
 - Test results (production server): valid submission → 503 (SMTP intentionally unconfigured in test), honeypot → 200 without side effects, invalid email → 422, short message → 422. Real inbox delivery requires real SMTP credentials — NOT claimed complete until actually tested with them.
 - Env files updated: `NEXT_PUBLIC_API_BASE_URL` emptied in `.env.development`/`.env.production`; SMTP placeholders appended to `.env.example`.
 
+
+## Implementation Notes — Phase 10 (Deployment readiness reality check)
+
+- Verified locally: production build succeeds (`next build`), typecheck = 0, eslint clean, dev smoke tests previously passed.
+- NOT done in this workspace and marked BLOCKED: live deployment, real SMTP delivery, RAG in production, database provisioning, admin-account provisioning, custom domain/HTTPS, responsive pass on a deployed URL. These require hosting/provider credentials and the backend teammate's API.
+- Reproducibility documented below in `/docs/12-deployment/deployment-checklist.md` (existing) — install `npm ci`, configure `.env` from `.env.example`, `npm run build`, `npm start` behind HTTPS.
+- Credential handoff: jury admin credentials and real SMTP/RAG/DB secrets must be delivered through the official submission channel, never committed.
+

@@ -26,7 +26,7 @@ const SUGGESTED = [
   "What offers are currently available?",
 ];
 
-export function ChatWindow({ onClose }: { onClose: () => void }) {
+export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void; embedded?: boolean }) {
   const [messages, setMessages] = useState<ChatMessage[]>([WELCOME]);
   const [value, setValue] = useState("");
   const [sending, setSending] = useState(false);
@@ -91,8 +91,10 @@ export function ChatWindow({ onClose }: { onClose: () => void }) {
       role="dialog"
       aria-modal="true"
       aria-label="PureBlend assistant"
-      onKeyDown={(e) => { if (e.key === "Escape") onClose(); }}
-      className="fixed inset-0 z-50 flex flex-col bg-white sm:inset-auto sm:bottom-20 sm:right-4 sm:h-[30rem] sm:w-96 sm:rounded-lg sm:border sm:border-neutral-200 sm:shadow-modal"
+      onKeyDown={(e) => { if (e.key === "Escape" && onClose) onClose(); }}
+      className={embedded
+        ? "flex h-[32rem] w-full flex-col bg-white sm:rounded-lg"
+        : "fixed inset-0 z-50 flex flex-col bg-white sm:inset-auto sm:bottom-20 sm:right-4 sm:h-[30rem] sm:w-96 sm:rounded-lg sm:border sm:border-neutral-200 sm:shadow-modal"}
     >
       <div className="flex items-center justify-between border-b border-neutral-200 bg-brand-600 px-4 py-3 text-white sm:rounded-t-lg">
         <p className="font-bold">PureBlend Assistant</p>
@@ -100,7 +102,9 @@ export function ChatWindow({ onClose }: { onClose: () => void }) {
           <button type="button" onClick={clearConversation} className="rounded px-2 py-1 text-xs hover:bg-brand-700" aria-label="Clear conversation">
             Clear
           </button>
-          <button type="button" aria-label="Close chat" onClick={onClose} className="rounded px-2 py-1 hover:bg-brand-700">✕</button>
+          {onClose && (
+            <button type="button" aria-label="Close chat" onClick={onClose} className="rounded px-2 py-1 hover:bg-brand-700">✕</button>
+          )}
         </div>
       </div>
 

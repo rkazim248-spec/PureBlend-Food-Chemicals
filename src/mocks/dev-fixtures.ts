@@ -9,12 +9,12 @@ import type { Banner, Faq, Offer, Product } from "@/lib/api/types";
 export const devBanners: Banner[] = [
   {
     id: "dev-banner-1",
-    title: "Food ingredients you can trust",
-    description: "PureBlend supplies food chemicals and ingredient solutions for modern food production.",
+    title: "Reliable Ingredients for Better Food Solutions.",
+    description: "PureBlend engineers high-purity food chemicals, hydrocolloids, and functional ingredient systems - batch-traceable, compliant, and consistent.",
     imageUrl: "/images/hero-placeholder.svg",
     imageAlt: "Abstract PureBlend brand background",
     linkUrl: "/products",
-    linkLabel: "Browse products",
+    linkLabel: "Explore Products",
     order: 1,
     active: true,
   },

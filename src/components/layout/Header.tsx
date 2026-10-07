@@ -5,36 +5,38 @@ import { MobileNav } from "./MobileNav";
 
 export const publicNav = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
+  { href: "/solutions", label: "Solutions" },
   { href: "/offers", label: "Offers" },
+  { href: "/about", label: "About" },
   { href: "/faqs", label: "FAQs" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border bg-[#F8FAF7]/90 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-brand-700">
+        <Link href="/" className="flex items-center gap-2 font-extrabold text-brand-600">
           <span className="inline-block h-8 w-8 rounded-md bg-brand-600" aria-hidden="true" />
-          <span className="text-lg tracking-tight">PureBlend</span>
+          <span className="text-lg tracking-tight font-display">PureBlend</span>
         </Link>
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-6 text-sm font-semibold text-neutral-700">
+          <ul className="flex items-center gap-1 rounded-full bg-surface-muted px-1 py-1 text-sm font-semibold text-neutral-700">
             {publicNav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="rounded hover:text-brand-700 focus-visible:outline-2 focus-visible:outline-brand-600">
+                <Link href={item.href} className="rounded-full px-3 py-1.5 transition-colors hover:bg-white hover:text-brand-600 focus-visible:outline-2 focus-visible:outline-brand-600">
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
-        <div className="hidden md:block">
-          <ButtonLink href="/contact" size="sm">Get in touch</ButtonLink>
+        <div className="hidden md:flex items-center gap-2">
+          <ButtonLink href="/ai-assistant" variant="ghost" size="sm">AI Assistant</ButtonLink>
+          <ButtonLink href="/request-quote" size="sm">Request a Quote</ButtonLink>
         </div>
-        <MobileNav items={publicNav} />
+        <MobileNav items={publicNav} extraItems={[{ href: "/ai-assistant", label: "AI Assistant" }, { href: "/request-quote", label: "Request a Quote" }]} />
       </Container>
     </header>
   );

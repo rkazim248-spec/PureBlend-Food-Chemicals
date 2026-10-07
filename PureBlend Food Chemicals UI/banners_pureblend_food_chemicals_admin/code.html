@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-surface-variant":"#414844","secondary":"#036c4d","on-secondary-container":"#127253","on-background":"#191c1b","surface-container-lowest":"#ffffff","outline-variant":"#c1c8c3","secondary-fixed-dim":"#82d7b1","inverse-surface":"#2e312f","on-surface":"#191c1b","surface-dim":"#d8dbd8","on-tertiary-fixed-variant":"#584400","surface-container-high":"#e7e9e6","on-tertiary-container":"#4f3d00","on-primary-fixed-variant":"#2a4e3f","inverse-primary":"#a8cfbd","on-tertiary-fixed":"#241a00","secondary-container":"#9ef4cc","on-secondary-fixed-variant":"#005139","surface-tint":"#416656","error":"#ba1a1a","on-primary-fixed":"#002116","on-error-container":"#93000a","primary-fixed":"#c3ebd8","outline":"#717974","surface-container":"#eceeeb","surface-variant":"#e1e3e0","tertiary-container":"#cea72c","error-container":"#ffdad6","surface-container-highest":"#e1e3e0","tertiary":"#755b00","surface":"#f8faf7","background":"#f8faf7","tertiary-fixed":"#ffe08e","on-secondary-fixed":"#002115","tertiary-fixed-dim":"#ecc246","primary-fixed-dim":"#a8cfbd","on-primary":"#ffffff","surface-bright":"#f8faf7","primary":"#002116","on-primary-container":"#7ba190","on-secondary":"#ffffff","surface-container-low":"#f2f4f1","inverse-on-surface":"#eff1ee","on-tertiary":"#ffffff","on-error":"#ffffff","secondary-fixed":"#9ef4cc","primary-container":"#12372a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"2rem","margin":"2rem","space-3xl":"4rem","margin-lg":"5rem","space-2xl":"3rem","space-lg":"1.5rem","margin-sm":"1rem","gutter-sm":"1rem","gutter":"1.5rem","space-xs":"0.25rem","gutter-lg":"2rem","space-md":"1rem","space-sm":"0.5rem"},"fontFamily":{"headline-lg":["Manrope"],"headline-xl":["Manrope"],"headline-lg-mobile":["Manrope"],"body-md":["Inter"],"label-sm":["Inter"],"headline-md":["Manrope"],"code-sm":["Inter"],"headline-xl-mobile":["Manrope"],"title-md":["Manrope"],"body-sm":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-sm":["Manrope"]},"fontSize":{"headline-lg":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-xl":["56px",{"lineHeight":"62px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-xl-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"700"}],"title-md":["18px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-primary-container z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-on-secondary"><span class="material-symbols-outlined text-[22px]">science</span></div><div><span class="font-title-md text-title-md text-on-primary tracking-tight block leading-tight">PureBlend Admin</span><span class="font-label-sm text-label-sm text-on-primary-container tracking-wider uppercase block">Chemicals & Ingredients CMS</span></div></div><div class="mt-space-sm flex items-center gap-space-xs"><span class="font-code-sm text-code-sm px-space-sm py-0.5 rounded-full bg-primary text-secondary-fixed-dim">v4.8.2-prod</span><span class="font-code-sm text-code-sm text-on-primary-container">lot#9041B</span></div></div><nav class="px-space-md py-space-xs flex flex-col gap-space-md" data-active-classes="bg-secondary text-on-secondary font-label-md rounded-lg"><div class="flex flex-col gap-space-xs"><span class="px-space-sm font-label-sm text-label-sm uppercase text-on-primary-container tracking-wider">Commercial & Operations</span><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span>Dashboard</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="products" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span>Products</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="categories" href="#"><span class="material-symbols-outlined text-[18px]">category</span>Categories</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="raw-materials" href="#"><span class="material-symbols-outlined text-[18px]">biotech</span>Raw Materials</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="inquiries-and-rfqs" href="#"><span class="material-symbols-outlined text-[18px]">request_quote</span>Inquiries & RFQs</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="contracts-and-volume-bids" href="#"><span class="material-symbols-outlined text-[18px]">handshake</span>Contracts & Volume Bids</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="current-offers" href="#"><span class="material-symbols-outlined text-[18px]">local_offer</span>Current Offers</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="batch-and-lot-coas" href="#"><span class="material-symbols-outlined text-[18px]">verified</span>Batch & Lot CoAs</a></div><div class="flex flex-col gap-space-xs"><span class="px-space-sm font-label-sm text-label-sm uppercase text-on-primary-container tracking-wider">Content & Storefront</span><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 transition-colors bg-secondary text-on-secondary font-label-md rounded-lg" data-path="banners" href="#"><span class="material-symbols-outlined text-[18px]">view_carousel</span>Banners</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="pages" href="#"><span class="material-symbols-outlined text-[18px]">article</span>Pages</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="media-library" href="#"><span class="material-symbols-outlined text-[18px]">photo_library</span>Media Library</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="formulations" href="#"><span class="material-symbols-outlined text-[18px]">experiment</span>Formulations</a></div><div class="flex flex-col gap-space-xs"><span class="px-space-sm font-label-sm text-label-sm uppercase text-on-primary-container tracking-wider">Administration</span><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="system-settings" href="#"><span class="material-symbols-outlined text-[18px]">settings</span>System Settings</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="audit-logs" href="#"><span class="material-symbols-outlined text-[18px]">history</span>Audit Logs</a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors font-body-sm text-body-sm" data-path="users-and-roles" href="#"><span class="material-symbols-outlined text-[18px]">manage_accounts</span>Users & Roles</a></div></nav></div><div class="p-space-md m-space-sm rounded-xl bg-primary flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center"><span class="material-symbols-outlined text-on-secondary text-[18px]">person</span></div><div class="flex flex-col overflow-hidden"><span class="font-label-md text-label-md text-on-primary truncate">Dr. Aris Vance</span><span class="font-label-sm text-label-sm text-on-primary-container truncate">Head of Commercial Ops</span></div></div><div class="flex items-center gap-space-xs pt-space-xs border-t border-primary-container"><span class="w-2 h-2 rounded-full bg-secondary-fixed"></span><span class="font-label-sm text-label-sm text-secondary-fixed-dim">Production • US-East</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-2.5 text-[20px] text-outline">search</span><input class="w-full h-11 pl-10 pr-space-md bg-surface-container-lowest rounded-lg border border-outline-variant font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all" placeholder="Search CAS#, lot numbers, chemical specs, or buyers..." type="search"/></div><span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>LIVE PRODUCTION</span></div><div class="flex items-center gap-space-sm"><a class="inline-flex items-center gap-space-xs h-9 px-space-md rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" href="#" target="_blank"><span class="material-symbols-outlined text-[18px] text-secondary">open_in_new</span>View Live Storefront</a><div class="relative"><button class="w-9 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-container"></span></button></div><div class="relative"><button class="h-9 px-space-md rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center gap-space-xs transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add</span>Quick Action</button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface-container-low min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Operational Context / Header Bar -->
+<div class="px-space-lg pt-space-lg pb-space-md flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Banners</h1>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            3 Active on Storefront • 1 Scheduled • 1 Draft
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-1">
+          Manage high-impact hero carousels, seasonal formulation campaigns, and regulatory announcement banners across the public B2B portal.
+        </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm self-start lg:self-auto">
+<button class="h-11 px-space-md rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md flex items-center gap-space-xs transition-colors" id="reorder-seq-btn" type="button">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">drag_indicator</span>
+          Reorder Sequence
+        </button>
+<button class="h-11 px-space-lg rounded-lg bg-primary-container text-on-primary hover:bg-secondary font-label-md text-label-md flex items-center gap-space-xs shadow-md transition-all" id="open-banner-modal-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+          Add Banner
+        </button>
+</div>
+</div>
+<!-- Operational Metrics Strip -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-space-sm mt-space-xs">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Banners</span>
+<div class="flex items-baseline justify-between mt-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface">5</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Portal Max: 12</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Active Live</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex items-baseline justify-between mt-space-xs">
+<span class="font-headline-md text-headline-md text-secondary">3</span>
+<span class="font-label-sm text-label-sm text-secondary">Broadcasting</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Scheduled</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">schedule</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-xs">
+<span class="font-headline-md text-headline-md text-tertiary">1</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Oct 15 Release</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Draft / Inactive</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">draft</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface-variant">1</span>
+<span class="font-code-sm text-code-sm text-outline">Staging</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-secondary-container uppercase tracking-wider">Avg. CTR</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">trending_up</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface">4.82%</span>
+<span class="font-label-sm text-label-sm text-secondary">+0.6% vs Q2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter & Controls Toolbar -->
+<div class="px-space-lg pb-space-md">
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-sm">
+<div class="flex flex-1 items-center gap-space-sm">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[20px] text-outline">search</span>
+<input class="w-full h-10 pl-10 pr-space-md bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" id="table-search" placeholder="Filter by title, subtitle, or campaign tag..." type="text"/>
+</div>
+<!-- Status Filter Tabs -->
+<div class="hidden lg:flex items-center bg-surface-container-low p-1 rounded-lg">
+<button class="filter-status-btn px-space-sm py-1 rounded-md bg-surface-container-lowest shadow-sm text-primary font-label-sm text-label-sm" data-filter="all" type="button">All (5)</button>
+<button class="filter-status-btn px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="active" type="button">Active (3)</button>
+<button class="filter-status-btn px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="scheduled" type="button">Scheduled (1)</button>
+<button class="filter-status-btn px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" data-filter="draft" type="button">Draft (1)</button>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1.5 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-outline">layers</span>
+<select class="bg-transparent font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer">
+<option>All Placements</option>
+<option>Homepage Main Hero</option>
+<option>Homepage Secondary Carousel</option>
+<option>Solutions Spotlight</option>
+<option>Storefront Alert Strip</option>
+</select>
+</div>
+<button class="h-9 px-space-sm rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 transition-colors" id="view-empty-toggle-btn" title="Toggle simulation of zero state" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+          Empty State Test
+        </button>
+</div>
+</div>
+</div>
+<!-- Main Content Dual Pane: Banner List & Interactive Inspector -->
+<div class="px-space-lg pb-space-xl flex flex-col gap-space-lg">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column / Primary Banners Table (xl:col-span-8) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md" id="banner-table-container">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-secondary">view_carousel</span>
+<span class="font-title-md text-title-md text-on-surface">Live Storefront Sequence</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Drag handle on left to reprioritize display slots</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface text-on-surface-variant uppercase font-label-sm text-label-sm tracking-wider">
+<th class="py-space-sm px-space-md w-14 text-center">Slot</th>
+<th class="py-space-sm px-space-md w-44">Preview</th>
+<th class="py-space-sm px-space-md">Banner Title & Target Context</th>
+<th class="py-space-sm px-space-md w-32">Status</th>
+<th class="py-space-sm px-space-md w-28 text-right">Actions</th>
+</tr>
+</thead>
+<tbody id="banners-tbody">
+<!-- Row 1 (Active Hero) -->
+<tr class="banner-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors group cursor-pointer" data-id="1" data-status="active">
+<td class="py-space-md px-space-md text-center align-middle">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px] opacity-40 group-hover:opacity-100 cursor-grab">drag_indicator</span>
+<span class="w-6 h-6 rounded bg-primary-container text-on-primary font-code-sm text-code-sm flex items-center justify-center font-semibold">1</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="relative w-36 h-20 rounded-lg overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Xqt6B5L9hbCs7a9yR4d6ZOb15Ifzo0zZMCkP9TqrqOpHuiaeBgu73DDPFrkx6SIhsbS4PJlZ7Vvlz65QWIDT_kXQyGPu-WRpPcxMzYDF13n6-n3aAHgDjN2OHpytP-b9KzF3JIuADsXq3SW7DxaR3yhxxtNnZl2aBKZuxS386bjfhsOGrxCLEvzsRU_ZsITS7ohiRbVVMhrK5-ADzq8iMGetYvLq8DEaZwOle7DFSF1A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-1">
+<span class="font-code-sm text-[10px] text-surface-container-lowest px-1 py-0.5 rounded bg-primary/70">21:9 Hero</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-1 max-w-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">Homepage Main Hero</span>
+<span class="font-code-sm text-code-sm text-outline">CTA: “Request Volume Quote”</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+                        Q3 Bulk Food Chemical Contracts: Guaranteed Spec & FCL Freight Allocation
+                      </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                        Lock in hydrocolloid and acidulant delivery schedules for high-volume processors before Q4 allocations close.
+                      </p>
+<div class="flex items-center gap-space-sm pt-0.5">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span> /contracts
+                        </span>
+<span class="font-code-sm text-code-sm text-outline">Updated Oct 12 • Dr. A. Vance</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right align-middle">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" onclick="openEditModal(1)" title="Edit Banner" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-error-container hover:text-on-error-container text-on-surface flex items-center justify-center transition-colors" title="Deactivate or Archive" type="button">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Active Solutions Spotlight) -->
+<tr class="banner-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors group cursor-pointer" data-id="2" data-status="active">
+<td class="py-space-md px-space-md text-center align-middle">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px] opacity-40 group-hover:opacity-100 cursor-grab">drag_indicator</span>
+<span class="w-6 h-6 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm flex items-center justify-center font-semibold">2</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="relative w-36 h-20 rounded-lg overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WKWpb90rzFoWFBrHxCKGyzVmf5N73AAhx5r3qper8YadNTagTiEX_3bo7svwW_Kv80HnDljtRGzME5URMymBMZUx5jnM6ah5UHcSYc9OG8vU5hvXvzukUiSqwB7fED49Jw_kQPikW6YamSWphf3UZjkDcp9m38OWyLpPRmUMIcMpOi8t0q8y27vnFvRp-ILPQGvsepxKLUUCUtVouwnFH_kcSU_H3yGxLVkew4OFGy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-1">
+<span class="font-code-sm text-[10px] text-surface-container-lowest px-1 py-0.5 rounded bg-primary/70">16:9 Card</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-1 max-w-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-variant text-on-surface">Solutions Spotlight</span>
+<span class="font-code-sm text-code-sm text-outline">CTA: “Explore Solutions”</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+                        Precision Clean-Label Leavening & Hydrocolloid Formulations
+                      </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                        Technical batch samples delivered in 24 hours with certified CoA verification and formulation trials.
+                      </p>
+<div class="flex items-center gap-space-sm pt-0.5">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span> /solutions
+                        </span>
+<span class="font-code-sm text-code-sm text-outline">Updated Oct 08 • E. Chen (R&D)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right align-middle">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" onclick="openEditModal(2)" title="Edit Banner" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-error-container hover:text-on-error-container text-on-surface flex items-center justify-center transition-colors" title="Deactivate" type="button">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Active Secondary Carousel) -->
+<tr class="banner-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors group cursor-pointer" data-id="3" data-status="active">
+<td class="py-space-md px-space-md text-center align-middle">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px] opacity-40 group-hover:opacity-100 cursor-grab">drag_indicator</span>
+<span class="w-6 h-6 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm flex items-center justify-center font-semibold">3</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="relative w-36 h-20 rounded-lg overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+<img class="w-full h-full object-cover" data-alt="Food manufacturing raw chemicals laboratory with analytical glass beakers of citric acid crystals, hydrocolloid powders, and natural extract vials on a clean stainless steel bench with natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrTlusZYVZEltSuB4Ez9V1xZ4P75Ui9bc_4djxFyctmLg1zuxwQZKlbn6FsIHmwBnP954yZs3xbJXqF9j6f45idFqm5xhN9wr8xz-BV__Dm-8zVI1N-43MtQDx_yZ02DK2bMJx_hDgzVmrxe3hXu3Gq2lcV-p3xeI11KqECoNnLQVmhJqWwPYxk-SXhoeXyMt6KMnBwkYsasLiCFji38wqrgThhUW2byLJz-i-Dr5n"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-1">
+<span class="font-code-sm text-[10px] text-surface-container-lowest px-1 py-0.5 rounded bg-primary/70">21:9 Hero</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-1 max-w-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-variant text-on-surface">Homepage Secondary</span>
+<span class="font-code-sm text-code-sm text-outline">CTA: “View Acidulant Catalog”</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+                        Acidulant Supply Stability: Citric, Malic & Tartaric Bulk Rail & Tote Inventory
+                      </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                        Direct railcar and 1,000kg IBC tote shipments with lot-specific analytical certificates.
+                      </p>
+<div class="flex items-center gap-space-sm pt-0.5">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span> /products?cat=acidulants
+                        </span>
+<span class="font-code-sm text-code-sm text-outline">Updated Sep 29 • Logistics Ops</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right align-middle">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" onclick="openEditModal(3)" title="Edit Banner" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-error-container hover:text-on-error-container text-on-surface flex items-center justify-center transition-colors" title="Deactivate" type="button">
+<span class="material-symbols-outlined text-[16px]">pause_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (Scheduled Banner) -->
+<tr class="banner-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors group cursor-pointer" data-id="4" data-status="scheduled">
+<td class="py-space-md px-space-md text-center align-middle">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px] opacity-40 group-hover:opacity-100 cursor-grab">drag_indicator</span>
+<span class="w-6 h-6 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm flex items-center justify-center font-semibold">4</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="relative w-36 h-20 rounded-lg overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+<img class="w-full h-full object-cover" data-alt="Laboratory compliance verification scientist holding precision analytical pipettes next to beverage test flasks in a commercial clean-room bio-chemical facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6zeSc3s6BLvz-ivC1PH4KbwFR0HrZ4NDVJ0rqjdFO19zTH2Ijo5mgSL3_1s-mUSdzqRYc9VvchYdz7yU2sBRm9lj_MOfCVtavoRpupkAEWEq2DBGkvgBa8yJ1BGI9Z5fhVxiVa6ViEDeooFSLWyACG-fwecd6dPhCRKGpsglLEOdF7mMDdkAOpw0mP9cHg5K4AdqIBUtf5WmKaC2t0K6fQ1upuGU3bxsg1HEgl1zj"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-1">
+<span class="font-code-sm text-[10px] text-surface-container-lowest px-1 py-0.5 rounded bg-primary/70">Top Bar</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-1 max-w-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed">Storefront Global Alert Strip</span>
+<span class="font-code-sm text-code-sm text-outline">CTA: “Review Audit CoAs”</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface line-clamp-1 group-hover:text-secondary transition-colors">
+                        Annual FSSC 22000 Version 6.0 Compliance Audit Notice & Batch Portal Update
+                      </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                        Scheduled release of enhanced digital lot genealogy on Oct 15 at 00:00 UTC.
+                      </p>
+<div class="flex items-center gap-space-sm pt-0.5">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span> /batch-traceability
+                        </span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Starts Oct 15, 2024
+                        </span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">event</span> Scheduled
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right align-middle">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" onclick="openEditModal(4)" title="Edit Schedule" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-error-container hover:text-on-error-container text-on-surface flex items-center justify-center transition-colors" title="Cancel Scheduled Run" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 (Draft / Inactive Banner) -->
+<tr class="banner-row bg-surface-container-lowest hover:bg-surface-container-low transition-colors group cursor-pointer" data-id="5" data-status="draft">
+<td class="py-space-md px-space-md text-center align-middle">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px] opacity-40 group-hover:opacity-100 cursor-grab">drag_indicator</span>
+<span class="w-6 h-6 rounded bg-surface-container-high text-on-surface font-code-sm text-code-sm flex items-center justify-center font-semibold">5</span>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="relative w-36 h-20 rounded-lg overflow-hidden shadow-sm group-hover:shadow transition-shadow bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px] text-outline">image_not_supported</span>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-1">
+<span class="font-code-sm text-[10px] text-surface-container-lowest px-1 py-0.5 rounded bg-outline/70">Unassigned</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex flex-col gap-1 max-w-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Unassigned Slot</span>
+<span class="font-code-sm text-code-sm text-outline">CTA: “Inquire Pilot”</span>
+</div>
+<span class="font-title-md text-title-md text-on-surface-variant line-clamp-1 group-hover:text-on-surface transition-colors">
+                        Holiday Bakery Emulsifier Pilot Testing Program
+                      </span>
+<p class="font-body-sm text-body-sm text-outline line-clamp-1">
+                        Bench-scale custom emulsifier trials for industrial bakeries preparing seasonal lines.
+                      </p>
+<div class="flex items-center gap-space-sm pt-0.5">
+<span class="font-code-sm text-code-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span> /pilot-trials
+                        </span>
+<span class="font-code-sm text-code-sm text-outline">Draft saved Oct 01</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                      Draft
+                    </span>
+</td>
+<td class="py-space-md px-space-md text-right align-middle">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface flex items-center justify-center transition-colors" onclick="openEditModal(5)" title="Edit Draft" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-error-container hover:text-on-error-container text-on-surface flex items-center justify-center transition-colors" title="Delete Draft" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bottom Reorder Advisory Info -->
+<div class="p-space-md bg-surface flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+              Showing <strong class="text-on-surface">5 of 5</strong> banners. Active slots cycle automatically at 7.5s intervals on the public storefront.
+            </span>
+<div class="flex items-center gap-space-sm">
+<span class="font-code-sm text-code-sm text-outline">Auto-sync: Enabled</span>
+<button class="font-label-sm text-label-sm text-secondary hover:underline flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span> Force Cache Refresh
+              </button>
+</div>
+</div>
+</div>
+<!-- Optional Collapsible Zero State Preview (Hidden by default, triggered by toggle button) -->
+<div class="hidden bg-surface-container-lowest p-space-2xl rounded-xl shadow-sm text-center flex flex-col items-center justify-center" id="empty-state-card">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-outline mb-space-md">
+<span class="material-symbols-outlined text-[32px]">view_carousel</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">No banners have been created.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-1 mb-space-lg">
+            Create your first promotional or technical announcement banner to engage food manufacturers across your storefront.
+          </p>
+<button class="h-11 px-space-lg rounded-lg bg-primary-container text-on-primary hover:bg-secondary font-label-md text-label-md flex items-center gap-space-xs transition-colors" onclick="openEditModal(null)" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+            + Add Banner
+          </button>
+</div>
+</div>
+<!-- Right Column / Live Device Preview Inspector (xl:col-span-4) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md sticky top-20">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Inspector Header with Responsive Tabs -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">visibility</span>
+<span class="font-title-md text-title-md text-on-surface">Live Inspector</span>
+</div>
+<!-- Responsive Viewport Switcher Tabs -->
+<div class="flex items-center bg-surface-container-high p-1 rounded-lg">
+<button class="preview-device-tab px-space-sm py-1 rounded-md bg-surface-container-lowest shadow-sm text-primary font-label-sm text-label-sm flex items-center gap-1 transition-all" id="view-tab-desktop" type="button">
+<span class="material-symbols-outlined text-[16px]">desktop_windows</span>
+                Desktop
+              </button>
+<button class="preview-device-tab px-space-sm py-1 rounded-md text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-all" id="view-tab-mobile" type="button">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+                Mobile
+              </button>
+</div>
+</div>
+<!-- Active Banner Selector Bar -->
+<div class="px-space-md py-space-xs bg-surface flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Previewing Slot #1</span>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">1920x600 Scaled</span>
+</div>
+<!-- Preview Canvas Area -->
+<div class="p-space-md flex flex-col items-center justify-center bg-surface-container-low min-h-[460px]">
+<!-- Desktop View Container -->
+<div class="w-full flex flex-col shadow-lg rounded-xl overflow-hidden bg-surface-container-lowest" id="desktop-preview-frame">
+<!-- Mock Browser Address Bar -->
+<div class="px-3 py-2 bg-surface-container-high flex items-center gap-2">
+<div class="flex gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+</div>
+<div class="flex-1 bg-surface-container-lowest px-2 py-0.5 rounded text-[10px] text-on-surface-variant font-code-sm truncate">
+                  https://pureblendchemicals.com
+                </div>
+</div>
+<!-- Desktop Hero Banner Render -->
+<div class="relative w-full aspect-[21/9] min-h-[220px] bg-cover bg-center overflow-hidden flex flex-col justify-end p-space-md" style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1Xqt6B5L9hbCs7a9yR4d6ZOb15Ifzo0zZMCkP9TqrqOpHuiaeBgu73DDPFrkx6SIhsbS4PJlZ7Vvlz65QWIDT_kXQyGPu-WRpPcxMzYDF13n6-n3aAHgDjN2OHpytP-b9KzF3JIuADsXq3SW7DxaR3yhxxtNnZl2aBKZuxS386bjfhsOGrxCLEvzsRU_ZsITS7ohiRbVVMhrK5-ADzq8iMGetYvLq8DEaZwOle7DFSF1A');">
+<!-- Deep Forest Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent"></div>
+<!-- Live Content -->
+<div class="relative z-10 flex flex-col gap-1.5 max-w-xs">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-secondary text-on-secondary font-label-sm text-[10px] uppercase font-semibold">Guaranteed Spec</span>
+<span class="px-1.5 py-0.5 rounded bg-primary-container text-secondary-fixed font-label-sm text-[10px]">ISO 22000</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-primary font-bold leading-tight line-clamp-2">
+                    Q3 Bulk Food Chemical Contracts: Guaranteed Spec & Freight
+                  </h4>
+<p class="font-body-sm text-[11px] text-on-primary-container line-clamp-2 leading-relaxed">
+                    Lock in hydrocolloid and acidulant delivery schedules for high-volume processors before Q4 allocations close.
+                  </p>
+<div class="pt-1">
+<button class="h-7 px-space-sm rounded bg-secondary hover:bg-secondary-fixed text-on-secondary hover:text-on-secondary-fixed font-label-sm text-[11px] flex items-center gap-1 transition-colors" type="button">
+                      Request Volume Quote
+                      <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Mock Carousel Indicator Dots -->
+<div class="absolute bottom-2 right-3 z-10 flex items-center gap-1">
+<span class="w-4 h-1 rounded-full bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-full bg-surface-container-lowest/50"></span>
+<span class="w-1.5 h-1 rounded-full bg-surface-container-lowest/50"></span>
+</div>
+</div>
+</div>
+<!-- Mobile View Container (Hidden initially) -->
+<div class="hidden w-[260px] shadow-xl rounded-2xl overflow-hidden bg-surface-container-lowest p-2" id="mobile-preview-frame">
+<div class="w-full rounded-xl overflow-hidden bg-primary relative flex flex-col">
+<!-- Phone Top Bar -->
+<div class="h-4 bg-primary flex items-center justify-between px-3 text-[9px] text-on-primary-container font-code-sm">
+<span>9:41</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">wifi</span>
+<span class="material-symbols-outlined text-[10px]">battery_full</span>
+</div>
+</div>
+<!-- Mobile Hero Aspect -->
+<div class="relative w-full aspect-[4/5] bg-cover bg-center flex flex-col justify-between p-space-sm" style="background-image: url('https://lh3.googleusercontent.com/aida/AEtjO1Xqt6B5L9hbCs7a9yR4d6ZOb15Ifzo0zZMCkP9TqrqOpHuiaeBgu73DDPFrkx6SIhsbS4PJlZ7Vvlz65QWIDT_kXQyGPu-WRpPcxMzYDF13n6-n3aAHgDjN2OHpytP-b9KzF3JIuADsXq3SW7DxaR3yhxxtNnZl2aBKZuxS386bjfhsOGrxCLEvzsRU_ZsITS7ohiRbVVMhrK5-ADzq8iMGetYvLq8DEaZwOle7DFSF1A');">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/85 to-primary/40"></div>
+<div class="relative z-10 pt-1">
+<span class="px-1.5 py-0.5 rounded bg-secondary text-on-secondary font-label-sm text-[9px] font-bold">Q3 ALLOCATION</span>
+</div>
+<div class="relative z-10 flex flex-col gap-1.5">
+<h5 class="font-headline-sm text-[14px] text-on-primary font-bold leading-snug">
+                      Q3 Bulk Food Chemical Contracts: Guaranteed Spec & Freight
+                    </h5>
+<p class="font-body-sm text-[10px] text-on-primary-container leading-tight">
+                      Lock in hydrocolloid and acidulant delivery schedules for high-volume processors.
+                    </p>
+<button class="h-8 w-full rounded bg-secondary text-on-secondary font-label-sm text-[11px] flex items-center justify-center gap-1 mt-1 font-semibold" type="button">
+                      Request Volume Quote
+                      <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Mobile bottom bar mock -->
+<div class="h-6 bg-primary flex items-center justify-center">
+<span class="w-16 h-1 rounded-full bg-surface-container-lowest/30"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Inspector Metadata / Analytics Panel -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Slot #1 Performance Stats</span>
+<div class="grid grid-cols-3 gap-space-sm pt-1">
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-[10px] text-outline block">Impressions</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">41.8k</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-[10px] text-outline block">CTR</span>
+<span class="font-title-md text-title-md text-secondary font-semibold">5.4%</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-[10px] text-outline block">RFQs Generated</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">142</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide-over Drawer / Modal for Add & Edit Banner (Toggled via JS) -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 hidden flex justify-end transition-opacity duration-300" id="banner-drawer-backdrop">
+<div class="w-full max-w-xl bg-surface-container-lowest h-full shadow-2xl flex flex-col justify-between overflow-y-auto">
+<!-- Drawer Header -->
+<div>
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">post_add</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface" id="drawer-title">Edit Banner Configuration</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Configure copy, artwork, and CTA targeting</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-lg hover:bg-surface-variant text-on-surface-variant flex items-center justify-center transition-colors" id="close-drawer-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<form class="p-space-lg flex flex-col gap-space-lg" id="banner-form">
+<!-- Banner Title -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface flex items-center justify-between">
+              Banner Title
+              <span class="font-code-sm text-code-sm text-outline">Max 70 chars</span>
+</label>
+<input class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-all" id="input-banner-title" placeholder="e.g. Industrial Citric Acid Contracts" type="text" value="Q3 Bulk Food Chemical Contracts: Guaranteed Spec & FCL Freight Allocation"/>
+</div>
+<!-- Subtitle / Technical Description -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Supporting Technical Subtitle</label>
+<textarea class="w-full p-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-all resize-none" id="input-banner-subtitle" placeholder="Supporting technical context or value proposition..." rows="3">Lock in hydrocolloid and acidulant delivery schedules for high-volume processors before Q4 allocations close.</textarea>
+</div>
+<!-- Placement & Order Row -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Placement Target</label>
+<select class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none" id="input-banner-placement">
+<option selected="" value="hero">Homepage Main Hero</option>
+<option value="carousel">Homepage Secondary Carousel</option>
+<option value="spotlight">Solutions Page Spotlight</option>
+<option value="alert">Storefront Global Alert Strip</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Display Priority Slot</label>
+<input class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none" id="input-banner-order" max="10" min="1" type="number" value="1"/>
+</div>
+</div>
+<!-- Image Asset Preview & Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface flex items-center justify-between">
+              Visual Asset
+              <span class="font-code-sm text-code-sm text-outline">2400x900px recommended (Max 5MB)</span>
+</label>
+<div class="relative w-full h-40 rounded-xl overflow-hidden shadow-sm group">
+<img class="w-full h-full object-cover" id="drawer-preview-image" src="https://lh3.googleusercontent.com/aida/AEtjO1Xqt6B5L9hbCs7a9yR4d6ZOb15Ifzo0zZMCkP9TqrqOpHuiaeBgu73DDPFrkx6SIhsbS4PJlZ7Vvlz65QWIDT_kXQyGPu-WRpPcxMzYDF13n6-n3aAHgDjN2OHpytP-b9KzF3JIuADsXq3SW7DxaR3yhxxtNnZl2aBKZuxS386bjfhsOGrxCLEvzsRU_ZsITS7ohiRbVVMhrK5-ADzq8iMGetYvLq8DEaZwOle7DFSF1A"/>
+<div class="absolute inset-0 bg-primary/60 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity gap-space-sm">
+<button class="h-9 px-space-md rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">photo_library</span> Media Library
+                </button>
+<button class="h-9 px-space-md rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">upload</span> Upload
+                </button>
+</div>
+</div>
+</div>
+<!-- CTA Controls -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">CTA Button Text</label>
+<input class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none" id="input-banner-cta-text" type="text" value="Request Volume Quote"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Target Destination URL</label>
+<input class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none" id="input-banner-cta-url" type="text" value="/contracts"/>
+</div>
+</div>
+<!-- Status Segmented Control -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface">Broadcast Status</label>
+<div class="grid grid-cols-3 bg-surface-container-low p-1 rounded-xl">
+<label class="flex items-center justify-center py-2 rounded-lg cursor-pointer bg-surface-container-lowest shadow-sm text-secondary font-label-sm text-label-sm font-semibold">
+<input checked="" class="hidden" name="status" type="radio" value="active"/>
+                Active
+              </label>
+<label class="flex items-center justify-center py-2 rounded-lg cursor-pointer text-on-surface-variant font-label-sm text-label-sm">
+<input class="hidden" name="status" type="radio" value="scheduled"/>
+                Scheduled
+              </label>
+<label class="flex items-center justify-center py-2 rounded-lg cursor-pointer text-on-surface-variant font-label-sm text-label-sm">
+<input class="hidden" name="status" type="radio" value="draft"/>
+                Draft
+              </label>
+</div>
+</div>
+<!-- Date Range Pickers (Optional for Scheduled) -->
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Scheduled Start Date</label>
+<input class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none" type="date" value="2024-10-15"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Expiration Date</label>
+<input class="w-full h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none" type="date" value="2024-11-30"/>
+</div>
+</div>
+</form>
+</div>
+<!-- Drawer Action Buttons Footer -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<button class="h-11 px-space-lg rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md transition-colors" id="cancel-drawer-btn" type="button">
+          Cancel
+        </button>
+<div class="flex items-center gap-space-sm">
+<button class="h-11 px-space-md rounded-lg bg-surface-container-highest hover:bg-surface-dim text-on-surface font-label-md text-label-md transition-colors" type="button">
+            Save as Draft
+          </button>
+<button class="h-11 px-space-lg rounded-lg bg-primary-container hover:bg-secondary text-on-primary font-label-md text-label-md transition-all shadow-md" id="save-banner-btn" type="button">
+            Save & Publish Banner
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Interaction Behavior -->
+<script>
+  (function initBannerManagement() {
+    // DOM Elements
+    const desktopTab = document.getElementById('view-tab-desktop');
+    const mobileTab = document.getElementById('view-tab-mobile');
+    const desktopFrame = document.getElementById('desktop-preview-frame');
+    const mobileFrame = document.getElementById('mobile-preview-frame');
+    const emptyToggleBtn = document.getElementById('view-empty-toggle-btn');
+    const emptyStateCard = document.getElementById('empty-state-card');
+    const bannerTableContainer = document.getElementById('banners-tbody');
+    const drawerBackdrop = document.getElementById('banner-drawer-backdrop');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const cancelDrawerBtn = document.getElementById('cancel-drawer-btn');
+    const saveBannerBtn = document.getElementById('save-banner-btn');
+    const openAddBtn = document.getElementById('open-banner-modal-btn');
+    const drawerTitle = document.getElementById('drawer-title');
+    const reorderBtn = document.getElementById('reorder-seq-btn');
+    const searchInput = document.getElementById('table-search');
+    const filterButtons = document.querySelectorAll('.filter-status-btn');
+
+    // 1. Viewport Inspector Switcher
+    if (desktopTab && mobileTab) {
+      desktopTab.addEventListener('click', () => {
+        desktopTab.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+        desktopTab.classList.remove('text-on-surface-variant');
+        mobileTab.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+        mobileTab.classList.add('text-on-surface-variant');
+
+        desktopFrame.classList.remove('hidden');
+        mobileFrame.classList.add('hidden');
+      });
+
+      mobileTab.addEventListener('click', () => {
+        mobileTab.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+        mobileTab.classList.remove('text-on-surface-variant');
+        desktopTab.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+        desktopTab.classList.add('text-on-surface-variant');
+
+        mobileFrame.classList.remove('hidden');
+        desktopFrame.classList.add('hidden');
+      });
+    }
+
+    // 2. Empty State Preview Toggle
+    if (emptyToggleBtn && emptyStateCard) {
+      let showingEmpty = false;
+      emptyToggleBtn.addEventListener('click', () => {
+        showingEmpty = !showingEmpty;
+        if (showingEmpty) {
+          emptyStateCard.classList.remove('hidden');
+          emptyToggleBtn.classList.add('bg-secondary-fixed', 'text-on-secondary-fixed');
+        } else {
+          emptyStateCard.classList.add('hidden');
+          emptyToggleBtn.classList.remove('bg-secondary-fixed', 'text-on-secondary-fixed');
+        }
+      });
+    }
+
+    // 3. Modal / Drawer Handlers
+    window.openEditModal = function(id) {
+      if (drawerBackdrop) {
+        drawerBackdrop.classList.remove('hidden');
+        if (drawerTitle) {
+          drawerTitle.textContent = id ? `Edit Banner #${id} Configuration` : 'Create New Promotional Banner';
+        }
+      }
+    };
+
+    function closeDrawer() {
+      if (drawerBackdrop) {
+        drawerBackdrop.classList.add('hidden');
+      }
+    }
+
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+    if (cancelDrawerBtn) cancelDrawerBtn.addEventListener('click', closeDrawer);
+    if (openAddBtn) openAddBtn.addEventListener('click', () => window.openEditModal(null));
+    if (saveBannerBtn) {
+      saveBannerBtn.addEventListener('click', () => {
+        saveBannerBtn.textContent = 'Saved Successfully!';
+        setTimeout(() => {
+          saveBannerBtn.textContent = 'Save & Publish Banner';
+          closeDrawer();
+        }, 600);
+      });
+    }
+
+    // Close on backdrop click outside drawer
+    if (drawerBackdrop) {
+      drawerBackdrop.addEventListener('click', (e) => {
+        if (e.target === drawerBackdrop) closeDrawer();
+      });
+    }
+
+    // 4. Status Filter Buttons
+    if (filterButtons.length) {
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => {
+            b.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+            b.classList.add('text-on-surface-variant');
+          });
+          btn.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+          btn.classList.remove('text-on-surface-variant');
+
+          const filter = btn.getAttribute('data-filter');
+          const rows = document.querySelectorAll('.banner-row');
+          rows.forEach(row => {
+            const status = row.getAttribute('data-status');
+            if (filter === 'all' || status === filter) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    // 5. Search Filter
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('.banner-row');
+        rows.forEach(row => {
+          const text = row.textContent.toLowerCase();
+          row.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    }
+
+    // 6. Micro interaction for Reorder Sequence Button
+    if (reorderBtn) {
+      reorderBtn.addEventListener('click', () => {
+        reorderBtn.classList.toggle('bg-secondary-fixed');
+        reorderBtn.classList.toggle('text-on-secondary-fixed');
+        const handles = document.querySelectorAll('.cursor-grab');
+        handles.forEach(h => {
+          h.classList.toggle('text-secondary');
+          h.classList.toggle('animate-bounce');
+          setTimeout(() => h.classList.remove('animate-bounce'), 800);
+        });
+      });
+    }
+  })();
+</script></main></div></body></html>

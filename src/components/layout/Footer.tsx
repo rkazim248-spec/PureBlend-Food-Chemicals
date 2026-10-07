@@ -15,12 +15,14 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/about" className="hover:text-white">About</Link></li>
             <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+            <li><Link href="/ai-assistant" className="hover:text-white">AI Assistant</Link></li>
           </ul>
         </nav>
         <nav aria-label="Products">
           <h2 className="text-sm font-bold uppercase tracking-wide text-white">Explore</h2>
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/products" className="hover:text-white">Products</Link></li>
+            <li><Link href="/solutions" className="hover:text-white">Solutions</Link></li>
             <li><Link href="/offers" className="hover:text-white">Offers</Link></li>
             <li><Link href="/faqs" className="hover:text-white">FAQs</Link></li>
           </ul>

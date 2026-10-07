@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export function MobileNav({ items }: { items: { href: string; label: string }[] }) {
+export function MobileNav({ items, extraItems = [] }: { items: { href: string; label: string }[]; extraItems?: { href: string; label: string }[] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ export function MobileNav({ items }: { items: { href: string; label: string }[] 
       {open && (
         <nav id="mobile-nav" aria-label="Mobile" className="absolute inset-x-0 top-16 border-b border-neutral-200 bg-white shadow-raised">
           <ul className="flex flex-col p-4 text-base font-semibold text-neutral-800">
-            {items.map((item) => (
+            {[...items, ...extraItems].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="block rounded-md px-3 py-3 hover:bg-neutral-100" onClick={() => setOpen(false)}>
                   {item.label}

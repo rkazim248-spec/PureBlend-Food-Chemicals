@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"primary-fixed":"#c3ebd8","tertiary-fixed-dim":"#ecc246","inverse-primary":"#a8cfbd","on-tertiary":"#ffffff","on-background":"#191c1b","on-tertiary-container":"#4f3d00","outline-variant":"#c1c8c3","primary-fixed-dim":"#a8cfbd","secondary-container":"#9ef4cc","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#82d7b1","on-tertiary-fixed-variant":"#584400","error-container":"#ffdad6","surface-bright":"#f8faf7","primary-container":"#12372a","on-surface-variant":"#414844","tertiary-fixed":"#ffe08e","secondary-fixed":"#9ef4cc","outline":"#717974","on-secondary-container":"#127253","error":"#ba1a1a","surface-tint":"#416656","on-primary":"#ffffff","primary":"#002116","surface-container-low":"#f2f4f1","surface-container-high":"#e7e9e6","on-tertiary-fixed":"#241a00","surface-variant":"#e1e3e0","on-error-container":"#93000a","on-primary-container":"#7ba190","inverse-on-surface":"#eff1ee","on-secondary-fixed-variant":"#005139","surface-dim":"#d8dbd8","on-error":"#ffffff","on-surface":"#191c1b","surface-container":"#eceeeb","surface-container-highest":"#e1e3e0","on-secondary":"#ffffff","background":"#f8faf7","on-secondary-fixed":"#002115","tertiary-container":"#cea72c","inverse-surface":"#2e312f","on-primary-fixed-variant":"#2a4e3f","surface":"#f8faf7","secondary":"#036c4d","tertiary":"#755b00","on-primary-fixed":"#002116"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","margin-lg":"5rem","gutter-sm":"1rem","gutter":"1.5rem","space-2xl":"3rem","space-md":"1rem","margin":"2rem","space-xs":"0.25rem","space-xl":"2rem","space-3xl":"4rem","gutter-lg":"2rem","space-lg":"1.5rem","margin-sm":"1rem"},"fontFamily":{"body-lg":["Inter"],"headline-xl-mobile":["Manrope"],"headline-lg-mobile":["Manrope"],"headline-lg":["Manrope"],"label-md":["Inter"],"code-sm":["Inter"],"headline-sm":["Manrope"],"body-md":["Inter"],"headline-xl":["Manrope"],"title-md":["Manrope"],"headline-md":["Manrope"],"label-sm":["Inter"],"body-sm":["Inter"]},"fontSize":{"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-xl-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"700"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"headline-xl":["56px",{"lineHeight":"62px","letterSpacing":"-0.02em","fontWeight":"700"}],"title-md":["18px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}],"headline-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"400"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low flex flex-col z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-lg flex items-center justify-between border-b border-surface-container-high/60"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-primary-fixed"><span class="material-symbols-outlined text-[20px]">science</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-primary font-bold leading-none tracking-tight">PureBlend</span><span class="font-code-sm text-code-sm text-on-surface-variant font-medium">Chemicals</span></div></div><span class="font-label-sm text-label-sm uppercase px-space-xs py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed tracking-wider font-semibold">Admin Console</span></div><nav class="flex-1 overflow-y-auto px-space-md py-space-md space-y-space-md" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><div class="space-y-1"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Overview</div><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">space_dashboard</span><span class="font-label-md text-label-md">Dashboard</span></a></div><div class="space-y-1"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Catalog &amp; Inventory</div><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="products" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span class="font-label-md text-label-md">Products</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="batch-and-lot-coas" href="#"><span class="material-symbols-outlined text-[18px]">verified</span><span class="font-label-md text-label-md">Batch &amp; Lot CoAs</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="categories" href="#"><span class="material-symbols-outlined text-[18px]">category</span><span class="font-label-md text-label-md">Categories</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="raw-materials" href="#"><span class="material-symbols-outlined text-[18px]">grain</span><span class="font-label-md text-label-md">Raw Materials</span></a></div><div class="space-y-1"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Commercial</div><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="inquiries-and-rfqs" href="#"><span class="material-symbols-outlined text-[18px]">request_quote</span><span class="font-label-md text-label-md">Inquiries &amp; RFQs</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="contracts-and-volume-bids" href="#"><span class="material-symbols-outlined text-[18px]">handshake</span><span class="font-label-md text-label-md">Contracts &amp; Volume Bids</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="current-offers" href="#"><span class="material-symbols-outlined text-[18px]">local_offer</span><span class="font-label-md text-label-md">Current Offers</span></a></div><div class="space-y-1"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Content &amp; System</div><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="banners" href="#"><span class="material-symbols-outlined text-[18px]">view_carousel</span><span class="font-label-md text-label-md">Banners</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="faqs" href="#"><span class="material-symbols-outlined text-[18px]">quiz</span><span class="font-label-md text-label-md">FAQs</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-trail" href="#"><span class="material-symbols-outlined text-[18px]">policy</span><span class="font-label-md text-label-md">Audit Trail</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">settings</span><span class="font-label-md text-label-md">Settings</span></a></div></nav><div class="p-space-md border-t border-surface-container-high/60 bg-surface-container-low"><div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container-high/40"><span class="w-2 h-2 rounded-full bg-secondary"></span><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm font-semibold text-primary truncate">GMP Grade II Cluster</span><span class="font-code-sm text-code-sm text-on-surface-variant truncate">v2.4.1 Production</span></div></div></div></aside><div class="pl-72 min-h-screen flex flex-col bg-surface"><header class="fixed top-0 left-72 right-0 h-16 z-40 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-surface-container-high/50 px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg flex-1 min-w-0"><div class="hidden xl:flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant"><span class="text-outline hover:text-on-surface transition-colors cursor-pointer">Console</span><span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span><span class="text-primary font-semibold">Catalog &amp; Inventory</span><span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span><span class="text-on-surface font-semibold truncate">Products</span></div><div class="relative max-w-md w-full min-w-[260px]"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full h-10 pl-9 pr-space-md rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary transition-all" placeholder="Search catalog, batches, inquiries..." type="text"/></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant border border-secondary/20"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm font-semibold tracking-wide">Database Connected • ISO 22000 Compliant</span></div><button aria-label="Notifications" class="relative w-9 h-9 rounded-lg hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-container ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-container-high"><div class="text-right hidden sm:flex flex-col"><span class="font-label-md text-label-md text-primary font-semibold leading-tight">Dr. Marcus Vance</span><span class="font-code-sm text-code-sm text-outline leading-tight">Catalog Admin</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="material-symbols-outlined text-outline text-[18px] cursor-pointer">arrow_drop_down</span></div></div></header><main class="w-full pt-16 bg-surface px-space-lg py-space-lg flex-1"><div class="flex flex-col w-full">
+<!-- Interactive View State Controller (Allows previewing all requested CMS states) -->
+<div class="mb-space-lg p-space-sm rounded-xl bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">CMS Simulation Viewport:</span>
+<div class="flex items-center gap-1 bg-surface-container rounded-lg p-0.5">
+<button class="px-3 py-1 text-xs font-semibold rounded-md transition-all bg-primary-container text-on-primary shadow-sm" id="btn-view-normal" onclick="setViewState('normal')" type="button">1. Table + Drawer</button>
+<button class="px-3 py-1 text-xs font-semibold rounded-md transition-all text-on-surface-variant hover:text-on-surface" id="btn-view-empty" onclick="setViewState('empty')" type="button">2. Empty Catalog</button>
+<button class="px-3 py-1 text-xs font-semibold rounded-md transition-all text-on-surface-variant hover:text-on-surface" id="btn-view-loading" onclick="setViewState('loading')" type="button">3. Loading State</button>
+<button class="px-3 py-1 text-xs font-semibold rounded-md transition-all text-on-surface-variant hover:text-on-surface" id="btn-view-delete" onclick="setViewState('delete')" type="button">4. Delete Dialog</button>
+</div>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant">
+<span class="font-code-sm text-code-sm hidden md:inline">Batch Index: PB-2025-Q4 • 148 Active SKUs</span>
+<button class="px-2.5 py-1 text-xs font-medium rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1" onclick="toggleDrawer()" type="button">
+<span class="material-symbols-outlined text-[16px]">side_navigation</span>
+<span id="drawer-toggle-text">Toggle Drawer</span>
+</button>
+</div>
+</div>
+<!-- SECTION 1: PAGE HEADER & BREADCRUMBS -->
+<header class="flex flex-col gap-space-md mb-space-xl">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-outline">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">space_dashboard</span>
+        Dashboard
+      </a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">Catalog &amp; Inventory</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Products</span>
+</div>
+<!-- Title & Action Hub -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="space-y-1">
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">Products Management</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+            148 Active SKUs • 12 Categories
+          </span>
+<span class="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm font-medium">
+<span class="material-symbols-outlined text-[14px] text-tertiary">verified_user</span>
+            Pharmacopeia &amp; FCC Spec Compliant
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Configure high-purity chemical specifications, lot assays, pharmacopeia classifications, and multi-tier regulatory declarations across global supply nodes.
+        </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<!-- Secondary Spec Sheet Export -->
+<button class="h-10 px-space-md rounded-lg bg-surface-container-low hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center gap-2 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+          Export Catalog Specs
+        </button>
+<!-- Bulk Actions Menu -->
+<div class="relative inline-block text-left" id="bulkMenuWrapper">
+<button class="h-10 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center gap-2 transition-all shadow-sm" onclick="toggleDropdown('bulkDropdown')" type="button">
+<span class="material-symbols-outlined text-[18px]">select_all</span>
+            Bulk Actions
+            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-surface-container-lowest shadow-2xl p-1.5 z-30" id="bulkDropdown">
+<button class="w-full text-left px-3 py-2 text-xs rounded-lg hover:bg-surface-container text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">publish</span> Batch Publish SKUs
+            </button>
+<button class="w-full text-left px-3 py-2 text-xs rounded-lg hover:bg-surface-container text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">edit_note</span> Update Regulatory Status
+            </button>
+<button class="w-full text-left px-3 py-2 text-xs rounded-lg hover:bg-surface-container text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">price_change</span> Bulk Price Re-index
+            </button>
+<div class="my-1 border-t border-surface-container-high"></div>
+<button class="w-full text-left px-3 py-2 text-xs rounded-lg hover:bg-error-container text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">archive</span> Archive Selected SKUs
+            </button>
+</div>
+</div>
+<!-- Primary Add Product CTA -->
+<button class="h-10 px-space-lg rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center gap-2 shadow-md transition-all active:scale-[0.98]" onclick="setViewState('normal')" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+          + Add Product
+        </button>
+</div>
+</div>
+</header>
+<!-- KPI SUMMARY STRIP -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md mb-space-lg">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Total Inventory</span>
+<span class="material-symbols-outlined text-[18px]">inventory</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">119,400 kg</div>
+<div class="font-code-sm text-code-sm text-secondary font-medium flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +8.4% vs last audit
+        </div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Published SKUs</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">verified</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">132 / 148</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">89.2% market-ready</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Under QA Review</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">pending_actions</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-tertiary-container font-bold">11 Drafts</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">CoA validation pending</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-outline">
+<span class="font-label-sm text-label-sm uppercase font-semibold">Low Allocation</span>
+<span class="material-symbols-outlined text-[18px] text-error">warning</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-error font-bold">5 Items</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">&lt; 3,500 kg emergency stock</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: ADVANCED FILTER TOOLBAR -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm mb-space-lg space-y-space-md">
+<!-- Top Row: Search & Select Dropdowns -->
+<div class="flex flex-col lg:flex-row gap-space-sm items-stretch lg:items-center justify-between">
+<!-- Search Input with Keyboard shortcut -->
+<div class="relative flex-1 min-w-[300px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-11 pl-11 pr-16 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary/40 transition-all" id="productSearchInput" placeholder="Search products by name, CAS number, chemical formula, or SKU..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm font-semibold pointer-events-none">
+          ⌘K
+        </div>
+</div>
+<!-- Filter Controls Group -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<!-- Category Filter -->
+<div class="relative">
+<select class="appearance-none h-11 pl-3 pr-8 rounded-xl bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30 transition-all cursor-pointer">
+<option>All Categories (12)</option>
+<option>Acidulants</option>
+<option>Hydrocolloids &amp; Stabilizers</option>
+<option>Preservatives &amp; Antioxidants</option>
+<option>Emulsifiers</option>
+<option>Clean Label Extracts</option>
+<option>Phosphates</option>
+<option>Sweeteners &amp; Polyols</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="appearance-none h-11 pl-3 pr-8 rounded-xl bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30 transition-all cursor-pointer">
+<option>Status: All (148)</option>
+<option>Published (132)</option>
+<option>Draft (11)</option>
+<option>Inactive (5)</option>
+<option>Archived (0)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Availability Filter -->
+<div class="relative">
+<select class="appearance-none h-11 pl-3 pr-8 rounded-xl bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30 transition-all cursor-pointer">
+<option>Availability: All Lead Times</option>
+<option>Immediate Dispatch (&lt;48h)</option>
+<option>2-3 Weeks Standard</option>
+<option>Forward Allocation Only</option>
+<option>Out of Stock</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Grade Filter -->
+<div class="relative">
+<select class="appearance-none h-11 pl-3 pr-8 rounded-xl bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30 transition-all cursor-pointer">
+<option>Grade: Food / USP / FCC</option>
+<option>FCC 14th Edition</option>
+<option>USP-NF Grade</option>
+<option>Non-GMO Project Verified</option>
+<option>Kosher Parve</option>
+<option>Halal Certified</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Sort Filter -->
+<div class="relative">
+<select class="appearance-none h-11 pl-3 pr-8 rounded-xl bg-surface-container-low hover:bg-surface-container font-label-md text-label-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30 transition-all cursor-pointer">
+<option>Sort: Last Updated (Newest)</option>
+<option>Product Name (A-Z)</option>
+<option>SKU (Ascending)</option>
+<option>CAS No. Order</option>
+<option>Inventory Volume (Highest)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">sort</span>
+</div>
+</div>
+</div>
+<!-- Bottom Filter Ribbon: Density toggle + Active Chips + Reset -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Active:</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+          Acidulants &amp; Hydrocolloids
+          <button class="material-symbols-outlined text-[14px] hover:text-error" type="button">close</button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+          Grade: FCC / USP
+          <button class="material-symbols-outlined text-[14px] hover:text-error" type="button">close</button>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+          Status: Published + Draft
+          <button class="material-symbols-outlined text-[14px] hover:text-error" type="button">close</button>
+</span>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold ml-1" type="button">
+          Reset All Filters
+        </button>
+</div>
+<!-- Density & Column Options -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
+<button class="px-2.5 py-1 text-xs rounded font-semibold bg-surface-container-lowest text-primary shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">density_small</span> Dense
+          </button>
+<button class="px-2.5 py-1 text-xs rounded text-outline hover:text-on-surface flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">density_medium</span> Comfortable
+          </button>
+</div>
+<button class="h-8 px-2.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface text-xs font-medium flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">view_column</span> Columns (8/8)
+        </button>
+</div>
+</div>
+</div>
+<!-- SECTION 3: WORKSPACE (Main Table View + Detail Drawer) -->
+<div class="relative flex items-start gap-space-lg w-full">
+<!-- MAIN PRODUCTS CONTENT AREA -->
+<div class="flex-1 w-full min-w-0 transition-all duration-300" id="catalog-main-area">
+<!-- STATE A: NORMAL DATA TABLE (Visible by default) -->
+<div class="w-full" id="state-normal-view">
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<!-- Responsive Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-4 w-12 text-center">
+<input class="w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" id="selectAllCheckbox" onchange="toggleSelectAll(this)" type="checkbox"/>
+</th>
+<th class="py-3 px-4 font-semibold">Chemical Name &amp; Formula</th>
+<th class="py-3 px-4 font-semibold">SKU / Code</th>
+<th class="py-3 px-4 font-semibold">Category</th>
+<th class="py-3 px-4 font-semibold">Compliance &amp; Grade</th>
+<th class="py-3 px-4 font-semibold text-right">Available Stock</th>
+<th class="py-3 px-4 font-semibold text-center">Status</th>
+<th class="py-3 px-4 font-semibold">Last Audit</th>
+<th class="py-3 px-4 text-center font-semibold">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/60 font-body-sm text-body-sm">
+<!-- ROW 1: Citric Acid Anhydrous (Selected Row Preview) -->
+<tr class="hover:bg-secondary-fixed/20 transition-colors bg-secondary-fixed/10 group cursor-pointer" onclick="openDrawerWithDetails('Citric Acid Anhydrous', 'PB-ACD-0104', '77-92-9', 'C6H8O7', '42,500 kg', 'Published')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input checked="" class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed/60 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">biotech</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold flex items-center gap-1.5">
+                          Citric Acid Anhydrous
+                          <span class="material-symbols-outlined text-secondary text-[14px]" title="Assay Certified">verified</span>
+</div>
+<div class="font-code-sm text-code-sm text-outline truncate">2-hydroxypropane-1,2,3-tricarboxylic acid</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 77-92-9</span>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">C₆H₈O₇</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E330</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-ACD-0104</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Acidulants
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">FCC 14th Ed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">USP-NF</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kosher</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Non-GMO</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">42,500 kg</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Ready for Dispatch</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Published
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 24, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">Dr. M. Vance</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Citric Acid Anhydrous', 'PB-ACD-0104', '77-92-9', 'C6H8O7', '42,500 kg', 'Published')" title="Quick View" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" title="Edit Chemical Specs" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Citric Acid Anhydrous', 'PB-ACD-0104')" title="Delete Product" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Xanthan Gum 80-Mesh -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openDrawerWithDetails('Xanthan Gum 80-Mesh', 'PB-HYD-0412', '11138-66-2', '(C35H49O29)n', '18,200 kg', 'Published')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">grain</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Xanthan Gum 80-Mesh</div>
+<div class="font-code-sm text-code-sm text-outline truncate">Polysaccharide secreted by Xanthomonas campestris</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 11138-66-2</span>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">(C₃₅H₄₉O₂₉)ₙ</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E415</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-HYD-0412</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Hydrocolloids
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">FCC 14th Ed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Halal</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kosher</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">18,200 kg</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">In Stock</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Published
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 21, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">S. Chen (QA)</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Xanthan Gum 80-Mesh', 'PB-HYD-0412', '11138-66-2', '(C35H49O29)n', '18,200 kg', 'Published')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Xanthan Gum 80-Mesh', 'PB-HYD-0412')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Potassium Sorbate Granular -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openDrawerWithDetails('Potassium Sorbate Granular', 'PB-PRS-0089', '24634-61-5', 'C6H7KO2', '9,800 kg', 'Published')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Potassium Sorbate Granular</div>
+<div class="font-code-sm text-code-sm text-outline truncate">Potassium (2E,4E)-hexa-2,4-dienoate</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 24634-61-5</span>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">C₆H₇KO₂</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E202</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-PRS-0089</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Preservatives
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">FCC / USP</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kosher</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">9,800 kg</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">In Stock</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Published
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 19, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">Dr. M. Vance</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Potassium Sorbate Granular', 'PB-PRS-0089', '24634-61-5', 'C6H7KO2', '9,800 kg', 'Published')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Potassium Sorbate Granular', 'PB-PRS-0089')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Sodium Acid Pyrophosphate SAPP-28 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openDrawerWithDetails('Sodium Acid Pyrophosphate SAPP-28', 'PB-PHS-0205', '7758-16-9', 'Na2H2P2O7', '24,000 kg', 'Published')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Sodium Acid Pyrophosphate SAPP-28</div>
+<div class="font-code-sm text-code-sm text-outline truncate">Disodium dihydrogen diphosphate (Baking Grade)</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 7758-16-9</span>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">Na₂H₂P₂O₇</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E450(i)</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-PHS-0205</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Phosphates
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">FCC 14th Ed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Halal</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">24,000 kg</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">In Stock</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Published
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 15, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">K. Thorne</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Sodium Acid Pyrophosphate SAPP-28', 'PB-PHS-0205', '7758-16-9', 'Na2H2P2O7', '24,000 kg', 'Published')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Sodium Acid Pyrophosphate SAPP-28', 'PB-PHS-0205')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Sunflower Lecithin Liquid (Draft State) -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openDrawerWithDetails('Sunflower Lecithin Liquid', 'PB-EML-0301', '8002-43-5', 'Complex Lipids', '6,400 kg', 'Draft')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Sunflower Lecithin Liquid</div>
+<div class="font-code-sm text-code-sm text-outline truncate">Non-allergenic unbleached phospholipid blend</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 8002-43-5</span>
+<span class="font-code-sm text-code-sm text-outline font-semibold">Phosphatidylcholine</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E322</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-EML-0301</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Emulsifiers
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed/60 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-semibold">Non-GMO Direct</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kosher</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">6,400 kg</div>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">Sampling Stage</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                      Draft
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 12, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">Dr. M. Vance</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Sunflower Lecithin Liquid', 'PB-EML-0301', '8002-43-5', 'Complex Lipids', '6,400 kg', 'Draft')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Sunflower Lecithin Liquid', 'PB-EML-0301')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6: Calcium Propionate -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openDrawerWithDetails('Calcium Propionate', 'PB-PRS-0112', '4075-81-4', 'C6H10CaO4', '15,300 kg', 'Published')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">science</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Calcium Propionate</div>
+<div class="font-code-sm text-code-sm text-outline truncate">Calcium dipropionate (Bakery Antimicrobial)</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 4075-81-4</span>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">C₆H₁₀CaO₄</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E282</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-PRS-0112</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Preservatives
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">FCC 14th Ed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Halal</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">15,300 kg</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">In Stock</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Published
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 08, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">L. Moreau</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Calcium Propionate', 'PB-PRS-0112', '4075-81-4', 'C6H10CaO4', '15,300 kg', 'Published')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Calcium Propionate', 'PB-PRS-0112')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 7: Guar Gum 200-Mesh Fast Hydration (Draft) -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer" onclick="openDrawerWithDetails('Guar Gum 200-Mesh', 'PB-HYD-0428', '9000-30-0', 'Galactomannan', '3,200 kg', 'Draft')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">grain</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Guar Gum 200-Mesh Fast Hydration</div>
+<div class="font-code-sm text-code-sm text-outline truncate">Cold-water swelling galactomannan hydrocolloid</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 9000-30-0</span>
+<span class="font-code-sm text-code-sm text-outline font-semibold">Viscosity: 5,500 cps</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E412</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-primary tracking-wide">PB-HYD-0428</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Hydrocolloids
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">FCC 14th Ed</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kosher</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-primary tabular-nums">3,200 kg</div>
+<span class="font-label-sm text-label-sm text-error font-semibold">Low Allocation</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                      Draft
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Oct 05, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">S. Chen (QA)</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Guar Gum 200-Mesh', 'PB-HYD-0428', '9000-30-0', 'Galactomannan', '3,200 kg', 'Draft')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Guar Gum 200-Mesh', 'PB-HYD-0428')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 8: Malic Acid DL-Fine Granular (Inactive State) -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer opacity-80" onclick="openDrawerWithDetails('Malic Acid DL-Fine Granular', 'PB-ACD-0119', '6915-15-7', 'C4H6O5', '0 kg (Pending)', 'Inactive')">
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox w-4 h-4 rounded text-secondary focus:ring-secondary/30 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">science</span>
+</div>
+<div class="min-w-0">
+<div class="font-title-md text-label-md text-primary font-bold">Malic Acid DL-Fine Granular</div>
+<div class="font-code-sm text-code-sm text-outline truncate">2-hydroxybutanedioic acid tartaric analog</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">CAS: 6915-15-7</span>
+<span class="font-code-sm text-code-sm text-outline font-semibold">C₄H₆O₅</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-code-sm text-code-sm">E296</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-code-sm text-code-sm font-bold text-outline tracking-wide">PB-ACD-0119</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                      Acidulants
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-wrap gap-1 max-w-[220px]">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">FCC 14th Ed</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<div class="font-body-md text-body-md font-bold text-outline tabular-nums">0 kg</div>
+<span class="font-label-sm text-label-sm text-outline font-semibold">Forward Allocation Pending</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                      Inactive
+                    </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-body-sm text-body-sm text-on-surface font-medium">Sep 28, 2025</div>
+<div class="font-code-sm text-code-sm text-outline">Dr. M. Vance</div>
+</td>
+<td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+<div class="flex items-center justify-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" onclick="openDrawerWithDetails('Malic Acid DL-Fine Granular', 'PB-ACD-0119', '6915-15-7', 'C4H6O5', '0 kg (Pending)', 'Inactive')" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-error-container text-outline hover:text-error flex items-center justify-center transition-colors" onclick="promptDelete('Malic Acid DL-Fine Granular', 'PB-ACD-0119')" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- SECTION 4: PAGINATION & DENSITY BAR -->
+<div class="p-space-md bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-space-md border-t border-surface-container-high/60">
+<div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span>Showing <strong class="text-primary font-bold">1</strong> to <strong class="text-primary font-bold">8</strong> of <strong class="text-primary font-bold">148</strong> products</span>
+<div class="flex items-center gap-2">
+<span class="text-outline">Rows:</span>
+<select class="h-8 px-2 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer">
+<option>10</option>
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+</div>
+<!-- Numbered Controls -->
+<div class="flex items-center gap-1">
+<button class="h-8 px-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant text-xs font-semibold disabled:opacity-40 transition-colors flex items-center gap-1" disabled="">
+<span class="material-symbols-outlined text-[14px]">arrow_back</span> Prev
+              </button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary text-xs font-bold shadow-sm">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-medium transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-medium transition-colors">3</button>
+<span class="px-1 text-outline font-bold text-xs">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-medium transition-colors">15</button>
+<button class="h-8 px-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors flex items-center gap-1">
+                Next <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- STATE B: EMPTY CATALOG STATE -->
+<div class="hidden w-full" id="state-empty-view">
+<div class="bg-surface-container-lowest rounded-2xl p-space-3xl shadow-sm text-center flex flex-col items-center justify-center">
+<div class="w-24 h-24 rounded-full bg-secondary-fixed/40 flex items-center justify-center text-primary mb-space-lg shadow-inner">
+<span class="material-symbols-outlined text-[48px]">inventory_2</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">No products have been added yet</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-2 mb-space-xl">
+            Your chemical master catalog has zero active SKUs registered in this regulatory sector. Seed standard assays or create your first batch formulation.
+          </p>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="h-11 px-space-xl rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center gap-2 shadow-md" onclick="setViewState('normal')" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+              + Add Product
+            </button>
+<button class="h-11 px-space-lg rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[20px]">file_upload</span>
+              Import Pharmacopeia CSV
+            </button>
+</div>
+</div>
+</div>
+<!-- STATE C: SKELETON LOADING STATE -->
+<div class="hidden w-full" id="state-loading-view">
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-high">
+<div class="h-6 w-48 bg-surface-container rounded-md animate-pulse"></div>
+<div class="h-6 w-24 bg-surface-container rounded-md animate-pulse"></div>
+</div>
+<div class="space-y-space-sm">
+<!-- 5 Pulsating Rows -->
+<div class="h-14 w-full bg-surface-container-low rounded-xl animate-pulse flex items-center px-4 gap-4">
+<div class="w-5 h-5 rounded bg-surface-container"></div>
+<div class="w-10 h-10 rounded-lg bg-surface-container"></div>
+<div class="w-1/3 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-16 h-6 rounded-full bg-surface-container ml-auto"></div>
+</div>
+<div class="h-14 w-full bg-surface-container-low rounded-xl animate-pulse flex items-center px-4 gap-4">
+<div class="w-5 h-5 rounded bg-surface-container"></div>
+<div class="w-10 h-10 rounded-lg bg-surface-container"></div>
+<div class="w-1/3 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-16 h-6 rounded-full bg-surface-container ml-auto"></div>
+</div>
+<div class="h-14 w-full bg-surface-container-low rounded-xl animate-pulse flex items-center px-4 gap-4">
+<div class="w-5 h-5 rounded bg-surface-container"></div>
+<div class="w-10 h-10 rounded-lg bg-surface-container"></div>
+<div class="w-1/3 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-16 h-6 rounded-full bg-surface-container ml-auto"></div>
+</div>
+<div class="h-14 w-full bg-surface-container-low rounded-xl animate-pulse flex items-center px-4 gap-4">
+<div class="w-5 h-5 rounded bg-surface-container"></div>
+<div class="w-10 h-10 rounded-lg bg-surface-container"></div>
+<div class="w-1/3 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-16 h-6 rounded-full bg-surface-container ml-auto"></div>
+</div>
+<div class="h-14 w-full bg-surface-container-low rounded-xl animate-pulse flex items-center px-4 gap-4">
+<div class="w-5 h-5 rounded bg-surface-container"></div>
+<div class="w-10 h-10 rounded-lg bg-surface-container"></div>
+<div class="w-1/3 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-1/6 h-4 rounded bg-surface-container"></div>
+<div class="w-16 h-6 rounded-full bg-surface-container ml-auto"></div>
+</div>
+</div>
+<div class="h-8 w-1/4 bg-surface-container-low rounded-lg animate-pulse"></div>
+</div>
+</div>
+</div>
+<!-- SECTION 5: PRODUCT DETAIL PREVIEW DRAWER (Slide-over) -->
+<aside class="w-full xl:w-[460px] bg-surface-container-lowest rounded-2xl shadow-xl p-space-lg flex flex-col shrink-0 transition-all duration-300" id="productDrawer">
+<!-- Drawer Top Bar -->
+<div class="flex items-center justify-between pb-space-md border-b border-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase font-bold text-primary tracking-wider">SKU Specification Dossier</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center" title="Edit Full Specs" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-primary flex items-center justify-center" onclick="closeDrawer()" title="Close Drawer" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Drawer Product Summary Header -->
+<div class="py-space-md border-b border-surface-container-high/60 space-y-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold leading-tight" id="drawerProductTitle">Citric Acid Anhydrous</h3>
+<p class="font-code-sm text-code-sm text-outline mt-0.5" id="drawerProductSub">PB-ACD-0104 • CAS: 77-92-9</p>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold shrink-0" id="drawerProductStatus">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Published
+          </span>
+</div>
+<!-- Chemical & European Registry Badges -->
+<div class="grid grid-cols-2 gap-2 pt-1 font-code-sm text-code-sm">
+<div class="p-2 rounded-lg bg-surface-container-low">
+<span class="text-outline block text-[10px] uppercase font-semibold">Formula / Weight</span>
+<span class="font-bold text-primary" id="drawerFormula">C₆H₈O₇ (192.12 g/mol)</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low">
+<span class="text-outline block text-[10px] uppercase font-semibold">EINECS / EC No.</span>
+<span class="font-bold text-primary">201-069-1</span>
+</div>
+</div>
+</div>
+<!-- Drawer Tab Strip -->
+<div class="flex border-b border-surface-container-high pt-2 gap-2" id="drawerTabStrip">
+<button class="pb-2 text-xs font-bold text-primary border-b-2 border-primary transition-all" id="tab-btn-overview" onclick="switchDrawerTab('overview')" type="button">Overview</button>
+<button class="pb-2 text-xs font-semibold text-outline hover:text-on-surface transition-all" id="tab-btn-specs" onclick="switchDrawerTab('specs')" type="button">Assay Specs</button>
+<button class="pb-2 text-xs font-semibold text-outline hover:text-on-surface transition-all" id="tab-btn-coas" onclick="switchDrawerTab('coas')" type="button">CoAs &amp; Docs (3)</button>
+<button class="pb-2 text-xs font-semibold text-outline hover:text-on-surface transition-all" id="tab-btn-packaging" onclick="switchDrawerTab('packaging')" type="button">Packaging &amp; MOQs</button>
+</div>
+<!-- Drawer Content: Tab 1 (Overview) -->
+<div class="py-space-md space-y-space-md flex-1 overflow-y-auto" id="drawer-tab-overview">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Chemical Synopsis</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Naturally occurring tricarboxylic acid manufactured through controlled submerged fermentation of carbohydrate substrates via non-GMO Aspergillus niger. Functions as an acidulant, flavor enhancer, and chelating agent in beverage and food matrices.
+          </p>
+</div>
+<!-- Real-time Physical Inventory Card -->
+<div class="p-space-md rounded-xl bg-primary-fixed/30 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-primary">Total Warehoused Stock</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest font-code-sm text-code-sm font-bold text-secondary">ISO 22000 Approved</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold" id="drawerStockVal">42,500 kg</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant flex items-center justify-between mt-1">
+<span>Primary Hub: Rotterdam Logistics</span>
+<span>Lead: 24 - 48 Hours</span>
+</div>
+</div>
+<!-- Regulatory Declaration Grid -->
+<div class="space-y-2">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Active Accreditations</span>
+<div class="grid grid-cols-2 gap-2">
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<div>
+<div class="font-label-sm text-label-sm font-bold text-primary">FCC 14th Edition</div>
+<div class="font-code-sm text-code-sm text-outline">Food Chemicals Codex</div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">file_open</span>
+<div>
+<div class="font-label-sm text-label-sm font-bold text-primary">USP-NF Compendial</div>
+<div class="font-code-sm text-code-sm text-outline">Ph. Eur. Harmonized</div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">eco</span>
+<div>
+<div class="font-label-sm text-label-sm font-bold text-primary">Non-GMO Verified</div>
+<div class="font-code-sm text-code-sm text-outline">No Synthetic GMO DNA</div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">workspace_premium</span>
+<div>
+<div class="font-label-sm text-label-sm font-bold text-primary">Kosher &amp; Halal</div>
+<div class="font-code-sm text-code-sm text-outline">Rabbinical Council Reg</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Content: Tab 2 (Assay Specs) -->
+<div class="hidden py-space-md space-y-space-sm flex-1 overflow-y-auto" id="drawer-tab-specs">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Laboratory Assay Parameters</span>
+<div class="divide-y divide-surface-container-high rounded-xl bg-surface-container-low overflow-hidden font-body-sm text-body-sm">
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Chemical Assay (Dry Basis)</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">99.5% – 100.5%</span>
+</div>
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Moisture (Karl Fischer)</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">≤ 0.50% Max</span>
+</div>
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Sieve Granulometry (30–100 Mesh)</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">≥ 95.0% Pass</span>
+</div>
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Heavy Metals (as Pb)</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">≤ 5.0 mg/kg</span>
+</div>
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Arsenic (As)</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">≤ 1.0 mg/kg</span>
+</div>
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Sulfate Ash Residue</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">≤ 0.05% Max</span>
+</div>
+<div class="p-2.5 flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Oxalates Content</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">≤ 100 ppm</span>
+</div>
+</div>
+</div>
+<!-- Drawer Content: Tab 3 (CoAs & Docs) -->
+<div class="hidden py-space-md space-y-space-sm flex-1 overflow-y-auto" id="drawer-tab-coas">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Authorized Technical Documents</span>
+<div class="space-y-2">
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">description</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Technical Dossier (TDS)</div>
+<div class="font-code-sm text-code-sm text-outline">PDF • 1.4 MB • Rev 2025.2</div>
+</div>
+</div>
+<button class="p-2 rounded-lg hover:bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">shield_with_heart</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Safety Data Sheet (GHS/OSHA SDS)</div>
+<div class="font-code-sm text-code-sm text-outline">PDF • 840 KB • English &amp; EU REACH</div>
+</div>
+</div>
+<button class="p-2 rounded-lg hover:bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">Master Certificate of Analysis (CoA)</div>
+<div class="font-code-sm text-code-sm text-outline">Lot PB-25-8841 • Released Oct 2025</div>
+</div>
+</div>
+<button class="p-2 rounded-lg hover:bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Drawer Content: Tab 4 (Packaging) -->
+<div class="hidden py-space-md space-y-space-sm flex-1 overflow-y-auto" id="drawer-tab-packaging">
+<span class="font-label-sm text-label-sm text-outline uppercase font-semibold">Standard Logistics Units</span>
+<div class="space-y-2">
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">package_2</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">25 kg Multi-Ply PE Lined Craft Bags</div>
+<p class="font-code-sm text-code-sm text-outline mt-0.5">Palletized: 40 bags / 1,000 kg shrink-wrapped with moisture desiccant</p>
+<span class="inline-block mt-2 font-code-sm text-code-sm font-semibold text-secondary">MOQ: 1,000 kg (1 Full Pallet)</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">forklift</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">1,000 kg Bulk Super Sack (FIBC Type C)</div>
+<p class="font-code-sm text-code-sm text-outline mt-0.5">Conductive anti-static bottom spout discharge for industrial blenders</p>
+<span class="inline-block mt-2 font-code-sm text-code-sm font-semibold text-secondary">MOQ: 2,000 kg (2 FIBCs)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="pt-space-md border-t border-surface-container-high space-y-2 mt-auto">
+<button class="w-full h-11 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-2 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_document</span>
+          Edit Full Product Master
+        </button>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+            Download Spec
+          </button>
+<button class="flex-1 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-tertiary-container font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">unpublished</span>
+            Unpublish
+          </button>
+</div>
+</div>
+</aside>
+</div>
+<!-- SECTION 6: DELETE CONFIRMATION MODAL -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4" id="deleteModal">
+<!-- Backdrop Blur Overlay -->
+<div class="fixed inset-0 bg-primary/60 backdrop-blur-sm transition-opacity" onclick="closeDeleteModal()"></div>
+<!-- Modal Dialog Card -->
+<div class="relative w-full max-w-lg rounded-2xl bg-surface-container-lowest p-space-xl shadow-2xl z-10 space-y-space-md animate-in fade-in zoom-in-95 duration-150">
+<!-- Warning Header -->
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">warning</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-bold">Delete this chemical product?</h4>
+<p class="font-code-sm text-code-sm text-outline mt-0.5">Critical Action • Master Catalog De-listing</p>
+</div>
+</div>
+<!-- Warning Description -->
+<div class="p-space-md rounded-xl bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm space-y-2">
+<p>
+          Are you sure you want to delete <strong class="text-primary font-bold" id="deleteTargetTitle">"Citric Acid Anhydrous (PB-ACD-0104)"</strong>?
+        </p>
+<p class="text-outline text-xs">
+          This will permanently purge the compound from public catalog queries, commercial RFQ forms, and pharmacopeia search indexes. Historical batch certificates (CoAs) will be flagged as archived for compliance audit trail continuity.
+        </p>
+</div>
+<!-- Modal Action Buttons -->
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="h-10 px-space-lg rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors" onclick="closeDeleteModal()" type="button">
+          Cancel
+        </button>
+<button class="h-10 px-space-lg rounded-lg bg-error hover:bg-error/90 text-on-error font-label-md text-label-md font-bold flex items-center gap-2 shadow-sm transition-colors" onclick="confirmDeleteAction()" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+          Delete Product
+        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Client-side Interactive Behaviors -->
+<script>
+  let currentTargetProduct = 'Citric Acid Anhydrous';
+  let currentTargetSku = 'PB-ACD-0104';
+
+  function setViewState(state) {
+    const normalView = document.getElementById('state-normal-view');
+    const emptyView = document.getElementById('state-empty-view');
+    const loadingView = document.getElementById('state-loading-view');
+    const deleteModal = document.getElementById('deleteModal');
+    const drawer = document.getElementById('productDrawer');
+
+    // Reset button states
+    const btns = ['normal', 'empty', 'loading', 'delete'];
+    btns.forEach(b => {
+      const btn = document.getElementById('btn-view-' + b);
+      if (btn) {
+        btn.className = 'px-3 py-1 text-xs font-semibold rounded-md transition-all text-on-surface-variant hover:text-on-surface';
+      }
+    });
+
+    const activeBtn = document.getElementById('btn-view-' + state);
+    if (activeBtn) {
+      activeBtn.className = 'px-3 py-1 text-xs font-semibold rounded-md transition-all bg-primary-container text-on-primary shadow-sm';
+    }
+
+    if (state === 'normal') {
+      normalView.classList.remove('hidden');
+      emptyView.classList.add('hidden');
+      loadingView.classList.add('hidden');
+      deleteModal.classList.add('hidden');
+      drawer.classList.remove('hidden');
+    } else if (state === 'empty') {
+      normalView.classList.add('hidden');
+      emptyView.classList.remove('hidden');
+      loadingView.classList.add('hidden');
+      deleteModal.classList.add('hidden');
+      drawer.classList.add('hidden');
+    } else if (state === 'loading') {
+      normalView.classList.add('hidden');
+      emptyView.classList.add('hidden');
+      loadingView.classList.remove('hidden');
+      deleteModal.classList.add('hidden');
+      drawer.classList.add('hidden');
+    } else if (state === 'delete') {
+      normalView.classList.remove('hidden');
+      emptyView.classList.add('hidden');
+      loadingView.classList.add('hidden');
+      deleteModal.classList.remove('hidden');
+    }
+  }
+
+  function toggleDrawer() {
+    const drawer = document.getElementById('productDrawer');
+    const toggleText = document.getElementById('drawer-toggle-text');
+    if (drawer.classList.contains('hidden')) {
+      drawer.classList.remove('hidden');
+      toggleText.textContent = 'Hide Drawer';
+    } else {
+      drawer.classList.add('hidden');
+      toggleText.textContent = 'Show Drawer';
+    }
+  }
+
+  function closeDrawer() {
+    document.getElementById('productDrawer').classList.add('hidden');
+    document.getElementById('drawer-toggle-text').textContent = 'Show Drawer';
+  }
+
+  function openDrawerWithDetails(name, sku, cas, formula, stock, status) {
+    const drawer = document.getElementById('productDrawer');
+    drawer.classList.remove('hidden');
+    document.getElementById('drawer-toggle-text').textContent = 'Hide Drawer';
+
+    document.getElementById('drawerProductTitle').textContent = name;
+    document.getElementById('drawerProductSub').textContent = `${sku} • CAS: ${cas}`;
+    document.getElementById('drawerFormula').textContent = formula;
+    document.getElementById('drawerStockVal').textContent = stock;
+    
+    const statusBadge = document.getElementById('drawerProductStatus');
+    statusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full ${status === 'Published' ? 'bg-secondary' : 'bg-outline'}"></span> ${status}`;
+    if (status === 'Published') {
+      statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold shrink-0';
+    } else {
+      statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-bold shrink-0';
+    }
+  }
+
+  function switchDrawerTab(tabName) {
+    const tabs = ['overview', 'specs', 'coas', 'packaging'];
+    tabs.forEach(t => {
+      const content = document.getElementById('drawer-tab-' + t);
+      const btn = document.getElementById('tab-btn-' + t);
+      if (t === tabName) {
+        content.classList.remove('hidden');
+        btn.className = 'pb-2 text-xs font-bold text-primary border-b-2 border-primary transition-all';
+      } else {
+        content.classList.add('hidden');
+        btn.className = 'pb-2 text-xs font-semibold text-outline hover:text-on-surface transition-all';
+      }
+    });
+  }
+
+  function toggleDropdown(id) {
+    const menu = document.getElementById(id);
+    menu.classList.toggle('hidden');
+  }
+
+  function toggleSelectAll(masterCheckbox) {
+    const checkboxes = document.querySelectorAll('.row-checkbox');
+    checkboxes.forEach(cb => cb.checked = masterCheckbox.checked);
+  }
+
+  function promptDelete(name, sku) {
+    currentTargetProduct = name;
+    currentTargetSku = sku;
+    document.getElementById('deleteTargetTitle').textContent = `"${name} (${sku})"`;
+    document.getElementById('deleteModal').classList.remove('hidden');
+  }
+
+  function closeDeleteModal() {
+    document.getElementById('deleteModal').classList.add('hidden');
+  }
+
+  function confirmDeleteAction() {
+    closeDeleteModal();
+    alert(`SKU ${currentTargetSku} (${currentTargetProduct}) successfully de-indexed and archived in accordance with GMP retention.`);
+  }
+
+  // Quick keyboard shortcut simulation for ⌘K search focus
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      const input = document.getElementById('productSearchInput');
+      if (input) input.focus();
+    }
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    const bulkWrapper = document.getElementById('bulkMenuWrapper');
+    if (bulkWrapper && !bulkWrapper.contains(e.target)) {
+      const drop = document.getElementById('bulkDropdown');
+      if (drop && !drop.classList.contains('hidden')) {
+        drop.classList.add('hidden');
+      }
+    }
+  });
+</script></main></div></body></html>

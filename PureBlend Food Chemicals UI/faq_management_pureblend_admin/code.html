@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"surface-container":"#eceeeb","tertiary":"#755b00","on-primary-fixed":"#002116","tertiary-fixed":"#ffe08e","background":"#f8faf7","on-tertiary-fixed":"#241a00","surface":"#f8faf7","on-secondary":"#ffffff","on-primary-container":"#7ba190","surface-variant":"#e1e3e0","on-surface":"#191c1b","primary-container":"#12372a","secondary-fixed":"#9ef4cc","on-tertiary-container":"#4f3d00","on-surface-variant":"#414844","tertiary-fixed-dim":"#ecc246","surface-container-highest":"#e1e3e0","inverse-primary":"#a8cfbd","error-container":"#ffdad6","on-secondary-container":"#127253","on-primary-fixed-variant":"#2a4e3f","error":"#ba1a1a","on-tertiary-fixed-variant":"#584400","secondary-fixed-dim":"#82d7b1","inverse-surface":"#2e312f","on-secondary-fixed-variant":"#005139","inverse-on-surface":"#eff1ee","outline":"#717974","on-secondary-fixed":"#002115","primary-fixed-dim":"#a8cfbd","surface-dim":"#d8dbd8","tertiary-container":"#cea72c","on-error":"#ffffff","outline-variant":"#c1c8c3","surface-tint":"#416656","primary-fixed":"#c3ebd8","secondary-container":"#9ef4cc","on-background":"#191c1b","on-tertiary":"#ffffff","surface-container-high":"#e7e9e6","primary":"#002116","surface-bright":"#f8faf7","on-primary":"#ffffff","on-error-container":"#93000a","surface-container-lowest":"#ffffff","surface-container-low":"#f2f4f1","secondary":"#036c4d"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin-sm":"1rem","space-2xl":"3rem","space-lg":"1.5rem","margin":"2rem","space-md":"1rem","gutter":"1.5rem","space-xl":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin-lg":"5rem","gutter-sm":"1rem","gutter-lg":"2rem","space-3xl":"4rem"},"fontFamily":{"headline-md":["Manrope"],"headline-sm":["Manrope"],"code-sm":["Inter"],"body-sm":["Inter"],"headline-lg":["Manrope"],"label-sm":["Inter"],"headline-lg-mobile":["Manrope"],"body-md":["Inter"],"title-md":["Manrope"],"label-md":["Inter"],"headline-xl":["Manrope"],"headline-xl-mobile":["Manrope"],"body-lg":["Inter"]},"fontSize":{"headline-md":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}],"code-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"400"}],"headline-lg":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"title-md":["18px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-xl":["56px",{"lineHeight":"62px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl-mobile":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.005em","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-72 bg-primary-container z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col flex-1 overflow-y-auto px-space-md pt-space-lg"><div class="flex items-center gap-space-sm px-space-sm pb-space-md"><div class="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-secondary text-[22px]">biotech</span></div><div class="flex flex-col min-w-0"><span class="font-title-md text-title-md text-on-primary leading-tight truncate">PureBlend</span><span class="font-label-sm text-label-sm text-on-primary-container truncate">Food Chemicals</span></div></div><div class="px-space-sm mb-space-md"><span class="inline-flex items-center px-space-sm py-space-xs rounded-full bg-primary text-secondary-fixed font-label-sm text-label-sm border border-secondary-fixed/20">Admin Portal v2.4</span></div><nav class="flex flex-col gap-space-xs flex-1" data-active-classes="bg-secondary text-on-secondary font-label-md rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="products-management" href="#"><span class="material-symbols-outlined text-[20px]">science</span><span>Products Management</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="raw-materials" href="#"><span class="material-symbols-outlined text-[20px]">grain</span><span>Raw Materials</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="categories" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span>Categories</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="batch-and-lot-coas" href="#"><span class="material-symbols-outlined text-[20px]">verified</span><span>Batch &amp; Lot CoAs</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="inquiries-and-rfqs" href="#"><span class="material-symbols-outlined text-[20px]">request_quote</span><span>Inquiries &amp; RFQs</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="contracts-and-bids" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span>Contracts &amp; Bids</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="current-offers" href="#"><span class="material-symbols-outlined text-[20px]">local_offer</span><span>Current Offers</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="banners" href="#"><span class="material-symbols-outlined text-[20px]">ad_units</span><span>Banners</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-secondary text-on-secondary font-label-md rounded-lg shadow-sm" data-path="faq-management" href="#"><span class="material-symbols-outlined text-[20px]">quiz</span><span>FAQ Management</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-label-md text-label-md" data-path="system-settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>System Settings</span></a></nav></div><div class="p-space-md bg-primary/40 m-space-sm rounded-xl flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="relative w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-secondary text-[18px]">person</span><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary-fixed ring-2 ring-primary-container"></span></div><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-primary truncate">Dr. Marcus Vance</span><span class="font-label-sm text-label-sm text-on-primary-container truncate">Chief Formulator / Admin</span></div></div><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-primary-container hover:text-on-primary hover:bg-primary transition-all shrink-0" title="Logout" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40"><div class="h-16 w-full px-space-xl flex items-center justify-between"><div class="flex items-center gap-space-lg"><nav class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant"><span class="hover:text-on-surface transition-colors cursor-pointer">PureBlend Admin</span><span class="text-outline">/</span><span class="hover:text-on-surface transition-colors cursor-pointer">Content</span><span class="text-outline">/</span><span class="text-secondary font-label-md text-label-md">FAQs</span></nav><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-code-sm text-code-sm text-on-surface-variant">API: Connected | Sync: Operational</span></div></div><div class="flex items-center gap-space-md"><div class="relative hidden md:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="h-10 pl-9 pr-space-md w-64 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none shadow-[0_1px_8px_rgba(0,0,0,0.04)]" placeholder="Quick search lot, SKU, chemical..." type="text"/></div><a class="hidden sm:flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="documentation" href="#"><span class="material-symbols-outlined text-[18px]">help_outline</span><span>Docs</span></a><div class="relative"><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen w-full px-space-xl py-space-xl"><div class="flex flex-col w-full">
+<!-- Top Context / Breadcrumb & Stats Bar -->
+<div class="flex flex-col gap-space-sm pb-space-lg">
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+<span class="hover:text-primary transition-colors cursor-pointer">Home</span>
+<span class="text-outline">/</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Content Management</span>
+<span class="text-outline">/</span>
+<span class="text-secondary font-label-md text-label-md">FAQs</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">FAQs</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            28 Total FAQs (24 Published, 4 Drafts)
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">verified_user</span>
+            ISO/USP Standard 2024.3
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Curate, structure, and sequence public customer inquiries across chemical regulatory compliance, sampling, logistics, and technical formulation.
+        </p>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="h-11 px-4 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-2" id="toggle-reorder-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+<span id="reorder-label">Reorder Mode</span>
+</button>
+<button class="h-11 px-4 rounded-lg bg-secondary-fixed/30 hover:bg-secondary-fixed/50 text-secondary font-label-md text-label-md shadow-sm transition-all flex items-center gap-2" id="open-preview-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">preview</span>
+<span>Preview Public Accordion</span>
+</button>
+<button class="h-11 px-5 rounded-lg bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md shadow-md transition-all flex items-center gap-2" id="open-drawer-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Add FAQ</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Operational Metrics & Health Strip -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md mb-space-lg">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Total Inquiries Answered</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">mark_chat_read</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-md text-headline-md text-primary">18,420</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">+14.2% mo/mo</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Across 6 commercial product lines</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Helpfulness Rating</span>
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">thumb_up</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-md text-headline-md text-primary">96.8%</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">1,410 ratings</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Lowest rate: Logistics &amp; MOQ (91%)</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Regulatory Inquiries</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-md text-headline-md text-primary">8 Published</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1 Draft Audit</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">CoA download links refreshed today</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Avg. Time to Deflection</span>
+<span class="material-symbols-outlined text-outline text-[20px]">speed</span>
+</div>
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-md text-headline-md text-primary">42s</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">-8s faster</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Self-serve cert requests save 14 support hrs/wk</span>
+</div>
+</div>
+<!-- Filter & Toolbar Bar -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md mb-space-lg">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search Input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-11 pl-11 pr-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest shadow-sm transition-all" id="faq-search" placeholder="Search questions, answers, keywords, or regulation tags..." type="text"/>
+</div>
+<!-- Filters & Sorters -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<!-- Category Dropdown -->
+<div class="relative">
+<select class="h-11 pl-3.5 pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none shadow-sm">
+<option value="all">All Categories (28)</option>
+<option value="regulatory">Regulatory &amp; CoAs (8)</option>
+<option value="samples">Samples &amp; Testing (6)</option>
+<option value="moq">MOQ &amp; Logistics (5)</option>
+<option value="formulation">Technical Formulation (5)</option>
+<option value="pricing">Pricing &amp; Payment (4)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="h-11 pl-3.5 pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none shadow-sm">
+<option value="all">All Statuses</option>
+<option value="published">Published (24)</option>
+<option value="draft">Draft (4)</option>
+<option value="archived">Archived (0)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Sort Filter -->
+<div class="relative">
+<select class="h-11 pl-3.5 pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none cursor-pointer focus:outline-none shadow-sm">
+<option value="order">Display Order (Ascending)</option>
+<option value="updated">Last Updated</option>
+<option value="views">Most Viewed</option>
+<option value="helpful">Highest Rating</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">swap_vert</span>
+</div>
+<!-- View Switcher -->
+<div class="inline-flex p-1 rounded-lg bg-surface-container-high shadow-sm">
+<button class="h-9 px-3 rounded-md bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5" id="view-mode-table" title="Detailed Table View" type="button">
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+<span class="hidden sm:inline">Table</span>
+</button>
+<button class="h-9 px-3 rounded-md text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all flex items-center gap-1.5" id="view-mode-split" title="Split Accordion Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">splitscreen</span>
+<span class="hidden sm:inline">Split View</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Active Selection & Bulk Action Controls Bar (Dynamic) -->
+<div class="flex items-center justify-between px-space-md py-space-sm rounded-lg bg-primary-container text-on-primary shadow-sm transition-all duration-300" id="bulk-bar">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md font-semibold"><span id="selected-count">2</span> items selected</span>
+</div>
+<span class="text-on-primary-container">|</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-md bg-primary hover:bg-secondary text-on-primary font-label-sm text-label-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">publish</span>
+<span>Bulk Publish</span>
+</button>
+<button class="px-3 py-1.5 rounded-md bg-primary hover:bg-secondary text-on-primary font-label-sm text-label-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">drive_file_move</span>
+<span>Move Category</span>
+</button>
+<button class="px-3 py-1.5 rounded-md bg-error/90 hover:bg-error text-on-error font-label-sm text-label-sm transition-colors flex items-center gap-1" id="bulk-delete-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Delete Selected</span>
+</button>
+</div>
+</div>
+<button class="text-on-primary-container hover:text-on-primary font-label-sm text-label-sm flex items-center gap-1" id="clear-selection-btn" type="button">
+<span>Clear selection</span>
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Main Work Area (Table & Optional Live Preview Column) -->
+<div class="grid grid-cols-12 gap-space-lg items-start" id="workspace-grid">
+<!-- Left Column: FAQ Data Table -->
+<div class="col-span-12 rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden flex flex-col transition-all duration-300" id="table-container-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="w-10 px-3 py-3.5 text-center">
+<span class="material-symbols-outlined text-outline text-[16px]">drag_handle</span>
+</th>
+<th class="w-10 px-3 py-3.5">
+<input checked="" class="w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" id="select-all-checkbox" type="checkbox"/>
+</th>
+<th class="w-14 px-3 py-3.5 text-center">Seq</th>
+<th class="px-4 py-3.5 min-w-[340px]">Question &amp; Content Preview</th>
+<th class="px-4 py-3.5">Category</th>
+<th class="px-4 py-3.5">Status</th>
+<th class="px-4 py-3.5">Metrics &amp; Feedback</th>
+<th class="px-4 py-3.5">Last Updated</th>
+<th class="px-4 py-3.5 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container" id="faq-rows">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-id="1">
+<td class="px-3 py-4 text-center cursor-grab active:cursor-grabbing text-outline group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</td>
+<td class="px-3 py-4">
+<input checked="" class="faq-row-check w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" type="checkbox"/>
+</td>
+<td class="px-3 py-4 text-center font-code-sm text-code-sm text-on-surface-variant font-semibold">
+                #01
+              </td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold hover:text-secondary cursor-pointer transition-colors open-edit-trigger">
+                    What documentation is provided with food-grade citric acid and specialty acidulants?
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                    Every batch comes with a lot-specific Certificate of Analysis (CoA), Non-GMO verification statement, USP/FCC monograph compliance, and Heavy Metals Assay test report.
+                  </p>
+<div class="flex items-center gap-1.5 mt-1 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#USP-Monograph</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#CoA-Download</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#HeavyMetals</span>
+<span class="px-1.5 py-0.5 text-label-sm text-secondary font-medium">3 Target Pages</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/30 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Regulatory &amp; CoAs
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Published
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">5,420 views</span>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">thumb_up</span>
+<span>99.2% helpful (840)</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">2 hrs ago</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">by Dr. M. Vance</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all preview-item-btn" title="Live Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-secondary hover:bg-surface-container transition-all open-edit-trigger" title="Edit FAQ" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all" title="Duplicate" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 transition-all delete-single-trigger" title="Delete" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-id="2">
+<td class="px-3 py-4 text-center cursor-grab active:cursor-grabbing text-outline group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</td>
+<td class="px-3 py-4">
+<input checked="" class="faq-row-check w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" type="checkbox"/>
+</td>
+<td class="px-3 py-4 text-center font-code-sm text-code-sm text-on-surface-variant font-semibold">
+                #02
+              </td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold hover:text-secondary cursor-pointer transition-colors open-edit-trigger">
+                    Can we request complimentary bench-scale samples (250g) before issuing a commercial PO?
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                    Yes. Qualified food science labs and beverage manufacturers can request up to three 250g analytical evaluation samples via the self-serve sample portal.
+                  </p>
+<div class="flex items-center gap-1.5 mt-1 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#Sampling</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#BenchScale</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#LeadTimes</span>
+<span class="px-1.5 py-0.5 text-label-sm text-secondary font-medium">All Product Pages</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Samples &amp; Testing
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Published
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">3,890 views</span>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">thumb_up</span>
+<span>97.6% helpful (510)</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Oct 18, 2024</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">by Sarah Chen, QA</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all preview-item-btn" title="Live Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-secondary hover:bg-surface-container transition-all open-edit-trigger" title="Edit FAQ" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all" title="Duplicate" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 transition-all delete-single-trigger" title="Delete" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-id="3">
+<td class="px-3 py-4 text-center cursor-grab active:cursor-grabbing text-outline group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</td>
+<td class="px-3 py-4">
+<input class="faq-row-check w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" type="checkbox"/>
+</td>
+<td class="px-3 py-4 text-center font-code-sm text-code-sm text-on-surface-variant font-semibold">
+                #03
+              </td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold hover:text-secondary cursor-pointer transition-colors open-edit-trigger">
+                    What are the standard lead times for Full Container-Load (FCL) vs Less-than-Truckload (LTL) shipments?
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                    LTL shipments depart within 48-72 hours from our Chicago and Rotterdam bonded warehouses. FCL direct mill containers require 14-21 calendar days.
+                  </p>
+<div class="flex items-center gap-1.5 mt-1 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#FCL-Shipping</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#LTL-Transit</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#Warehouse</span>
+<span class="px-1.5 py-0.5 text-label-sm text-secondary font-medium">Logistics Center</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  MOQ &amp; Logistics
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Published
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">2,610 views</span>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">thumb_up</span>
+<span>91.4% helpful (344)</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Sep 29, 2024</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">by Lars Lindqvist</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all preview-item-btn" title="Live Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-secondary hover:bg-surface-container transition-all open-edit-trigger" title="Edit FAQ" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all" title="Duplicate" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 transition-all delete-single-trigger" title="Delete" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-id="4">
+<td class="px-3 py-4 text-center cursor-grab active:cursor-grabbing text-outline group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</td>
+<td class="px-3 py-4">
+<input class="faq-row-check w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" type="checkbox"/>
+</td>
+<td class="px-3 py-4 text-center font-code-sm text-code-sm text-on-surface-variant font-semibold">
+                #04
+              </td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold hover:text-secondary cursor-pointer transition-colors open-edit-trigger">
+                    Do you offer custom mesh size milling and particle stabilization for beverage clouds?
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                    Yes, custom cryogenic milling is available down to 200-mesh (74 microns) to ensure uniform dissolution without ring formation in RTD beverage matrices.
+                  </p>
+<div class="flex items-center gap-1.5 mt-1 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#BeverageTech</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#Milling</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#MeshSize</span>
+<span class="px-1.5 py-0.5 text-label-sm text-secondary font-medium">Formulation Hub</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Technical Formulation
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Published
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">1,940 views</span>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">thumb_up</span>
+<span>98.8% helpful (282)</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Oct 02, 2024</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">by Dr. M. Vance</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all preview-item-btn" title="Live Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-secondary hover:bg-surface-container transition-all open-edit-trigger" title="Edit FAQ" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all" title="Duplicate" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 transition-all delete-single-trigger" title="Delete" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-id="5">
+<td class="px-3 py-4 text-center cursor-grab active:cursor-grabbing text-outline group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</td>
+<td class="px-3 py-4">
+<input class="faq-row-check w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" type="checkbox"/>
+</td>
+<td class="px-3 py-4 text-center font-code-sm text-code-sm text-on-surface-variant font-semibold">
+                #05
+              </td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold hover:text-secondary cursor-pointer transition-colors open-edit-trigger">
+                    How do you guarantee batch-to-batch consistency and heavy metal assay limits?
+                  </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                    Every commercial synthesis is validated via inductively coupled plasma mass spectrometry (ICP-MS) against Lead &lt;0.05 ppm, Cadmium &lt;0.01 ppm, and Arsenic &lt;0.02 ppm.
+                  </p>
+<div class="flex items-center gap-1.5 mt-1 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#ICP-MS</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#HeavyMetals</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#QualityAssurance</span>
+<span class="px-1.5 py-0.5 text-label-sm text-secondary font-medium">Compliance Portal</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/30 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Regulatory &amp; CoAs
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Published
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">4,120 views</span>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">thumb_up</span>
+<span>99.5% helpful (720)</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Aug 15, 2024</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">by Elena Rostova</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all preview-item-btn" title="Live Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-secondary hover:bg-surface-container transition-all open-edit-trigger" title="Edit FAQ" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all" title="Duplicate" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 transition-all delete-single-trigger" title="Delete" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 (Draft) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group bg-surface-container-low/20" data-id="6">
+<td class="px-3 py-4 text-center cursor-grab active:cursor-grabbing text-outline group-hover:text-primary">
+<span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+</td>
+<td class="px-3 py-4">
+<input class="faq-row-check w-4 h-4 rounded text-secondary bg-surface-container-lowest cursor-pointer focus:ring-0" type="checkbox"/>
+</td>
+<td class="px-3 py-4 text-center font-code-sm text-code-sm text-on-surface-variant font-semibold">
+                #06
+              </td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold hover:text-secondary cursor-pointer transition-colors open-edit-trigger">
+                      Are custom allergen declarations and Kosher/Halal certificates downloadable on-demand?
+                    </span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-label-sm font-label-sm font-semibold">Review Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">
+                    Yes, authorized customers can generate cryptographically signed allergen statements and Orthodox Union Kosher / Halal certifications from the client vault.
+                  </p>
+<div class="flex items-center gap-1.5 mt-1 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#KosherCert</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#Halal</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">#Allergens</span>
+<span class="px-1.5 py-0.5 text-label-sm text-amber-700 font-medium">Pending Legal Approval</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/30 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  Regulatory &amp; CoAs
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+                  Draft
+                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">0 views</span>
+<span class="font-body-sm text-body-sm text-outline">Internal draft</span>
+</div>
+</td>
+<td class="px-4 py-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Oct 22, 2024</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">by Dr. M. Vance</span>
+</div>
+</td>
+<td class="px-4 py-4 text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all preview-item-btn" title="Live Preview" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-secondary hover:bg-surface-container transition-all open-edit-trigger" title="Edit FAQ" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-primary hover:bg-surface-container transition-all" title="Duplicate" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:text-error hover:bg-error-container/40 transition-all delete-single-trigger" title="Delete" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant">
+<span class="font-body-sm text-body-sm">
+          Showing <span class="font-semibold text-on-surface">1 - 6</span> of <span class="font-semibold text-on-surface">28</span> FAQ entries
+        </span>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-outline font-label-md text-label-md shadow-sm opacity-50 cursor-not-allowed" type="button">Previous</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm" type="button">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md shadow-sm transition-colors" type="button">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md shadow-sm transition-colors" type="button">3</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md shadow-sm transition-colors" type="button">Next</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Live Visitor Accordion Preview (Split Mode Panel) -->
+<div class="hidden col-span-5 flex-col gap-space-md transition-all duration-300" id="split-preview-col">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md sticky top-20">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<h2 class="font-title-md text-title-md text-primary">Public Portal Live Preview</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">
+            visitor-view::active
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Rendered in real-time matching the PureBlend buyer portal design system.
+        </p>
+<!-- Category Pill selector simulation -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+<span class="px-3 py-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm whitespace-nowrap cursor-pointer">Regulatory &amp; CoAs</span>
+<span class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap cursor-pointer">Samples &amp; Testing</span>
+<span class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap cursor-pointer">Logistics</span>
+</div>
+<!-- Rendered Accordion Container -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
+<!-- Accordion 1 (Expanded) -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm">
+<button class="w-full flex items-start justify-between gap-3 text-left" type="button">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">
+                What documentation is provided with food-grade citric acid and specialty acidulants?
+              </span>
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">expand_less</span>
+</button>
+<div class="pt-2 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Every batch comes with a lot-specific Certificate of Analysis (CoA), Non-GMO verification statement, USP/FCC monograph compliance, and Heavy Metals Assay test report (&lt;0.05 ppm lead limits).
+            </div>
+<div class="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-outline">Was this helpful?</span>
+<button class="px-2.5 py-1 rounded-md bg-secondary/10 hover:bg-secondary/20 text-secondary font-label-sm text-label-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span> Yes
+                </button>
+<button class="px-2.5 py-1 rounded-md bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">thumb_down</span> No
+                </button>
+</div>
+<a class="text-secondary hover:text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1" href="#">
+<span>Download Sample CoA</span>
+<span class="material-symbols-outlined text-[14px]">download</span>
+</a>
+</div>
+</div>
+<!-- Accordion 2 (Collapsed) -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-sm">
+<button class="w-full flex items-center justify-between gap-3 text-left" type="button">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">
+                How do you guarantee batch-to-batch consistency and heavy metal assay limits?
+              </span>
+<span class="material-symbols-outlined text-outline text-[22px] shrink-0">expand_more</span>
+</button>
+</div>
+<!-- Accordion 3 (Collapsed) -->
+<div class="rounded-lg bg-surface-container-lowest p-space-md shadow-sm">
+<button class="w-full flex items-center justify-between gap-3 text-left" type="button">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">
+                Can we request complimentary bench-scale samples (250g) before issuing a commercial PO?
+              </span>
+<span class="material-symbols-outlined text-outline text-[22px] shrink-0">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Demonstration Block (Collapsible Showcase) -->
+<div class="mt-space-2xl p-space-xl rounded-xl bg-surface-container-lowest shadow-sm flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-2xl bg-secondary-fixed/30 flex items-center justify-center text-secondary mb-space-md">
+<span class="material-symbols-outlined text-[34px]">quiz</span>
+</div>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm mb-space-xs">
+      Category Filter Demo State
+    </span>
+<h3 class="font-headline-md text-headline-md text-primary mb-space-xs">
+      No FAQs have been added yet in this category
+    </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mb-space-lg">
+      No customer inquiries have been published for <span class="font-semibold text-on-surface">"Custom Bio-Synthesis"</span>. Add reference answers to accelerate sales cycles and reduce tier-1 support tickets.
+    </p>
+<button class="h-11 px-5 rounded-lg bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md shadow-md transition-all flex items-center gap-2 open-drawer-direct" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Create First FAQ</span>
+</button>
+</div>
+<!-- INTERACTIVE ADD / EDIT FAQ SLIDE-OVER DRAWER -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="drawer-backdrop">
+<div class="fixed right-0 top-0 bottom-0 w-full max-w-2xl bg-surface-container-lowest shadow-2xl flex flex-col z-50 transform translate-x-full transition-transform duration-300 ease-out overflow-hidden" id="faq-drawer">
+<!-- Drawer Header -->
+<div class="p-space-lg bg-primary text-on-primary flex items-center justify-between shrink-0">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-secondary-fixed">FAQ Editor</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/20 text-secondary-fixed font-code-sm text-code-sm">ID # PB-FAQ-04</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-primary tracking-tight" id="drawer-title">
+            Edit FAQ: #04 — Custom Mesh Milling
+          </h2>
+</div>
+<button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-primary-container hover:text-on-primary hover:bg-primary-container transition-all" id="close-drawer-btn" title="Close Drawer" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Drawer Tabs -->
+<div class="px-space-lg bg-surface-container-low flex items-center gap-space-md shrink-0">
+<button class="py-3 px-1 font-label-md text-label-md text-secondary border-b-2 border-secondary font-semibold" type="button">Content</button>
+<button class="py-3 px-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" type="button">SEO &amp; Meta</button>
+<button class="py-3 px-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" type="button">Revision History (3)</button>
+</div>
+<!-- Drawer Form Body (Scrollable) -->
+<div class="p-space-lg overflow-y-auto flex-1 flex flex-col gap-space-lg">
+<!-- Category & Order Group -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="sm:col-span-2 flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">FAQ Category <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full h-11 pl-3.5 pr-8 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md appearance-none focus:outline-none shadow-sm">
+<option value="regulatory">Regulatory &amp; CoAs</option>
+<option value="samples">Samples &amp; Testing</option>
+<option value="moq">MOQ &amp; Logistics</option>
+<option selected="" value="formulation">Technical Formulation</option>
+<option value="pricing">Pricing &amp; Payment</option>
+<option value="new">+ Create New Category...</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Display Order</label>
+<input class="h-11 px-3.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none shadow-sm" type="number" value="4"/>
+</div>
+</div>
+<!-- Question Input -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">Question Text <span class="text-error">*</span></label>
+<span class="font-code-sm text-code-sm text-outline">74 / 150 characters</span>
+</div>
+<input class="h-11 px-3.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none shadow-sm font-medium" type="text" value="Do you offer custom mesh size milling and particle stabilization for beverage clouds?"/>
+</div>
+<!-- Answer Rich Text Area -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">Answer &amp; Technical Formulation Specs <span class="text-error">*</span></label>
+<span class="font-code-sm text-code-sm text-secondary font-medium">Auto-saved 1m ago</span>
+</div>
+<!-- Mini Formatting Toolbar -->
+<div class="rounded-t-lg bg-surface-container-high px-3 py-2 flex items-center gap-1">
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-bold" title="Bold" type="button">B</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center italic" title="Italic" type="button">I</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" title="Link" type="button">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</button>
+<span class="h-5 w-px bg-outline/20 mx-1"></span>
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" title="Bullet List" type="button">
+<span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" title="Numbered List" type="button">
+<span class="material-symbols-outlined text-[18px]">format_list_numbered</span>
+</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" title="Quote/Monograph citation" type="button">
+<span class="material-symbols-outlined text-[18px]">format_quote</span>
+</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" title="Insert CoA Link" type="button">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+</button>
+</div>
+<textarea class="p-3.5 rounded-b-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none shadow-sm resize-none" rows="5">Yes, custom cryogenic milling is available down to 200-mesh (74 microns) to ensure uniform dissolution without ring formation in RTD beverage matrices. Minimum pilot trial volume is 50 kg.</textarea>
+<p class="font-body-sm text-body-sm text-outline">
+            Keep answers precise, citation-backed, and referencing ISO/FSSC standard where applicable.
+          </p>
+</div>
+<!-- Tag / Keyword Chips -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Keywords &amp; Regulatory Tags</label>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary font-code-sm text-code-sm shadow-sm">
+<span>Beverage Formulation</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer text-outline hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary font-code-sm text-code-sm shadow-sm">
+<span>Mesh Size</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer text-outline hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary font-code-sm text-code-sm shadow-sm">
+<span>Viscosity Stabilization</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer text-outline hover:text-error">close</span>
+</span>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/40 text-secondary font-label-sm text-label-sm hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span>
+<span>Add Tag</span>
+</button>
+</div>
+</div>
+<!-- Status Radio Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Publication Status</label>
+<div class="grid grid-cols-3 gap-space-sm">
+<label class="p-3 rounded-lg bg-secondary/10 flex items-center gap-2 cursor-pointer shadow-sm">
+<input checked="" class="text-secondary focus:ring-0" name="status-radio" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary font-semibold">Published</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Visible to all users</span>
+</div>
+</label>
+<label class="p-3 rounded-lg bg-surface-container-low flex items-center gap-2 cursor-pointer">
+<input class="text-secondary focus:ring-0" name="status-radio" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Draft</span>
+<span class="font-body-sm text-body-sm text-outline">Internal review</span>
+</div>
+</label>
+<label class="p-3 rounded-lg bg-surface-container-low flex items-center gap-2 cursor-pointer">
+<input class="text-secondary focus:ring-0" name="status-radio" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Archived</span>
+<span class="font-body-sm text-body-sm text-outline">Hidden everywhere</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Public Target Targeting -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant">Target Portal Placements</label>
+<div class="flex flex-col gap-2 p-3 rounded-lg bg-surface-container-low">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-secondary focus:ring-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">General FAQ Center (/resources/faq)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-secondary focus:ring-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Product Detail Pages (Beverage Acidulants &amp; Emulsions)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-secondary focus:ring-0" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Contract Manufacturing / Solutions Page</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Action Bar -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between shrink-0 shadow-lg">
+<button class="h-11 px-4 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-colors" id="cancel-drawer-btn" type="button">
+          Cancel
+        </button>
+<div class="flex items-center gap-space-sm">
+<button class="h-11 px-4 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">preview</span>
+<span>Preview in Accordion</span>
+</button>
+<button class="h-11 px-6 rounded-lg bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md shadow-md transition-all flex items-center gap-1.5" id="save-faq-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Save Changes</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- DELETE CONFIRMATION MODAL -->
+<div class="fixed inset-0 bg-primary/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200" id="delete-modal">
+<div class="w-full max-w-md rounded-2xl bg-surface-container-lowest p-space-xl shadow-2xl flex flex-col gap-space-md transform scale-95 transition-transform duration-200">
+<div class="w-12 h-12 rounded-xl bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">warning</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+          Delete FAQ item?
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-normal">
+          Are you sure you want to delete <strong class="text-on-surface">"How do you guarantee batch-to-batch consistency"</strong>? This will immediately remove it from the public PureBlend FAQ page and connected product sheets. This action cannot be undone.
+        </p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">info</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4,120 customers have accessed this answer.</span>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="h-10 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" id="cancel-delete-btn" type="button">
+          Cancel
+        </button>
+<button class="h-10 px-5 rounded-lg bg-error hover:bg-error/90 text-on-error font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5" id="confirm-delete-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+<span>Confirm Delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-primary text-on-primary shadow-xl" id="app-toast">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]" id="toast-icon">check_circle</span>
+<span class="font-body-md text-body-md" id="toast-message">FAQ item successfully updated.</span>
+</div>
+</div>
+<script>
+  (function () {
+    // DOM Elements
+    const toggleReorderBtn = document.getElementById('toggle-reorder-btn');
+    const reorderLabel = document.getElementById('reorder-label');
+    const openDrawerBtn = document.getElementById('open-drawer-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const cancelDrawerBtn = document.getElementById('cancel-drawer-btn');
+    const saveFaqBtn = document.getElementById('save-faq-btn');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+    const faqDrawer = document.getElementById('faq-drawer');
+    const openPreviewBtn = document.getElementById('open-preview-btn');
+    const viewModeTable = document.getElementById('view-mode-table');
+    const viewModeSplit = document.getElementById('view-mode-split');
+    const splitPreviewCol = document.getElementById('split-preview-col');
+    const tableContainerCol = document.getElementById('table-container-col');
+    const bulkBar = document.getElementById('bulk-bar');
+    const clearSelectionBtn = document.getElementById('clear-selection-btn');
+    const selectAllCheckbox = document.getElementById('select-all-checkbox');
+    const rowCheckboxes = document.querySelectorAll('.faq-row-check');
+    const selectedCountSpan = document.getElementById('selected-count');
+    const deleteModal = document.getElementById('delete-modal');
+    const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+    const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+    const deleteTriggers = document.querySelectorAll('.delete-single-trigger');
+    const bulkDeleteBtn = document.getElementById('bulk-delete-btn');
+    const editTriggers = document.querySelectorAll('.open-edit-trigger');
+    const directAddTriggers = document.querySelectorAll('.open-drawer-direct');
+    const previewItemBtns = document.querySelectorAll('.preview-item-btn');
+    const toast = document.getElementById('app-toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    let isReorderActive = false;
+    let isSplitActive = false;
+
+    // Toast helper
+    function showToast(msg) {
+      if (!toast) return;
+      toastMessage.textContent = msg;
+      toast.classList.remove('translate-y-16', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-16', 'opacity-0');
+      }, 3200);
+    }
+
+    // Drawer Controls
+    function openDrawer(titleText) {
+      if (titleText) {
+        document.getElementById('drawer-title').textContent = titleText;
+      }
+      drawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      drawerBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+      faqDrawer.classList.remove('translate-x-full');
+      faqDrawer.classList.add('translate-x-0');
+    }
+
+    function closeDrawer() {
+      faqDrawer.classList.remove('translate-x-0');
+      faqDrawer.classList.add('translate-x-full');
+      drawerBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      drawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    openDrawerBtn?.addEventListener('click', () => openDrawer('Add New FAQ'));
+    directAddTriggers.forEach(btn => btn.addEventListener('click', () => openDrawer('Add New FAQ')));
+    closeDrawerBtn?.addEventListener('click', closeDrawer);
+    cancelDrawerBtn?.addEventListener('click', closeDrawer);
+    drawerBackdrop?.addEventListener('click', (e) => {
+      if (e.target === drawerBackdrop) closeDrawer();
+    });
+
+    saveFaqBtn?.addEventListener('click', () => {
+      closeDrawer();
+      showToast('Changes saved and deployed to pureblend.io/faqs');
+    });
+
+    editTriggers.forEach(el => {
+      el.addEventListener('click', () => {
+        openDrawer('Edit FAQ: Technical Formulation Specs');
+      });
+    });
+
+    // View Switcher / Split Screen Preview
+    function setSplitView(enable) {
+      isSplitActive = enable;
+      if (enable) {
+        tableContainerCol.classList.remove('col-span-12');
+        tableContainerCol.classList.add('col-span-7');
+        splitPreviewCol.classList.remove('hidden');
+        splitPreviewCol.classList.add('flex');
+        viewModeSplit.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        viewModeSplit.classList.remove('text-on-surface-variant');
+        viewModeTable.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        viewModeTable.classList.add('text-on-surface-variant');
+      } else {
+        tableContainerCol.classList.remove('col-span-7');
+        tableContainerCol.classList.add('col-span-12');
+        splitPreviewCol.classList.remove('flex');
+        splitPreviewCol.classList.add('hidden');
+        viewModeTable.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        viewModeTable.classList.remove('text-on-surface-variant');
+        viewModeSplit.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        viewModeSplit.classList.add('text-on-surface-variant');
+      }
+    }
+
+    viewModeSplit?.addEventListener('click', () => setSplitView(true));
+    viewModeTable?.addEventListener('click', () => setSplitView(false));
+    openPreviewBtn?.addEventListener('click', () => {
+      setSplitView(true);
+      splitPreviewCol.scrollIntoView({ behavior: 'smooth' });
+    });
+    previewItemBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setSplitView(true);
+        splitPreviewCol.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Reorder Mode Toggle
+    toggleReorderBtn?.addEventListener('click', () => {
+      isReorderActive = !isReorderActive;
+      if (isReorderActive) {
+        toggleReorderBtn.classList.remove('bg-surface-container-lowest', 'text-primary');
+        toggleReorderBtn.classList.add('bg-secondary', 'text-on-secondary');
+        reorderLabel.textContent = 'Save New Order';
+        showToast('Reorder mode active. Drag rows or use sequential numeric keys.');
+      } else {
+        toggleReorderBtn.classList.add('bg-surface-container-lowest', 'text-primary');
+        toggleReorderBtn.classList.remove('bg-secondary', 'text-on-secondary');
+        reorderLabel.textContent = 'Reorder Mode';
+        showToast('FAQ display order sequence successfully saved.');
+      }
+    });
+
+    // Selection & Bulk Toolbar logic
+    function updateSelectedCount() {
+      const checkedBoxes = Array.from(rowCheckboxes).filter(cb => cb.checked);
+      const count = checkedBoxes.length;
+      if (selectedCountSpan) selectedCountSpan.textContent = count;
+      if (count > 0) {
+        bulkBar?.classList.remove('opacity-50', 'pointer-events-none');
+      } else {
+        bulkBar?.classList.add('opacity-50', 'pointer-events-none');
+      }
+      if (selectAllCheckbox) {
+        selectAllCheckbox.checked = (count === rowCheckboxes.length);
+        selectAllCheckbox.indeterminate = (count > 0 && count < rowCheckboxes.length);
+      }
+    }
+
+    selectAllCheckbox?.addEventListener('change', () => {
+      const state = selectAllCheckbox.checked;
+      rowCheckboxes.forEach(cb => cb.checked = state);
+      updateSelectedCount();
+    });
+
+    rowCheckboxes.forEach(cb => {
+      cb.addEventListener('change', updateSelectedCount);
+    });
+
+    clearSelectionBtn?.addEventListener('click', () => {
+      if (selectAllCheckbox) selectAllCheckbox.checked = false;
+      rowCheckboxes.forEach(cb => cb.checked = false);
+      updateSelectedCount();
+    });
+
+    // Modal Delete logic
+    function openDeleteModal() {
+      deleteModal.classList.remove('opacity-0', 'pointer-events-none');
+      deleteModal.classList.add('opacity-100', 'pointer-events-auto');
+      const inner = deleteModal.querySelector('.transform');
+      inner?.classList.remove('scale-95');
+      inner?.classList.add('scale-100');
+    }
+
+    function closeDeleteModal() {
+      const inner = deleteModal.querySelector('.transform');
+      inner?.classList.remove('scale-100');
+      inner?.classList.add('scale-95');
+      deleteModal.classList.remove('opacity-100', 'pointer-events-auto');
+      deleteModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    deleteTriggers.forEach(btn => btn.addEventListener('click', openDeleteModal));
+    bulkDeleteBtn?.addEventListener('click', openDeleteModal);
+    cancelDeleteBtn?.addEventListener('click', closeDeleteModal);
+    deleteModal?.addEventListener('click', (e) => {
+      if (e.target === deleteModal) closeDeleteModal();
+    });
+
+    confirmDeleteBtn?.addEventListener('click', () => {
+      closeDeleteModal();
+      showToast('FAQ item deleted and revoked from CDN caches.');
+    });
+
+    // Initial state setup
+    updateSelectedCount();
+  })();
+</script></main></div></body></html>

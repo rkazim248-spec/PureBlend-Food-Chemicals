@@ -1,0 +1,238 @@
+// ==============================================================================
+// PureBlend Food Chemicals — Database Schema
+// PostgreSQL with Prisma ORM
+// ==============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ------------------------------------------------------------------------------
+// 1. Administration & Security
+// ------------------------------------------------------------------------------
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  role         String    @default("ADMIN") // SUPERADMIN, ADMIN, EDITOR
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([email])
+  @@index([role, isActive])
+}
+
+// ------------------------------------------------------------------------------
+// 2. Chemical Catalog (Categories, Products, Images)
+// ------------------------------------------------------------------------------
+model Category {
+  id           String    @id @default(cuid())
+  name         String
+  slug         String    @unique
+  description  String?
+  displayOrder Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  products     Product[]
+
+  @@index([slug])
+  @@index([displayOrder])
+}
+
+model Product {
+  id               String         @id @default(cuid())
+  name             String
+  slug             String         @unique
+  categoryId       String?
+  shortDescription String?
+  description      String         @db.Text
+  specifications   Json           @default("[]") // [{ label: string, value: string }]
+  published        Boolean        @default(false)
+  featured         Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  category         Category?      @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  images           ProductImage[]
+
+  @@index([slug])
+  @@index([categoryId])
+  @@index([published, featured])
+  @@index([createdAt(sort: Desc)])
+}
+
+model ProductImage {
+  id           String   @id @default(cuid())
+  productId    String
+  url          String
+  alt          String
+  isPrimary    Boolean  @default(false)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, displayOrder])
+}
+
+// ------------------------------------------------------------------------------
+// 3. Marketing & Content Management (Banners, Offers, FAQs, Pages)
+// ------------------------------------------------------------------------------
+model Banner {
+  id           String    @id @default(cuid())
+  title        String
+  subtitle     String?
+  imageUrl     String
+  imageAlt     String
+  linkUrl      String?
+  linkLabel    String?
+  displayOrder Int       @default(0)
+  active       Boolean   @default(true)
+  startDate    DateTime?
+  endDate      DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([active, displayOrder])
+}
+
+model Offer {
+  id           String    @id @default(cuid())
+  title        String
+  description  String?
+  discountText String
+  imageUrl     String?
+  validFrom    DateTime?
+  validTo      DateTime?
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([active, validTo])
+}
+
+model FAQ {
+  id           String   @id @default(cuid())
+  question     String
+  answer       String   @db.Text
+  category     String?
+  displayOrder Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([published, displayOrder])
+}
+
+model Page {
+  id        String        @id @default(cuid())
+  pageKey   String        @unique // "about", "quality", "privacy", "terms"
+  title     String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  sections  PageSection[]
+
+  @@index([pageKey])
+}
+
+model PageSection {
+  id           String   @id @default(cuid())
+  pageId       String
+  heading      String?
+  body         String   @db.Text
+  displayOrder Int      @default(0)
+
+  page         Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@index([pageId, displayOrder])
+}
+
+// ------------------------------------------------------------------------------
+// 4. SEO Metadata Management
+// ------------------------------------------------------------------------------
+model SEO {
+  id              String   @id @default(cuid())
+  entityType      String   // "PRODUCT", "PAGE", "GLOBAL"
+  entityId        String   // product id or pageKey
+  metaTitle       String?
+  metaDescription String?  @db.Text
+  canonicalUrl    String?
+  ogImage         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([entityType, entityId])
+  @@index([entityType, entityId])
+}
+
+// ------------------------------------------------------------------------------
+// 5. Inbound Customer Communications
+// ------------------------------------------------------------------------------
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  ipAddress String?
+  status    String   @default("UNREAD") // UNREAD, READ, ARCHIVED
+  createdAt DateTime @default(now())
+
+  @@index([status, createdAt(sort: Desc)])
+}
+
+// ------------------------------------------------------------------------------
+// 6. AI RAG Knowledge Base & Chat Logs
+// ------------------------------------------------------------------------------
+model KnowledgeDocument {
+  id          String           @id @default(cuid())
+  title       String
+  sourceType  String           // PRODUCT_SPEC, FAQ, CERTIFICATE, POLICY
+  sourceId    String?          // Linked Product or FAQ ID
+  rawContent  String           @db.Text
+  checksum    String           // MD5/SHA256 hash to detect changes
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  chunks      KnowledgeChunk[]
+
+  @@index([sourceType, sourceId])
+}
+
+model KnowledgeChunk {
+  id          String            @id @default(cuid())
+  documentId  String
+  chunkIndex  Int
+  content     String            @db.Text
+  tokenCount  Int
+  metadata    Json              @default("{}")
+  createdAt   DateTime          @default(now())
+
+  document    KnowledgeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+}
+
+model ChatLog {
+  id              String   @id @default(cuid())
+  conversationId  String
+  userMessage     String   @db.Text
+  botResponse     String   @db.Text
+  retrievedChunks Json     @default("[]") // [{ chunkId, similarity }]
+  wasRefusal      Boolean  @default(false)
+  latencyMs       Int?
+  createdAt       DateTime @default(now())
+
+  @@index([conversationId, createdAt])
+  @@index([wasRefusal])
+}

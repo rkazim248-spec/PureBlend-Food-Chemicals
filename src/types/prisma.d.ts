@@ -1,7 +1,10 @@
 /**
  * Fallback type declarations for @prisma/client when local CLI generation
  * is deferred or executing in lightweight mock/development environments.
+ * The model delegates below intentionally mirror the generated client's
+ * escape-hatch typing; running `prisma generate` replaces this module.
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 declare module "@prisma/client" {
   export class PrismaClient {

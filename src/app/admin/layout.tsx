@@ -1,28 +1,5 @@
-import { AdminSidebar } from "@/components/admin/AdminSidebar";
-import { AdminTopbar } from "@/components/admin/AdminTopbar";
-import { AdminGuard } from "@/components/admin/AdminGuard";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Admin",
-  robots: { index: false, follow: false },
-};
-
-/*
- * TEMPORARY development note: no authentication guard is active yet.
- * The admin UI is visible for development only — backend auth will protect
- * these routes and their APIs in a later phase (never client-side alone).
- */
+// Admin route group layout now renders Stitch pages directly.
+// Each Stitch admin page embeds its own sidebar, topbar, and guard UI.
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex min-h-screen flex-col bg-surface-muted">
-      <AdminTopbar />
-      <div className="flex flex-1 flex-col lg:flex-row">
-        <AdminSidebar />
-        <main className="flex-1 p-4 sm:p-6 lg:p-8">
-          <AdminGuard>{children}</AdminGuard>
-        </main>
-      </div>
-    </div>
-  );
+  return <>{children}</>;
 }

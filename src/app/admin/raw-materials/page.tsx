@@ -1,4 +1,4 @@
 import { StitchPage } from '@/components/StitchPage';
 export default function Page() {
-  return <StitchPage designPath='pureblend_admin_dashboard' />;
+  return <StitchPage designPath='raw_materials_pureblend_food_chemicals_admin' />;
 }

@@ -1,3 +1,4 @@
+import { PublicLayout } from "@/components/layout/PublicLayout";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Heading } from "@/components/ui/Heading";
@@ -11,6 +12,7 @@ export const metadata = pageMetadata({
 
 export default function PrivacyPage() {
   return (
+    <PublicLayout>
     <Section>
       <Container className="max-w-3xl">
         <Heading level={1}>Privacy Policy</Heading>
@@ -20,5 +22,6 @@ export default function PrivacyPage() {
         </p>
       </Container>
     </Section>
+    </PublicLayout>
   );
 }

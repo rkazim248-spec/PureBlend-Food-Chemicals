@@ -1,3 +1,4 @@
+import { PublicLayout } from "@/components/layout/PublicLayout";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Heading } from "@/components/ui/Heading";
@@ -12,14 +13,16 @@ export const metadata = pageMetadata({
 
 export default function RequestQuotePage() {
   return (
-    <Section>
-      <Container className="max-w-2xl">
-        <Heading level={1}>Request a Quote</Heading>
-        <p className="mt-3 text-foreground-muted">Tell us what you need and our team will respond with pricing and availability.</p>
-        <div className="mt-8">
-          <QuoteForm />
-        </div>
-      </Container>
-    </Section>
+    <PublicLayout>
+      <Section>
+        <Container className="max-w-2xl">
+          <Heading level={1}>Request a Quote</Heading>
+          <p className="mt-3 text-foreground-muted">Tell us what you need and our team will respond with pricing and availability.</p>
+          <div className="mt-8">
+            <QuoteForm />
+          </div>
+        </Container>
+      </Section>
+    </PublicLayout>
   );
 }

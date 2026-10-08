@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { PublicLayout } from "@/components/layout/PublicLayout";
 import { ProductDetail } from "@/components/marketing/ProductDetail";
 import { ProductGrid } from "@/components/marketing/ProductGrid";
 import { notFound } from "next/navigation";
@@ -56,6 +57,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   }
 
   return (
+    <PublicLayout>
     <Section>
       <Container>
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-neutral-500">
@@ -76,5 +78,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         )}
       </Container>
     </Section>
+    </PublicLayout>
   );
 }

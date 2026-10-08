@@ -9,6 +9,7 @@ import path from "path";
 export function StitchPage({ designPath }: { designPath: string }) {
   const filePath = path.join(process.cwd(), "PureBlend Food Chemicals UI", designPath, "code.html");
   const html = readFileSync(filePath, "utf-8");
+  const isAdminPage = designPath.includes("admin") || designPath.includes("audit_trail") || designPath.includes("batch_lot") || designPath.includes("inquiries") || designPath.includes("contracts") || designPath.includes("raw_materials") || designPath.includes("settings");
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
   let bodyHtml = bodyMatch ? bodyMatch[1] : html;
 
@@ -76,7 +77,18 @@ export function StitchPage({ designPath }: { designPath: string }) {
     return route ? `data-path="${p}" href="${route}"` : match;
   });
 
-  bodyHtml = bodyHtml.replace(/>PureBlend<\/span>/g, '><img src="/pureblend-logo-dark.svg" alt="PureBlend Food Chemicals logo" class="h-8 w-auto" /></span>');
+  bodyHtml = bodyHtml.replace(/>PureBlend<\/span>/g, ">PureBlend</span>");
+  bodyHtml = bodyHtml.replace(
+    /(<img\b[^>]*alt="PureBlend Brand Logo"[^>]*src=")[^"]+(")/gi,
+    '$1/pureblend-logo-dark.svg$2',
+  );
 
-  return <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: bodyHtml }} />;
+  return (
+    <div
+      data-stitch-page={isAdminPage ? "admin" : "public"}
+      className="stitch-page"
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: bodyHtml }}
+    />
+  );
 }

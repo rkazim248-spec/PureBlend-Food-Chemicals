@@ -219,6 +219,163 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.stitch-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.stitch-page .material-symbols-outlined {
+  /* The exported pages use an optional webfont; hide its text fallback when CSP blocks the remote font. */
+  font-size: 0;
+  line-height: 1;
+}
+
+.stitch-page .material-symbols-outlined::before {
+  content: "";
+}
+
+.stitch-page[data-stitch-page="public"] {
+  background: var(--color-background);
+}
+
+.stitch-page[data-stitch-page="public"] > header {
+  animation: stitch-header-in 500ms var(--ease-standard) both;
+}
+
+.stitch-page[data-stitch-page="public"] main > div > section {
+  animation: stitch-fade-up 650ms var(--ease-standard) both;
+}
+
+.stitch-page[data-stitch-page="public"] main > div > section:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.stitch-page[data-stitch-page="public"] main > div > section:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+.stitch-page[data-stitch-page="public"] a,
+.stitch-page[data-stitch-page="public"] button,
+.stitch-page[data-stitch-page="admin"] a,
+.stitch-page[data-stitch-page="admin"] button {
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    background-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+
+.stitch-page[data-stitch-page="public"] a:hover,
+.stitch-page[data-stitch-page="public"] button:hover,
+.stitch-page[data-stitch-page="admin"] button:hover {
+  transform: translateY(-1px);
+}
+
+.stitch-page[data-stitch-page="admin"] {
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+.stitch-page[data-stitch-page="admin"] > aside {
+  z-index: 30;
+}
+
+.stitch-page[data-stitch-page="admin"] > div > main {
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.stitch-page[data-stitch-page="admin"] > div > main > div > section {
+  animation: stitch-fade-up 500ms var(--ease-standard) both;
+}
+
+.stitch-page[data-stitch-page="admin"] > div > main > div > section:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.stitch-page[data-stitch-page="admin"] > div > main > div > section:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+@keyframes stitch-header-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stitch-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1023px) {
+  .stitch-page[data-stitch-page="public"] > header {
+    position: sticky;
+    padding: 0.75rem 0.75rem 0;
+  }
+
+  .stitch-page[data-stitch-page="public"] > header > div {
+    height: 4rem;
+    border-radius: 1rem;
+    padding-inline: 1rem;
+  }
+
+  .stitch-page[data-stitch-page="public"] main {
+    padding-top: 0;
+  }
+
+  .stitch-page[data-stitch-page="public"] main > div > section {
+    padding-inline: 1rem;
+  }
+
+  .stitch-page[data-stitch-page="admin"] > aside {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: 18rem;
+  }
+
+  .stitch-page[data-stitch-page="admin"] > aside > div:nth-child(2) {
+    max-height: 11rem;
+  }
+
+  .stitch-page[data-stitch-page="admin"] > div {
+    display: block;
+    padding-left: 0;
+  }
+
+  .stitch-page[data-stitch-page="admin"] > div > header {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  .stitch-page[data-stitch-page="admin"] > div > main {
+    width: 100%;
+    margin-left: 0;
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stitch-page[data-stitch-page="public"] > header,
+  .stitch-page[data-stitch-page="public"] main > div > section,
+  .stitch-page[data-stitch-page="admin"] > div > main > div > section {
+    animation: none;
+  }
+}
+
 ::selection {
   background: var(--color-brand-100);
   color: var(--color-brand-950);

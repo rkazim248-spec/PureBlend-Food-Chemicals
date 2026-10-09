@@ -53,7 +53,6 @@ export default function SignInPage() {
             <Input name="email" label="Business email" type="email" autoComplete="username" placeholder="you@company.com" required />
             <div>
               <Input name="password" label="Password" type="password" autoComplete="current-password" required />
-              <div className="mt-2 text-right"><button type="button" className="text-sm font-semibold text-brand-600 hover:text-brand-500">Forgot password?</button></div>
             </div>
             <Button type="submit" loading={loading} size="lg" className="mt-2 w-full">Sign in securely</Button>
           </form>

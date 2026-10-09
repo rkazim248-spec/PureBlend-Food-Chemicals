@@ -139,6 +139,28 @@ export function StitchPage({ designPath }: { designPath: string }) {
     return `<span class="cursor-not-allowed opacity-70" aria-label="${label.replace(/"/g, "&quot;")}">${label}</span>`;
   });
 
+  // Exported pages contain demo-only buttons after their inline scripts are
+  // removed. Convert known navigation actions to links and make the rest
+  // visibly unavailable instead of leaving dead controls.
+  const buttonRoutes: Array<[RegExp, string]> = [
+    [/request (a|your) (formulation )?quote/i, "/request-quote"],
+    [/browse .*compounds|explore product catalog|view all products/i, "/products"],
+    [/review rfqs|inquiries/i, "/admin/inquiries"],
+    [/add product|products management/i, "/admin/products"],
+    [/create offer|current offers/i, "/admin/offers"],
+    [/add banner|banners/i, "/admin/banners"],
+    [/manage faqs|faq management/i, "/admin/faqs"],
+    [/view site|storefront preview/i, "/"],
+    [/sign in|log in/i, "/sign-in"],
+    [/create account|register/i, "/create-account"],
+  ];
+  bodyHtml = bodyHtml.replace(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi, (button, attrs: string, content: string) => {
+    const label = content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const route = buttonRoutes.find(([pattern]) => pattern.test(label))?.[1];
+    if (route) return `<a href="${route}" class="inline-flex items-center justify-center gap-2 ${attrs.match(/class="([^"]*)"/i)?.[1] ?? ""}">${content}</a>`;
+    return `<span class="inline-flex items-center gap-2 opacity-70 cursor-not-allowed" aria-disabled="true">${content}</span>`;
+  });
+
   if (!/<main\b/i.test(bodyHtml)) {
     bodyHtml = `<main id="main-content">${bodyHtml}</main>`;
   }

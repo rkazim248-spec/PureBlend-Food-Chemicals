@@ -34,10 +34,10 @@ export function Header() {
         </nav>
         <div className="hidden md:flex items-center gap-2">
           <Link href="/sign-in" className="rounded-full px-3 py-2 text-sm font-semibold text-brand-700 transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-brand-600">
-            Sign in
+            <span aria-hidden="true">↪</span> Sign in
           </Link>
           <Link href="/create-account" className="rounded-full border border-brand-200 px-3 py-2 text-sm font-semibold text-brand-700 transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-brand-600">
-            Create account
+            <span aria-hidden="true">+</span> Create account
           </Link>
           <ButtonLink href="/request-quote" size="sm">Request a Quote</ButtonLink>
         </div>

@@ -4,13 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const adminNav = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/products", label: "Products" },
-  { href: "/admin/banners", label: "Banners" },
-  { href: "/admin/offers", label: "Offers" },
-  { href: "/admin/faqs", label: "FAQs" },
-  { href: "/admin/content", label: "Content" },
-  { href: "/admin/seo", label: "SEO" },
+  { href: "/admin", label: "Dashboard", icon: "▦" },
+  { href: "/admin/products", label: "Products", icon: "◈" },
+  { href: "/admin/banners", label: "Banners", icon: "▣" },
+  { href: "/admin/offers", label: "Offers", icon: "◇" },
+  { href: "/admin/faqs", label: "FAQs", icon: "?" },
+  { href: "/admin/content", label: "Content", icon: "≡" },
+  { href: "/admin/seo", label: "SEO", icon: "⌕" },
 ];
 
 export function AdminSidebar() {
@@ -29,7 +29,8 @@ export function AdminSidebar() {
                 active ? "bg-neutral-800 text-white" : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
               }`}
             >
-              {item.label}
+              <span aria-hidden="true" className="w-5 text-center">{item.icon}</span>
+              <span>{item.label}</span>
             </Link>
           );
         })}

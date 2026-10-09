@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Alert } from "@/components/ui/Alert";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { admin } from "@/lib/api";
 
 export default function AdminLoginPage() {
@@ -29,8 +30,9 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="mx-auto max-w-sm">
-      <Heading level={1}>Admin login</Heading>
+    <div className="mx-auto max-w-sm rounded-2xl border border-border bg-white p-6 shadow-raised sm:p-8">
+      <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-12 w-auto" />
+      <Heading level={1} className="mt-8">Admin login</Heading>
       <p className="mt-2 text-sm text-neutral-600">Sign in with your administrator credentials.</p>
       <form className="mt-6 flex flex-col gap-4" onSubmit={onSubmit}>
         <Input name="email" label="Email" type="email" autoComplete="username" required />
@@ -41,4 +43,3 @@ export default function AdminLoginPage() {
     </div>
   );
 }
-

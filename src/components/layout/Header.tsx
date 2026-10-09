@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MobileNav } from "./MobileNav";
@@ -18,8 +19,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-[#F8FAF7]/90 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-extrabold text-brand-600">
-          <span className="inline-block h-8 w-8 rounded-md bg-brand-600" aria-hidden="true" />
-          <span className="text-lg tracking-tight font-display">PureBlend</span>
+          <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-10 w-auto" />
         </Link>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1 rounded-full bg-surface-muted px-1 py-1 text-sm font-semibold text-neutral-700">

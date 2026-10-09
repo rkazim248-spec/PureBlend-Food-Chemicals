@@ -49,6 +49,13 @@ export function StitchPage({ designPath }: { designPath: string }) {
     banners: "/admin/banners",
     settings: "/admin/settings",
     "system-settings": "/admin/settings",
+    "certificate-repository": "/admin/batch-lot",
+    documentation: "/faqs",
+    formulations: "/ai-assistant",
+    "media-library": "/admin/banners",
+    pages: "/admin/content",
+    "storefront-preview": "/",
+    "users-and-roles": "/admin/settings",
     login: "/admin/login",
   };
 
@@ -69,6 +76,19 @@ export function StitchPage({ designPath }: { designPath: string }) {
         .replace(/data-path="[^"]*"/, 'data-path="ai-assistant"')
         .replace('href="#"', 'href="/ai-assistant"');
     }
+    const labelRoutes: Array<[RegExp, string]> = [
+      [/>Home</i, "/"],
+      [/>Products</i, "/products"],
+      [/>Solutions</i, "/solutions"],
+      [/>Offers</i, "/offers"],
+      [/>About</i, "/about"],
+      [/>FAQs</i, "/faqs"],
+      [/>Contact</i, "/contact"],
+      [/view all products/i, "/products"],
+      [/sign in/i, "/sign-in"],
+    ];
+    const labelRoute = labelRoutes.find(([pattern]) => pattern.test(anchor))?.[1];
+    if (labelRoute) return anchor.replace('href="#"', `href="${labelRoute}"`);
     return anchor;
   });
 

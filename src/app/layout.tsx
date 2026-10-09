@@ -7,6 +7,9 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", displa
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  icons: {
+    icon: "/pureblend-symbol.svg",
+  },
   title: {
     default: "PureBlend Food Chemicals",
     template: "%s | PureBlend Food Chemicals",
@@ -18,11 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <head>
-        {/* Material Symbols icon font used by the Stitch-exported pages.
-            Self-hosting via next/font would drop Google's .material-symbols-outlined
-            utility class, so the stylesheet is loaded once in the root layout. */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="font-sans">{children}</body>

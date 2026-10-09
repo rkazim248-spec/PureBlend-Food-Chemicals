@@ -5,10 +5,8 @@ type RequestOptions = {
   method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   body?: unknown;
   headers?: Record<string, string>;
-  /** Pass backend auth credential here once the auth mechanism is decided (TDD). */
   authToken?: string;
   signal?: AbortSignal;
-  /** Client-side timeout in ms (default 15s). */
   timeoutMs?: number;
   query?: Record<string, string | number | boolean | undefined>;
 };
@@ -24,13 +22,8 @@ function buildUrl(path: string, query?: RequestOptions["query"]): string {
   return qs ? `${url}?${qs}` : url;
 }
 
-/**
- * Single typed request helper. All API calls in the app must go through this —
- * never fetch() directly from components.
- */
 export async function apiRequest<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const { method = "GET", body, headers = {}, authToken, signal, timeoutMs = 15000, query } = options;
-
   const timeout = AbortSignal.timeout(timeoutMs);
   const combinedSignal = signal ? AbortSignal.any([signal, timeout]) : timeout;
 
@@ -40,7 +33,7 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
       method,
       headers: {
         "Content-Type": "application/json",
-        ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+        ...(authToken ? { Authorization: "Bearer " + authToken } : {}),
         ...headers,
       },
       body: body !== undefined ? JSON.stringify(body) : undefined,
@@ -58,7 +51,7 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
     try {
       errorBody = (await res.json()) as ApiErrorBody;
     } catch {
-      // Non-JSON error body — fall through to generic ApiError
+      // Non-JSON error body — use the standard API error below.
     }
     throw new ApiError(res.status, errorBody);
   }

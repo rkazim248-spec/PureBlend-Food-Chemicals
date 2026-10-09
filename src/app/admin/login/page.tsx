@@ -30,16 +30,18 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="mx-auto max-w-sm rounded-2xl border border-border bg-white p-6 shadow-raised sm:p-8">
-      <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-12 w-auto" />
-      <Heading level={1} className="mt-8">Admin login</Heading>
-      <p className="mt-2 text-sm text-neutral-600">Sign in with your administrator credentials.</p>
-      <form className="mt-6 flex flex-col gap-4" onSubmit={onSubmit}>
-        <Input name="email" label="Email" type="email" autoComplete="username" required />
-        <Input name="password" label="Password" type="password" autoComplete="current-password" required />
-        <Button type="submit" loading={loading}>Sign in</Button>
-      </form>
-      {error && <div className="mt-4"><Alert tone="danger">{error}</Alert></div>}
-    </div>
+    <main className="flex min-h-dvh items-center justify-center bg-background px-4 py-10">
+      <div className="w-full max-w-sm rounded-2xl border border-border bg-white p-6 shadow-raised sm:p-8">
+        <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-12 w-auto" />
+        <Heading level={1} className="mt-8">Admin login</Heading>
+        <p className="mt-2 text-sm text-neutral-600">Sign in with your administrator credentials.</p>
+        <form className="mt-6 flex flex-col gap-4" onSubmit={onSubmit}>
+          <Input name="email" label="Email" type="email" autoComplete="username" required />
+          <Input name="password" label="Password" type="password" autoComplete="current-password" required />
+          <Button type="submit" loading={loading}>Sign in</Button>
+        </form>
+        {error && <div className="mt-4"><Alert tone="danger">{error}</Alert></div>}
+      </div>
+    </main>
   );
 }

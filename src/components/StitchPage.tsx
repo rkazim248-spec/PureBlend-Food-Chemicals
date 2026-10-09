@@ -13,6 +13,12 @@ export function StitchPage({ designPath }: { designPath: string }) {
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
   let bodyHtml = bodyMatch ? bodyMatch[1] : html;
 
+  // Exported inline demos are not wired to the application state/API layer.
+  // Remove them so missing demo-only elements cannot create runtime errors.
+  bodyHtml = bodyHtml
+    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+    .replace(/\s+on(?:click|submit|change|input|load)="[^"]*"/gi, "");
+
   // Wire the design's placeholder href="#" anchors to real routes.
   const ROUTE_MAP: Record<string, string> = {
     home: "/",
@@ -81,6 +87,13 @@ export function StitchPage({ designPath }: { designPath: string }) {
       [/>FAQs</i, "/faqs"],
       [/>Contact</i, "/contact"],
       [/view all products/i, "/products"],
+      [/explore product catalog/i, "/products"],
+      [/request (a|your) (formulation )?quote/i, "/request-quote"],
+      [/connect with procurement desk/i, "/contact"],
+      [/review supply terms/i, "/terms-and-conditions"],
+      [/explore (savory )?solutions/i, "/solutions"],
+      [/view .+ solutions/i, "/solutions"],
+      [/explore certifications/i, "/about"],
       [/sign in/i, "/sign-in"],
       [/privacy policy/i, "/privacy-policy"],
       [/terms of supply/i, "/terms-and-conditions"],
@@ -102,9 +115,23 @@ export function StitchPage({ designPath }: { designPath: string }) {
     /(<img\b[^>]*alt="PureBlend Brand Logo"[^>]*src=")[^"]+(")/gi,
     '$1/pureblend-logo-dark.svg$2',
   );
+  if (designPath.includes("banners_")) {
+    bodyHtml = bodyHtml.replace(
+      /src="https:\/\/lh3\.googleusercontent\.com\/[^"]+"/gi,
+      'src="/pureblend-primary-logo.svg"',
+    );
+  }
   bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, (anchor) =>
     /AI Assistant/i.test(anchor) ? "" : anchor,
   );
+  bodyHtml = bodyHtml.replace(/<a\b[^>]*href="#"[^>]*>[\s\S]*?<\/a>/gi, (anchor) => {
+    const label = anchor.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return `<span class="cursor-not-allowed opacity-70" aria-label="${label.replace(/"/g, "&quot;")}">${label}</span>`;
+  });
+
+  if (!/<main\b/i.test(bodyHtml)) {
+    bodyHtml = `<main id="main-content">${bodyHtml}</main>`;
+  }
 
   return (
     <div

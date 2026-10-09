@@ -53,7 +53,7 @@ export default function AdminContentPage() {
   }
 
   return (
-    <div>
+    <main className="min-h-dvh bg-background p-6 sm:p-8">
       <Heading level={1}>Content</Heading>
       <p className="mt-2 text-sm text-neutral-600">Edit managed page content blocks.</p>
       <div className="mt-6 max-w-xs">
@@ -78,6 +78,6 @@ export default function AdminContentPage() {
           </>
         )}
       </div>
-    </div>
+    </main>
   );
 }

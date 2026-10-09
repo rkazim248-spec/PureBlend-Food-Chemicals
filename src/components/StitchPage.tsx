@@ -131,6 +131,13 @@ export function StitchPage({ designPath }: { designPath: string }) {
       'src="/pureblend-primary-logo.svg"',
     );
   }
+  // Exported preview imagery is hosted on temporary Google URLs that are not
+  // reliable in deployed environments. Keep the pages visually complete with
+  // the local branded fixture instead of rendering broken image requests.
+  bodyHtml = bodyHtml.replace(
+    /(<img\b[^>]*\bsrc=")https?:\/\/[^"]+(")/gi,
+    '$1/images/hero-placeholder.svg$2',
+  );
   bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, (anchor) =>
     /AI Assistant/i.test(anchor) ? "" : anchor,
   );

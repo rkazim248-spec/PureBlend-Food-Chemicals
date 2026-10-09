@@ -25,7 +25,7 @@ export function AdminSidebar() {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={`rounded-md px-3 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
+              className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
                 active ? "bg-neutral-800 text-white" : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
               }`}
             >

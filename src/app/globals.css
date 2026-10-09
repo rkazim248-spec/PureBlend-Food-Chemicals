@@ -212,6 +212,7 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
+  overflow-x: hidden;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
@@ -222,6 +223,25 @@ body {
 .stitch-page {
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+.stitch-page img,
+.stitch-page svg,
+.stitch-page video {
+  max-width: 100%;
+}
+
+.stitch-page table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.stitch-page .min-w-max {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
 }
 
 .stitch-page .material-symbols-outlined {

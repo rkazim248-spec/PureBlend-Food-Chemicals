@@ -1,7 +1,7 @@
 /**
  * Central environment/configuration strategy.
  * Only intentionally-public values are exposed to the browser (NEXT_PUBLIC_*).
- * Defaults to the REAL API; mock mode must be explicitly enabled for local development.
+ * Uses bundled frontend data until an approved API is configured.
  */
 export const config = {
   apiBaseUrl: process.env.NEXT_PUBLIC_API_BASE_URL?.trim() ?? "",

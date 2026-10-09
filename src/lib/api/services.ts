@@ -1,7 +1,8 @@
 /**
  * Centralized frontend data services.
  * UI pages/components must use these — never raw fetch, never fixtures directly.
- * Mock mode is controlled by NEXT_PUBLIC_USE_MOCK_DATA (default: real API).
+ * Mock mode is controlled by NEXT_PUBLIC_USE_MOCK_DATA and automatically
+ * activates when no API base URL is configured.
  */
 import { apiRequest } from "./client";
 import { endpoints } from "./endpoints";
@@ -20,15 +21,27 @@ function cached<T>(key: string, load: () => Promise<T>): Promise<T> {
   return p;
 }
 
+async function withFixtureFallback<T>(load: () => Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await load();
+  } catch (error) {
+    if (error instanceof ApiError && ["NETWORK_ERROR", "TIMEOUT"].includes(error.code)) {
+      console.warn("PureBlend API unavailable; using bundled frontend data.", error.message);
+      return fallback;
+    }
+    throw error;
+  }
+}
+
 export async function getProducts(): Promise<Product[]> {
   if (config.useMockData) return devProducts;
-  return apiRequest<Product[]>(endpoints.products.list);
+  return withFixtureFallback(() => apiRequest<Product[]>(endpoints.products.list), devProducts);
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   if (config.useMockData) return devProducts.find((p) => p.slug === slug) ?? null;
   try {
-    return await apiRequest<Product>(endpoints.products.detail(slug));
+    return await withFixtureFallback(() => apiRequest<Product>(endpoints.products.detail(slug)), devProducts.find((p) => p.slug === slug) ?? null);
   } catch (err) {
     if (err instanceof Error && "status" in err && (err as { status: number }).status === 404) return null;
     throw err;
@@ -37,19 +50,19 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 
 export async function getBanners(): Promise<Banner[]> {
   if (config.useMockData) return devBanners.filter((b) => b.active);
-  const banners = await apiRequest<Banner[]>(endpoints.banners.list);
+  const banners = await withFixtureFallback(() => apiRequest<Banner[]>(endpoints.banners.list), devBanners);
   return banners.filter((b) => b.active);
 }
 
 export async function getOffers(): Promise<Offer[]> {
   if (config.useMockData) return devOffers.filter((o) => o.active);
-  const offers = await apiRequest<Offer[]>(endpoints.offers.list);
+  const offers = await withFixtureFallback(() => apiRequest<Offer[]>(endpoints.offers.list), devOffers);
   return offers.filter((o) => o.active);
 }
 
 export async function getFaqs(): Promise<Faq[]> {
   if (config.useMockData) return devFaqs.filter((f) => f.published);
-  const faqs = await apiRequest<Faq[]>(endpoints.faqs.list);
+  const faqs = await withFixtureFallback(() => apiRequest<Faq[]>(endpoints.faqs.list), devFaqs);
   return faqs.filter((f) => f.published);
 }
 

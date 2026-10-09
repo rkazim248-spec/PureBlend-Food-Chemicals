@@ -202,6 +202,14 @@ export function StitchPage({ designPath }: { designPath: string }) {
       .replace(/<span\b[^>]*>\s*Active Filters:\s*<\/span>/gi, "")
       .replace(/<span\b[^>]*>\s*Clear All Filters\s*<\/span>/gi, "");
   }
+  bodyHtml = bodyHtml.replace(
+    /class="([^"]*\bmin-w-max\b[^"]*)"/gi,
+    'class="$1" style="min-width:0;width:100%;max-width:100%;overflow-x:auto"',
+  );
+  bodyHtml = bodyHtml.replace(
+    /class="([^"]*\bgrid-cols-[^"]+[^"]*)"/gi,
+    'class="$1" style="min-width:0;max-width:100%;overflow-x:hidden"',
+  );
 
   if (!/<main\b/i.test(bodyHtml)) {
     bodyHtml = `<main id="main-content">${bodyHtml}</main>`;

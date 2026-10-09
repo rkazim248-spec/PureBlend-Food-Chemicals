@@ -136,10 +136,15 @@ export function StitchPage({ designPath }: { designPath: string }) {
   // the local branded fixture instead of rendering broken image requests.
   bodyHtml = bodyHtml.replace(
     /(<img\b[^>]*\bsrc=")https?:\/\/[^"]+(")/gi,
-    '$1/images/hero-placeholder.svg$2',
+    '$1/images/product-placeholder.svg$2',
   );
+
   bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, (anchor) =>
     /AI Assistant/i.test(anchor) ? "" : anchor,
+  );
+  bodyHtml = bodyHtml.replace(/<span\b[^>]*>\s*PureBlend\s*<\/span>/gi, "");
+  bodyHtml = bodyHtml.replace(/<header\b[\s\S]*?<\/header>/gi, (header) =>
+    header.replace(/<a\b[^>]*>[\s\S]*?Request a Quote[\s\S]*?<\/a>/gi, ""),
   );
   bodyHtml = bodyHtml.replace(/<a\b[^>]*href="#"[^>]*>[\s\S]*?<\/a>/gi, (anchor) => {
     const label = anchor.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -167,6 +172,27 @@ export function StitchPage({ designPath }: { designPath: string }) {
     if (route) return `<a href="${route}" class="inline-flex items-center justify-center gap-2 ${attrs.match(/class="([^"]*)"/i)?.[1] ?? ""}">${content}</a>`;
     return `<span class="inline-flex items-center gap-2 opacity-70 cursor-not-allowed" aria-disabled="true">${content}</span>`;
   });
+
+  if (designPath === "products_pureblend_food_chemicals_2") {
+    const productSlugs: Array<[RegExp, string]> = [
+      [/Citric Acid Anhydrous/i, "citric-acid-anhydrous"],
+      [/Xanthan Gum 200 Mesh/i, "xanthan-gum-200-mesh"],
+      [/Potassium Sorbate Granular/i, "potassium-sorbate-granular"],
+      [/Sodium Acid Pyrophosphate 28/i, "sodium-acid-pyrophosphate-28"],
+      [/Ascorbic Acid \(Vitamin C\)/i, "ascorbic-acid-usp"],
+      [/Sodium Benzoate Prills/i, "sodium-benzoate-prills"],
+      [/Pectin Citrus HM Rapid Set/i, "pectin-citrus-hm-rapid-set"],
+      [/Calcium Propionate Powder/i, "calcium-propionate-powder"],
+    ];
+    bodyHtml = bodyHtml.replace(/<article\b[\s\S]*?<\/article>/gi, (article) => {
+      const slug = productSlugs.find(([pattern]) => pattern.test(article))?.[1];
+      if (!slug) return article;
+      return article.replace(
+        /<span\b[^>]*aria-disabled="true"[^>]*>[\s\S]*?View Details \/ CoA[\s\S]*?<\/span>/i,
+        `<a href="/products/${slug}" class="w-full h-9 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5">View Product</a>`,
+      );
+    });
+  }
 
   if (!/<main\b/i.test(bodyHtml)) {
     bodyHtml = `<main id="main-content">${bodyHtml}</main>`;

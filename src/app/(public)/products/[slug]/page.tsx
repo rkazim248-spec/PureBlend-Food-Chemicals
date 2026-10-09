@@ -5,6 +5,12 @@ const validProductSlugs = new Set([
   "citric-acid-anhydrous",
   "sodium-alginate-fcc",
   "ascorbic-acid-usp",
+  "xanthan-gum-200-mesh",
+  "potassium-sorbate-granular",
+  "sodium-acid-pyrophosphate-28",
+  "sodium-benzoate-prills",
+  "pectin-citrus-hm-rapid-set",
+  "calcium-propionate-powder",
 ]);
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {

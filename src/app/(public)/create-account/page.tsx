@@ -56,7 +56,7 @@ export default function CreateAccountPage() {
           <form className="mt-8 grid gap-4 sm:grid-cols-2" onSubmit={onSubmit}>
             <Input name="name" label="Full name" autoComplete="name" required />
             <Input name="company" label="Company" autoComplete="organization" required />
-            <div className="sm:col-span-2"><Input name="email" label="Business email" type="email" autoComplete="email" required /></div>
+            <div className="sm:col-span-2"><Input name="email" label="Email address" type="email" autoComplete="email" placeholder="you@example.com" required /></div>
             <Input name="password" label="Password" type="password" autoComplete="new-password" required />
             <Input name="confirmation" label="Confirm password" type="password" autoComplete="new-password" required />
             <label className="flex items-start gap-3 text-sm text-foreground-muted sm:col-span-2">

@@ -15,6 +15,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/about" className="hover:text-white">About</Link></li>
             <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
+            <li><Link href="/request-quote" className="hover:text-white">Request a Quote</Link></li>
           </ul>
         </nav>
         <nav aria-label="Products">
@@ -24,6 +25,8 @@ export function Footer() {
             <li><Link href="/solutions" className="hover:text-white">Solutions</Link></li>
             <li><Link href="/offers" className="hover:text-white">Offers</Link></li>
             <li><Link href="/faqs" className="hover:text-white">FAQs</Link></li>
+            <li><Link href="/sign-in" className="hover:text-white">Sign in</Link></li>
+            <li><Link href="/create-account" className="hover:text-white">Create account</Link></li>
           </ul>
         </nav>
         <nav aria-label="Legal">

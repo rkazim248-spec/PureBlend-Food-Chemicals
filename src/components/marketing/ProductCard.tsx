@@ -6,11 +6,12 @@ import type { Product } from "@/lib/api/types";
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
+  const imageUrl = image?.url.startsWith("http") ? "/images/product-placeholder.svg" : image?.url;
   return (
     <Card className="flex h-full flex-col gap-3 transition-shadow duration-200 hover:shadow-raised">
-      {image && (
+      {image && imageUrl && (
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-neutral-100">
-          <Image src={image.url} alt={image.alt} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" />
+          <Image src={imageUrl} alt={image.alt} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-contain p-6" />
         </div>
       )}
       {product.category && <Badge tone="brand">{product.category.name}</Badge>}

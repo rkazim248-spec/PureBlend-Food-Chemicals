@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MobileNav } from "./MobileNav";
 
 export const publicNav = [
@@ -39,14 +38,12 @@ export function Header() {
           <Link href="/create-account" className="rounded-full border border-brand-200 px-3 py-2 text-sm font-semibold text-brand-700 transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-brand-600">
             <span aria-hidden="true">+</span> Create account
           </Link>
-          <ButtonLink href="/request-quote" size="sm">Request a Quote</ButtonLink>
         </div>
         <MobileNav
           items={publicNav}
           extraItems={[
             { href: "/sign-in", label: "Sign in" },
             { href: "/create-account", label: "Create account" },
-            { href: "/request-quote", label: "Request a Quote" },
           ]}
         />
       </Container>

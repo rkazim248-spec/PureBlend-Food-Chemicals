@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">PureBlend product placeholder</title>
+  <desc id="desc">A neutral product package illustration for PureBlend food chemicals.</desc>
+  <rect width="1200" height="900" fill="#f8faf7"/>
+  <rect x="210" y="150" width="780" height="590" rx="36" fill="#ffffff" stroke="#d8e2dc" stroke-width="8"/>
+  <path d="M300 250h600v80H300z" fill="#eaf3ee"/>
+  <circle cx="600" cy="475" r="125" fill="#ffffff" stroke="#c9a227" stroke-width="8"/>
+  <path d="M600 385v180M510 475h180" stroke="#1f7a5a" stroke-width="18" stroke-linecap="round"/>
+  <text x="600" y="680" text-anchor="middle" fill="#12372a" font-family="Arial, sans-serif" font-size="34" font-weight="700">PUREBLEND</text>
+</svg>

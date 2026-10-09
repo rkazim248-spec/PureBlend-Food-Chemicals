@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 
 // Lazy-load the chat window so the initial public page stays light.
 const ChatWindow = dynamic(() => import("./ChatWindow").then((m) => m.ChatWindow), {
@@ -9,7 +10,9 @@ const ChatWindow = dynamic(() => import("./ChatWindow").then((m) => m.ChatWindow
 });
 
 export function ChatLauncher() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  if (pathname === "/sign-in" || pathname === "/create-account") return null;
   return (
     <>
       {open && <ChatWindow onClose={() => setOpen(false)} />}

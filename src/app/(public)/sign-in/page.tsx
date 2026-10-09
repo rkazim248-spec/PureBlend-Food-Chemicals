@@ -38,7 +38,7 @@ export default function SignInPage() {
           <div>
             <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-14 w-auto brightness-0 invert" />
             <p className="mt-16 max-w-sm font-display text-4xl font-bold leading-tight">Trusted chemistry for better food.</p>
-            <p className="mt-5 max-w-sm text-brand-100">Access your procurement workspace, product specifications, and compliance documents.</p>
+            <p className="mt-5 max-w-sm text-brand-100">Access your PureBlend workspace and product information.</p>
           </div>
           <p className="text-sm text-brand-200">Secure workspace access · ISO 22000 aligned</p>
         </div>
@@ -47,17 +47,17 @@ export default function SignInPage() {
           <div className="mt-8 lg:mt-0">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-500">Welcome back</p>
             <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-brand-950">Sign in to your workspace</h1>
-            <p className="mt-3 text-sm leading-6 text-foreground-muted">Use your business email to continue to PureBlend.</p>
+            <p className="mt-3 text-sm leading-6 text-foreground-muted">Use your email address to continue to PureBlend.</p>
           </div>
           <form className="mt-8 flex flex-col gap-5" onSubmit={onSubmit}>
-            <Input name="email" label="Business email" type="email" autoComplete="username" placeholder="you@company.com" required />
+            <Input name="email" label="Email address" type="email" autoComplete="username" placeholder="you@example.com" required />
             <div>
               <Input name="password" label="Password" type="password" autoComplete="current-password" required />
             </div>
             <Button type="submit" loading={loading} size="lg" className="mt-2 w-full">Sign in securely</Button>
           </form>
           {error && <div className="mt-5"><Alert tone="danger">{error}</Alert></div>}
-          <p className="mt-8 text-center text-sm text-foreground-muted">Need an account? <Link href="/contact" className="font-semibold text-brand-600 hover:text-brand-500">Contact our team</Link></p>
+          <p className="mt-8 text-center text-sm text-foreground-muted">Need an account? <Link href="/create-account" className="font-semibold text-brand-600 hover:text-brand-500">Create one</Link></p>
           <p className="mt-8 text-center text-xs text-neutral-400"><Link href="/" className="hover:text-brand-600">Back to PureBlend.com</Link></p>
         </div>
       </div>

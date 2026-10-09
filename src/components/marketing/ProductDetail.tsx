@@ -5,11 +5,13 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import type { Product } from "@/lib/api/types";
 
 export function ProductDetail({ product }: { product: Product }) {
+  const image = product.images[0];
+  const imageUrl = image?.url.startsWith("http") ? "/images/product-placeholder.svg" : image?.url;
   return (
     <div className="grid gap-10 lg:grid-cols-2">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-neutral-100">
-        {product.images[0] && (
-          <Image src={product.images[0].url} alt={product.images[0].alt} fill priority sizes="(min-width:1280px) 50vw, 100vw" className="object-cover" />
+        {image && imageUrl && (
+          <Image src={imageUrl} alt={image.alt} fill priority sizes="(min-width:1280px) 50vw, 100vw" className="object-contain p-10" />
         )}
       </div>
       <div>

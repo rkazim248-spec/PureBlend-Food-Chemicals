@@ -102,7 +102,9 @@ export function StitchPage({ designPath }: { designPath: string }) {
     /(<img\b[^>]*alt="PureBlend Brand Logo"[^>]*src=")[^"]+(")/gi,
     '$1/pureblend-logo-dark.svg$2',
   );
-  bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?AI Assistant[\s\S]*?<\/a>/gi, "");
+  bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, (anchor) =>
+    /AI Assistant/i.test(anchor) ? "" : anchor,
+  );
 
   return (
     <div

@@ -19,7 +19,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-[#F8FAF7]/90 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-extrabold text-brand-600">
-          <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-10 w-auto" />
+          <Image src="/pureblend-light-mode-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-10 w-auto" />
         </Link>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1 rounded-full bg-surface-muted px-1 py-1 text-sm font-semibold text-neutral-700">
@@ -33,9 +33,22 @@ export function Header() {
           </ul>
         </nav>
         <div className="hidden md:flex items-center gap-2">
+          <Link href="/sign-in" className="rounded-full px-3 py-2 text-sm font-semibold text-brand-700 transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-brand-600">
+            Sign in
+          </Link>
+          <Link href="/create-account" className="rounded-full border border-brand-200 px-3 py-2 text-sm font-semibold text-brand-700 transition-colors hover:bg-surface-muted focus-visible:outline-2 focus-visible:outline-brand-600">
+            Create account
+          </Link>
           <ButtonLink href="/request-quote" size="sm">Request a Quote</ButtonLink>
         </div>
-        <MobileNav items={publicNav} extraItems={[{ href: "/request-quote", label: "Request a Quote" }]} />
+        <MobileNav
+          items={publicNav}
+          extraItems={[
+            { href: "/sign-in", label: "Sign in" },
+            { href: "/create-account", label: "Create account" },
+            { href: "/request-quote", label: "Request a Quote" },
+          ]}
+        />
       </Container>
     </header>
   );

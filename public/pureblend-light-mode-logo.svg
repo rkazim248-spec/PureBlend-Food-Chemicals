@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" width="480" height="120" fill="none">
+  <g transform="translate(18, 16)">
+    <path d="M44 8 C58 8, 76 22, 76 44 C76 66, 56 80, 44 84 C32 80, 12 66, 12 44 C12 22, 30 8, 44 8 Z" fill="#12372A"/>
+    <path d="M44 14 C54 24, 68 36, 68 46 C68 60, 52 74, 44 78 C36 74, 20 60, 20 46 C20 36, 34 24, 44 14 Z" fill="#1F7A5A" opacity=".95"/>
+    <path d="M44 20V72M44 38L60 28M44 52L28 42M44 58L58 66" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="20" r="3.5" fill="#C9A227" stroke="#12372A" stroke-width="1.5"/>
+    <circle cx="60" cy="28" r="2.8" fill="#C9A227"/>
+    <circle cx="28" cy="42" r="2.8" fill="#C9A227"/>
+    <circle cx="58" cy="66" r="2.8" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(118 0)">
+    <text x="0" y="58" font-family="Arial,sans-serif" font-size="34" font-weight="800" fill="#12372A" letter-spacing="-1">PURE<tspan fill="#1F7A5A" font-weight="700">BLEND</tspan></text>
+    <text x="2" y="79" font-family="Arial,sans-serif" font-size="10.5" font-weight="700" fill="#52615A" letter-spacing="2.9">FOOD CHEMICALS</text>
+    <circle cx="168" cy="76" r="2" fill="#C9A227"/>
+    <text x="176" y="79" font-family="Arial,sans-serif" font-size="8.5" fill="#88968F" letter-spacing="1.2">EST. B2B PURITY</text>
+  </g>
+</svg>

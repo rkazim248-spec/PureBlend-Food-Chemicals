@@ -113,8 +113,18 @@ export function StitchPage({ designPath }: { designPath: string }) {
   bodyHtml = bodyHtml.replace(/>PureBlend<\/span>/g, ">PureBlend</span>");
   bodyHtml = bodyHtml.replace(
     /(<img\b[^>]*alt="PureBlend Brand Logo"[^>]*src=")[^"]+(")/gi,
-    '$1/pureblend-logo-dark.svg$2',
+    '$1/pureblend-light-mode-logo.svg$2',
   );
+  bodyHtml = bodyHtml.replace(
+    /<img\b[^>]*alt="Profile"[^>]*\/?>/gi,
+    '<div class="flex items-center gap-2 text-label-sm"><a href="/sign-in" class="rounded-lg px-3 py-2 font-semibold text-primary hover:bg-surface-container">Sign in</a><a href="/create-account" class="rounded-lg bg-primary-container px-3 py-2 font-semibold text-on-primary hover:bg-secondary">Create account</a></div>',
+  );
+  if (isAdminPage) {
+    bodyHtml = bodyHtml.replace(
+      /<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm">[\s\S]*?<\/div>/i,
+      '<img src="/pureblend-light-mode-logo.svg" alt="PureBlend Food Chemicals" class="h-10 w-auto object-contain" />',
+    );
+  }
   if (designPath.includes("banners_")) {
     bodyHtml = bodyHtml.replace(
       /src="https:\/\/lh3\.googleusercontent\.com\/[^"]+"/gi,

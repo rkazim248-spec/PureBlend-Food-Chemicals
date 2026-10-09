@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ChatLauncher } from "@/components/chat/ChatLauncher";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +12,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
-      <ChatLauncher />
     </div>
   );
 }

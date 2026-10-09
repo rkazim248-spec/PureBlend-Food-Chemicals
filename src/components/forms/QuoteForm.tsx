@@ -9,12 +9,9 @@ import { Alert } from "@/components/ui/Alert";
 export function QuoteForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  // TODO: wire to the documented quote endpoint when the backend exposes it.
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
-    // No backend endpoint yet — show honest feedback instead of faking success.
-    setTimeout(() => setStatus("error"), 400);
+    setStatus("error");
   }
 
   return (
@@ -34,7 +31,6 @@ export function QuoteForm() {
       {status === "error" && (
         <Alert tone="danger">Quote submission is not connected yet. Please use the contact form in the meantime.</Alert>
       )}
-      {status === "success" && <Alert tone="success">Thank you — your request has been received.</Alert>}
     </form>
   );
 }

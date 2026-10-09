@@ -40,7 +40,7 @@ export default function SignInPage() {
             <p className="mt-16 max-w-sm font-display text-4xl font-bold leading-tight">Trusted chemistry for better food.</p>
             <p className="mt-5 max-w-sm text-brand-100">Access your PureBlend workspace and product information.</p>
           </div>
-          <p className="text-sm text-brand-200">Secure workspace access · ISO 22000 aligned</p>
+          <p className="text-sm text-brand-200">Secure workspace access</p>
         </div>
         <div className="p-7 sm:p-12">
           <Image src="/pureblend-primary-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-12 w-auto lg:hidden" />

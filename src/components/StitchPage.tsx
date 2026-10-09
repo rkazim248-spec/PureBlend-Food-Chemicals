@@ -89,6 +89,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
       [/view all products/i, "/products"],
       [/explore product catalog/i, "/products"],
       [/request (a|your) (formulation )?quote/i, "/request-quote"],
+      [/request rfq|request sample/i, "/request-quote"],
       [/connect with procurement desk/i, "/contact"],
       [/review supply terms/i, "/terms-and-conditions"],
       [/explore (savory )?solutions/i, "/solutions"],
@@ -192,6 +193,14 @@ export function StitchPage({ designPath }: { designPath: string }) {
         `<a href="/products/${slug}" class="w-full h-9 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5">View Product</a>`,
       );
     });
+  }
+  if (!isAdminPage) {
+    bodyHtml = bodyHtml
+      .replace(/(<span\b[^>]*aria-disabled="true"[^>]*>)\s*(?:Active Grid \(8 Products\)|Loading Skeleton State|Zero Results Fallback)\s*(<\/span>)/gi, "$1$2")
+      .replace(/<span\b[^>]*>\s*auto_awesome\s*<\/span>/gi, "")
+      .replace(/<span\b[^>]*>\s*Ask PureBlend AI\s*<\/span>/gi, "")
+      .replace(/<span\b[^>]*>\s*Active Filters:\s*<\/span>/gi, "")
+      .replace(/<span\b[^>]*>\s*Clear All Filters\s*<\/span>/gi, "");
   }
 
   if (!/<main\b/i.test(bodyHtml)) {

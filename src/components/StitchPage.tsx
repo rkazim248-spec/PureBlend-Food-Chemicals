@@ -82,6 +82,9 @@ export function StitchPage({ designPath }: { designPath: string }) {
       [/>Contact</i, "/contact"],
       [/view all products/i, "/products"],
       [/sign in/i, "/sign-in"],
+      [/privacy policy/i, "/privacy-policy"],
+      [/terms of supply/i, "/terms-and-conditions"],
+      [/batch traceability portal/i, "/admin/batch-lot"],
     ];
     const labelRoute = labelRoutes.find(([pattern]) => pattern.test(anchor))?.[1];
     if (labelRoute) return anchor.replace('href="#"', `href="${labelRoute}"`);

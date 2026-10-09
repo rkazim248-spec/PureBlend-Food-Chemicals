@@ -1,6 +1,10 @@
-// Public route group layout.
-// Stitch-exported pages render their own header/footer; add PublicLayout
-// explicitly in pages that still use the React component shell.
+import { ChatLauncher } from "@/components/chat/ChatLauncher";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <ChatLauncher />
+    </>
+  );
 }

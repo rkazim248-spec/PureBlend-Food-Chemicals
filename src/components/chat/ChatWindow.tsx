@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback, type FormEvent } from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import { Spinner } from "@/components/ui/Spinner";
 import { sendChatMessage } from "@/lib/api";
 import { ApiError } from "@/lib/api/types";
@@ -11,19 +9,23 @@ interface ChatMessage {
   id: number;
   role: "user" | "assistant" | "error";
   text: string;
+  createdAt: number;
   sources?: { title: string; url?: string }[];
+  retryText?: string;
 }
 
 const WELCOME: ChatMessage = {
   id: 0,
   role: "assistant",
-  text: "Hello! Ask me anything about PureBlend products, offers, or FAQs. I only use approved PureBlend information.",
+  text: "Hello! I can help you find published PureBlend products, applications, offers, contact details, and RFQ guidance. I do not replace official product or compliance documentation.",
+  createdAt: Date.now(),
 };
 
 const SUGGESTED = [
-  "What products are available?",
-  "How can I contact PureBlend?",
-  "What offers are currently available?",
+  "Which ingredients do you supply?",
+  "Help me find a suitable product.",
+  "How can I request a quotation?",
+  "What information do you need for a bulk order?",
 ];
 
 export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void; embedded?: boolean }) {
@@ -33,7 +35,7 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
   const [conversationId, setConversationId] = useState<string | undefined>();
   const nextId = useRef(1);
   const listRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const focusInput = useCallback(() => inputRef.current?.focus(), []);
 
@@ -43,7 +45,7 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
     const message = text.trim();
     if (!message || sending) return;
 
-    setMessages((m) => [...m, { id: nextId.current++, role: "user", text: message }]);
+    setMessages((m) => [...m, { id: nextId.current++, role: "user", text: message, createdAt: Date.now() }]);
     setValue("");
     setSending(true);
 
@@ -56,6 +58,7 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
           id: nextId.current++,
           role: "assistant",
           text: res.reply?.trim() ? res.reply : "I did not receive a response. Please try again.",
+          createdAt: Date.now(),
           sources: res.sources,
         },
       ]);
@@ -66,7 +69,7 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
       } else if (err instanceof ApiError && (err.code === "NETWORK_ERROR" || err.code === "TIMEOUT")) {
         text = "Unable to connect right now. Please check your connection and try again.";
       }
-      setMessages((m) => [...m, { id: nextId.current++, role: "error", text }]);
+      setMessages((m) => [...m, { id: nextId.current++, role: "error", text, createdAt: Date.now(), retryText: message }]);
     } finally {
       setSending(false);
       requestAnimationFrame(() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight }));
@@ -80,6 +83,7 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
   }
 
   function clearConversation() {
+    if (messages.length > 1 && !window.confirm("Clear this conversation? This cannot be undone.")) return;
     setMessages([WELCOME]);
     setConversationId(undefined);
     setValue("");
@@ -90,14 +94,17 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="PureBlend assistant"
+      aria-labelledby="pureblend-chat-title"
       onKeyDown={(e) => { if (e.key === "Escape" && onClose) onClose(); }}
       className={embedded
         ? "flex h-[32rem] w-full flex-col bg-white sm:rounded-lg"
-        : "fixed inset-0 z-50 flex flex-col bg-white sm:inset-auto sm:bottom-20 sm:right-4 sm:h-[30rem] sm:w-96 sm:rounded-lg sm:border sm:border-neutral-200 sm:shadow-modal"}
+        : "fixed inset-x-3 bottom-[max(5.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] z-50 flex max-h-[min(34rem,calc(100vh-7rem))] flex-col overflow-hidden rounded-xl border border-border bg-white shadow-modal sm:inset-auto sm:bottom-20 sm:right-4 sm:h-[32rem] sm:w-[min(25rem,calc(100vw-2rem))]"}
     >
       <div className="flex items-center justify-between border-b border-neutral-200 bg-brand-600 px-4 py-3 text-white sm:rounded-t-lg">
-        <p className="font-bold">PureBlend Assistant</p>
+        <div>
+          <p id="pureblend-chat-title" className="font-bold">PureBlend AI Assistant</p>
+          <p className="text-xs text-brand-100">Published information and RFQ guidance</p>
+        </div>
         <div className="flex items-center gap-2">
           <button type="button" onClick={clearConversation} className="rounded px-2 py-1 text-xs hover:bg-brand-700" aria-label="Clear conversation">
             Clear
@@ -121,11 +128,19 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
               }
             >
               <p className="whitespace-pre-wrap break-words">{m.text}</p>
+              <time dateTime={new Date(m.createdAt).toISOString()} className="mt-1 block text-[10px] opacity-60">
+                {new Date(m.createdAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
+              </time>
               {m.sources && m.sources.length > 0 && (
                 <p className="mt-2 border-t border-neutral-200 pt-1 text-xs text-neutral-500">
                   Based on PureBlend information{m.sources[0]?.title ? `: ${m.sources.map((s) => s.title).join(", ")}` : ""}
                 </p>
               )}
+              {m.role === "error" && m.retryText ? (
+                <button type="button" className="mt-2 text-xs font-bold underline" onClick={() => { if (m.retryText) void submit(m.retryText); }}>
+                  Try again
+                </button>
+              ) : null}
             </div>
           </div>
         ))}
@@ -150,7 +165,7 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
 
       <form onSubmit={onSubmit} className="flex items-end gap-2 border-t border-neutral-200 p-3">
         <div className="flex-1">
-          <Input
+          <textarea
             ref={inputRef}
             aria-label="Message"
             placeholder="Ask about PureBlend…"
@@ -158,9 +173,19 @@ export function ChatWindow({ onClose, embedded = false }: { onClose?: () => void
             onChange={(e) => setValue(e.target.value)}
             disabled={sending}
             maxLength={500}
+            rows={2}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                void submit(value);
+              }
+            }}
+            className="w-full resize-none rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 focus-visible:border-brand-600 focus-visible:outline-2 focus-visible:outline-brand-600 disabled:bg-neutral-100"
           />
         </div>
-        <Button type="submit" loading={sending} disabled={!value.trim()}>Send</Button>
+        <button type="submit" disabled={sending || !value.trim()} aria-label="Send message" className="h-10 rounded-md bg-brand-600 px-3 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50">
+          {sending ? "..." : "Send"}
+        </button>
       </form>
     </div>
   );

@@ -32,6 +32,9 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  async redirects() {
+    return [{ source: "/ai-assistant", destination: "/", permanent: false }];
+  },
 };
 
 export default nextConfig;

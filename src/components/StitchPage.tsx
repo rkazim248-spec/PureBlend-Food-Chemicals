@@ -31,7 +31,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
     "terms-of-supply": "/terms-and-conditions",
     "request-a-quote": "/request-quote",
     "quote-request": "/request-quote",
-    "ai-assistant": "/ai-assistant",
+    "ai-assistant": "/",
     dashboard: "/admin",
     "audit-trail": "/admin/audit-trail",
     "audit-log": "/admin/audit-trail",
@@ -51,7 +51,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
     "system-settings": "/admin/settings",
     "certificate-repository": "/admin/batch-lot",
     documentation: "/faqs",
-    formulations: "/ai-assistant",
+    formulations: "/",
     "media-library": "/admin/banners",
     pages: "/admin/content",
     "storefront-preview": "/",
@@ -71,11 +71,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
         .replace(/data-path="[^"]*"/, 'data-path="request-quote"')
         .replace('href="#"', 'href="/request-quote"');
     }
-    if (/ai assistant/i.test(anchor)) {
-      return anchor
-        .replace(/data-path="[^"]*"/, 'data-path="ai-assistant"')
-        .replace('href="#"', 'href="/ai-assistant"');
-    }
+    if (/ai assistant/i.test(anchor)) return anchor.replace('href="#"', 'href="/"');
     const labelRoutes: Array<[RegExp, string]> = [
       [/>Home</i, "/"],
       [/>Products</i, "/products"],
@@ -91,6 +87,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
     if (labelRoute) return anchor.replace('href="#"', `href="${labelRoute}"`);
     return anchor;
   });
+  bodyHtml = bodyHtml.replace(/<button\b[^>]*>[\s\S]*?AI Assistant[\s\S]*?<\/button>/gi, "");
 
   bodyHtml = bodyHtml.replace(/data-path="([^"]+)"\s+href="#"/g, (match, p: string) => {
     const route = ROUTE_MAP[p];
@@ -102,6 +99,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
     /(<img\b[^>]*alt="PureBlend Brand Logo"[^>]*src=")[^"]+(")/gi,
     '$1/pureblend-logo-dark.svg$2',
   );
+  bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?AI Assistant[\s\S]*?<\/a>/gi, "");
 
   return (
     <div

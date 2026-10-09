@@ -33,10 +33,9 @@ export function Header() {
           </ul>
         </nav>
         <div className="hidden md:flex items-center gap-2">
-          <ButtonLink href="/ai-assistant" variant="ghost" size="sm">AI Assistant</ButtonLink>
           <ButtonLink href="/request-quote" size="sm">Request a Quote</ButtonLink>
         </div>
-        <MobileNav items={publicNav} extraItems={[{ href: "/ai-assistant", label: "AI Assistant" }, { href: "/request-quote", label: "Request a Quote" }]} />
+        <MobileNav items={publicNav} extraItems={[{ href: "/request-quote", label: "Request a Quote" }]} />
       </Container>
     </header>
   );

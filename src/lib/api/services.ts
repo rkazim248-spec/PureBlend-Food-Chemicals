@@ -6,7 +6,7 @@
 import { apiRequest } from "./client";
 import { endpoints } from "./endpoints";
 import { config } from "@/lib/config";
-import type { Banner, ChatResponse, Faq, Offer, Product } from "./types";
+import { ApiError, type Banner, type ChatResponse, type Faq, type Offer, type Product } from "./types";
 import { devBanners, devFaqs, devOffers, devProducts } from "@/mocks/dev-fixtures";
 
 const cache = new Map<string, Promise<unknown>>();
@@ -56,11 +56,12 @@ export async function getFaqs(): Promise<Faq[]> {
 export async function sendChatMessage(message: string, conversationId?: string): Promise<ChatResponse> {
   // Never call an AI provider directly — always via the backend RAG endpoint.
   if (config.useMockData) {
-    // Dev-only: no fake RAG answers. Tell the developer the backend is not wired.
-    return {
-      conversationId: conversationId ?? "dev-conversation",
-      reply: "The assistant backend is not connected in development. Wire the RAG service and answers will appear here.",
-    };
+    throw new ApiError(503, {
+      error: {
+        code: "AI_BACKEND_NOT_CONFIGURED",
+        message: "The PureBlend assistant is not connected in this environment.",
+      },
+    });
   }
   return apiRequest<ChatResponse>(endpoints.chat.send, {
     method: "POST",

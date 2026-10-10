@@ -12,9 +12,11 @@ const securityHeaders = [
       // Next.js requires inline scripts for hydration, and Turbopack dev mode
       // requires eval — but eval must NEVER be allowed in production.
       `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "production" ? "" : " 'unsafe-eval'"}`,
-      "style-src 'self' 'unsafe-inline'",
+      // Google Fonts stylesheet (Material Symbols, loaded in the root layout).
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: https:",
-      "font-src 'self'",
+      // Google Fonts font files for Material Symbols icons.
+      "font-src 'self' https://fonts.gstatic.com",
       "connect-src 'self' http://localhost:4000",
       "frame-ancestors 'none'",
       "base-uri 'self'",

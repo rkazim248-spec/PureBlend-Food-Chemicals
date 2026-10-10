@@ -218,12 +218,22 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
+  overscroll-behavior: none;
   overflow-x: hidden;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Base resets shipped inside every Stitch export's <head> styles. */
+.stitch-page main > :first-child {
+  margin-top: 0 !important;
+}
+
+.stitch-page main > :last-child {
+  margin-bottom: 0 !important;
 }
 
 .stitch-page {
@@ -306,16 +316,6 @@ main .material-symbols-outlined {
   width: 100% !important;
   max-width: 100% !important;
   overflow-x: auto !important;
-}
-
-.stitch-page .material-symbols-outlined {
-  /* The exported pages use an optional webfont; hide its text fallback when CSP blocks the remote font. */
-  font-size: 0;
-  line-height: 1;
-}
-
-.stitch-page .material-symbols-outlined::before {
-  content: "";
 }
 
 /* Compact editorial layout used across the storefront and operations views. */

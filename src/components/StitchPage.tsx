@@ -1,6 +1,5 @@
 import { readFileSync } from "fs";
 import path from "path";
-import { AdminRouteGuard } from "@/components/admin/AdminRouteGuard";
 
 /**
  * Renders a Stitch-exported static HTML page exactly as provided.
@@ -10,15 +9,13 @@ import { AdminRouteGuard } from "@/components/admin/AdminRouteGuard";
 export function StitchPage({ designPath }: { designPath: string }) {
   const filePath = path.join(process.cwd(), "PureBlend Food Chemicals UI", designPath, "code.html");
   const html = readFileSync(filePath, "utf-8");
-  const isAdminPage = designPath.includes("admin") || designPath.includes("audit_trail") || designPath.includes("batch_lot") || designPath.includes("inquiries") || designPath.includes("contracts") || designPath.includes("raw_materials") || designPath.includes("settings");
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
   let bodyHtml = bodyMatch ? bodyMatch[1] : html;
 
-  // Exported inline demos are not wired to the application state/API layer.
-  // Remove them so missing demo-only elements cannot create runtime errors.
-  bodyHtml = bodyHtml
-    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
-    .replace(/\s+on(?:click|submit|change|input|load)="[^"]*"/gi, "");
+  // The scoped layout system in globals.css (overflow guards, compact
+  // sticky header and collapsed admin sidebar below 1024px) keys off
+  // this wrapper class and the public/admin variant.
+  const isAdmin = designPath.includes("admin");
 
   // Wire the design's placeholder href="#" anchors to real routes.
   const ROUTE_MAP: Record<string, string> = {
@@ -38,7 +35,7 @@ export function StitchPage({ designPath }: { designPath: string }) {
     "terms-of-supply": "/terms-and-conditions",
     "request-a-quote": "/request-quote",
     "quote-request": "/request-quote",
-    "ai-assistant": "/",
+    "ai-assistant": "/ai-assistant",
     dashboard: "/admin",
     "audit-trail": "/admin/audit-trail",
     "audit-log": "/admin/audit-trail",
@@ -56,13 +53,6 @@ export function StitchPage({ designPath }: { designPath: string }) {
     banners: "/admin/banners",
     settings: "/admin/settings",
     "system-settings": "/admin/settings",
-    "certificate-repository": "/admin/batch-lot",
-    documentation: "/faqs",
-    formulations: "/",
-    "media-library": "/admin/banners",
-    pages: "/admin/content",
-    "storefront-preview": "/",
-    "users-and-roles": "/admin/settings",
     login: "/admin/login",
   };
 
@@ -78,161 +68,39 @@ export function StitchPage({ designPath }: { designPath: string }) {
         .replace(/data-path="[^"]*"/, 'data-path="request-quote"')
         .replace('href="#"', 'href="/request-quote"');
     }
-    if (/ai assistant/i.test(anchor)) return anchor.replace('href="#"', 'href="/"');
-    const labelRoutes: Array<[RegExp, string]> = [
-      [/>Home</i, "/"],
-      [/>Products</i, "/products"],
-      [/>Solutions</i, "/solutions"],
-      [/>Offers</i, "/offers"],
-      [/>About</i, "/about"],
-      [/>FAQs</i, "/faqs"],
-      [/>Contact</i, "/contact"],
-      [/view all products/i, "/products"],
-      [/explore product catalog/i, "/products"],
-      [/request (a|your) (formulation )?quote/i, "/request-quote"],
-      [/request rfq|request sample/i, "/request-quote"],
-      [/connect with procurement desk/i, "/contact"],
-      [/review supply terms/i, "/terms-and-conditions"],
-      [/explore (savory )?solutions/i, "/solutions"],
-      [/view .+ solutions/i, "/solutions"],
-      [/explore certifications/i, "/about"],
-      [/sign in/i, "/sign-in"],
-      [/privacy policy/i, "/privacy-policy"],
-      [/terms of supply/i, "/terms-and-conditions"],
-      [/batch traceability portal/i, "/admin/batch-lot"],
-    ];
-    const labelRoute = labelRoutes.find(([pattern]) => pattern.test(anchor))?.[1];
-    if (labelRoute) return anchor.replace('href="#"', `href="${labelRoute}"`);
+    if (/ai assistant/i.test(anchor)) {
+      return anchor
+        .replace(/data-path="[^"]*"/, 'data-path="ai-assistant"')
+        .replace('href="#"', 'href="/ai-assistant"');
+    }
     return anchor;
   });
-  bodyHtml = bodyHtml.replace(/<button\b[^>]*>[\s\S]*?AI Assistant[\s\S]*?<\/button>/gi, "");
 
   bodyHtml = bodyHtml.replace(/data-path="([^"]+)"\s+href="#"/g, (match, p: string) => {
     const route = ROUTE_MAP[p];
     return route ? `data-path="${p}" href="${route}"` : match;
   });
 
-  bodyHtml = bodyHtml.replace(/>PureBlend<\/span>/g, ">PureBlend</span>");
+  // Self-host the brand lockup. The export hotlinks a Google-hosted
+  // image and forces it white (brightness-0 invert), which is invisible
+  // on the light page header. Swap in the local asset as-is.
   bodyHtml = bodyHtml.replace(
-    /(<img\b[^>]*alt="PureBlend Brand Logo"[^>]*src=")[^"]+(")/gi,
-    '$1/pureblend-light-mode-logo.svg$2',
+    /<img alt="PureBlend Brand Logo"[^>]*src="https:\/\/lh3\.googleusercontent\.com\/[^"]*"[^>]*\/>/g,
+    '<img alt="PureBlend Food Chemicals logo" src="/pureblend-logo-dark.svg" class="h-8 w-auto object-contain" />'
   );
+  // The lockup already contains the PUREBLEND wordmark, so drop the
+  // redundant text span that sits next to the (now local) logo image.
   bodyHtml = bodyHtml.replace(
-    /<img\b[^>]*alt="Profile"[^>]*\/?>/gi,
-    '<div class="flex items-center gap-2 text-label-sm"><a href="/sign-in" class="rounded-lg px-3 py-2 font-semibold text-primary hover:bg-surface-container">Sign in</a><a href="/create-account" class="rounded-lg bg-primary-container px-3 py-2 font-semibold text-on-primary hover:bg-secondary">Create account</a></div>',
+    /(<img alt="PureBlend Food Chemicals logo"[^>]*>)\s*<span[^>]*>PureBlend<\/span>/g,
+    "$1"
   );
-  if (isAdminPage) {
-    bodyHtml = bodyHtml.replace(
-      /<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm">[\s\S]*?<\/div>/i,
-      '<img src="/pureblend-light-mode-logo.svg" alt="PureBlend Food Chemicals" class="h-10 w-auto object-contain" />',
-    );
-  }
-  if (designPath.includes("banners_")) {
-    bodyHtml = bodyHtml.replace(
-      /src="https:\/\/lh3\.googleusercontent\.com\/[^"]+"/gi,
-      'src="/pureblend-primary-logo.svg"',
-    );
-  }
-  // Exported preview imagery is hosted on temporary Google URLs that are not
-  // reliable in deployed environments. Keep the pages visually complete with
-  // the local branded fixture instead of rendering broken image requests.
-  bodyHtml = bodyHtml.replace(
-    /(<img\b[^>]*\bsrc=")https?:\/\/[^"]+(")/gi,
-    '$1/images/product-placeholder.svg$2',
-  );
-
-  bodyHtml = bodyHtml.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, (anchor) =>
-    /AI Assistant/i.test(anchor) ? "" : anchor,
-  );
-  bodyHtml = bodyHtml.replace(/<span\b[^>]*>\s*PureBlend\s*<\/span>/gi, "");
-  bodyHtml = bodyHtml.replace(/<header\b[\s\S]*?<\/header>/gi, (header) =>
-    header.replace(/<a\b[^>]*>[\s\S]*?Request a Quote[\s\S]*?<\/a>/gi, ""),
-  );
-  bodyHtml = bodyHtml.replace(/<a\b[^>]*href="#"[^>]*>[\s\S]*?<\/a>/gi, (anchor) => {
-    const label = anchor.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    return `<span class="cursor-not-allowed opacity-70" aria-label="${label.replace(/"/g, "&quot;")}">${label}</span>`;
-  });
-
-  // Exported pages contain demo-only buttons after their inline scripts are
-  // removed. Convert known navigation actions to links and make the rest
-  // visibly unavailable instead of leaving dead controls.
-  const buttonRoutes: Array<[RegExp, string]> = [
-    [/request (a|your) (formulation )?quote/i, "/request-quote"],
-    [/browse .*compounds|explore product catalog|view all products/i, "/products"],
-    [/review rfqs|inquiries/i, "/admin/inquiries"],
-    [/add product|products management/i, "/admin/products"],
-    [/create offer|current offers/i, "/admin/offers"],
-    [/add banner|banners/i, "/admin/banners"],
-    [/manage faqs|faq management/i, "/admin/faqs"],
-    [/view site|storefront preview/i, "/"],
-    [/sign in|log in/i, "/sign-in"],
-    [/create account|register/i, "/create-account"],
-  ];
-  bodyHtml = bodyHtml.replace(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi, (button, attrs: string, content: string) => {
-    const label = content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    const route = buttonRoutes.find(([pattern]) => pattern.test(label))?.[1];
-    if (route) return `<a href="${route}" class="inline-flex items-center justify-center gap-2 ${attrs.match(/class="([^"]*)"/i)?.[1] ?? ""}">${content}</a>`;
-    return `<span class="inline-flex items-center gap-2 opacity-70 cursor-not-allowed" aria-disabled="true">${content}</span>`;
-  });
-
-  if (designPath === "products_pureblend_food_chemicals_2") {
-    const productSlugs: Array<[RegExp, string]> = [
-      [/Citric Acid Anhydrous/i, "citric-acid-anhydrous"],
-      [/Xanthan Gum 200 Mesh/i, "xanthan-gum-200-mesh"],
-      [/Potassium Sorbate Granular/i, "potassium-sorbate-granular"],
-      [/Sodium Acid Pyrophosphate 28/i, "sodium-acid-pyrophosphate-28"],
-      [/Ascorbic Acid \(Vitamin C\)/i, "ascorbic-acid-usp"],
-      [/Sodium Benzoate Prills/i, "sodium-benzoate-prills"],
-      [/Pectin Citrus HM Rapid Set/i, "pectin-citrus-hm-rapid-set"],
-      [/Calcium Propionate Powder/i, "calcium-propionate-powder"],
-    ];
-    bodyHtml = bodyHtml.replace(/<article\b[\s\S]*?<\/article>/gi, (article) => {
-      const slug = productSlugs.find(([pattern]) => pattern.test(article))?.[1];
-      if (!slug) return article;
-      return article.replace(
-        /<span\b[^>]*aria-disabled="true"[^>]*>[\s\S]*?View Details \/ CoA[\s\S]*?<\/span>/i,
-        `<a href="/products/${slug}" class="w-full h-9 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5">View Product</a>`,
-      );
-    });
-  }
-  if (!isAdminPage) {
-    bodyHtml = bodyHtml
-      .replace(/(<span\b[^>]*aria-disabled="true"[^>]*>)\s*(?:Active Grid \(8 Products\)|Loading Skeleton State|Zero Results Fallback)\s*(<\/span>)/gi, "$1$2")
-      .replace(/<span\b[^>]*>\s*auto_awesome\s*<\/span>/gi, "")
-      .replace(/<span\b[^>]*>\s*Ask PureBlend AI\s*<\/span>/gi, "")
-      .replace(/<span\b[^>]*>\s*Active Filters:\s*<\/span>/gi, "")
-      .replace(/<span\b[^>]*>\s*Clear All Filters\s*<\/span>/gi, "");
-  }
-  if (designPath === "products_pureblend_food_chemicals_2") {
-    bodyHtml = bodyHtml.replace(/<!--\s*3\.\s*ZERO RESULTS STATE[\s\S]*?(?=<!--\s*PAGINATION BAR)/i, "");
-  }
-  if (isAdminPage) {
-    bodyHtml = bodyHtml
-      .replace(/<[^>]+\b(?:workspace|simulator|demo)[^>]*>[\s\S]*?<\/[^>]+>/gi, "")
-      .replace(/<button\b[^>]*>[\s\S]*?(?:Empty State|Loading State|Error State|Detail Inspector|Add\/Edit Drawer)[\s\S]*?<\/button>/gi, "");
-  }
-  bodyHtml = bodyHtml.replace(
-    /class="([^"]*\bmin-w-max\b[^"]*)"/gi,
-    'class="$1" style="min-width:0;width:100%;max-width:100%;overflow-x:auto"',
-  );
-  bodyHtml = bodyHtml.replace(
-    /class="([^"]*\bgrid-cols-[^"]+[^"]*)"/gi,
-    'class="$1" style="min-width:0;max-width:100%;overflow-x:hidden"',
-  );
-
-  if (!/<main\b/i.test(bodyHtml)) {
-    bodyHtml = `<main id="main-content">${bodyHtml}</main>`;
-  }
 
   return (
-    <>
-      {isAdminPage && <AdminRouteGuard />}
-      <div
-        data-stitch-page={isAdminPage ? "admin" : "public"}
-        className="stitch-page"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: bodyHtml }}
-      />
-    </>
+    <div
+      className="stitch-page"
+      data-stitch-page={isAdmin ? "admin" : "public"}
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: bodyHtml }}
+    />
   );
 }

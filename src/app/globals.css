@@ -318,6 +318,39 @@ main .material-symbols-outlined {
   content: "";
 }
 
+/* Compact editorial layout used across the storefront and operations views. */
+.stitch-page [class~="py-space-3xl"] {
+  padding-block: 2.75rem !important;
+}
+
+.stitch-page [class~="py-space-2xl"] {
+  padding-block: 2rem !important;
+}
+
+.stitch-page [class~="p-space-3xl"] {
+  padding: 2rem !important;
+}
+
+.stitch-page [class~="p-space-2xl"] {
+  padding: 1.5rem !important;
+}
+
+.stitch-page [class~="gap-space-2xl"] {
+  gap: 2rem !important;
+}
+
+.stitch-page [class~="gap-space-xl"] {
+  gap: 1.5rem !important;
+}
+
+.stitch-page [class~="mt-space-3xl"] {
+  margin-top: 2.75rem !important;
+}
+
+.stitch-page [class~="mb-space-3xl"] {
+  margin-bottom: 2.75rem !important;
+}
+
 .stitch-page[data-stitch-page="public"] {
   background: var(--color-background);
 }
@@ -404,6 +437,14 @@ main .material-symbols-outlined {
 }
 
 @media (max-width: 1023px) {
+  .stitch-page [class~="py-space-3xl"] {
+    padding-block: 2rem !important;
+  }
+
+  .stitch-page [class~="p-space-3xl"] {
+    padding: 1.25rem !important;
+  }
+
   .stitch-page[data-stitch-page="public"] > header {
     position: sticky;
     padding: 0.75rem 0.75rem 0;

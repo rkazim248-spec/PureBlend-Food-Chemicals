@@ -16,9 +16,9 @@ export const publicNav = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-[#F8FAF7]/90 backdrop-blur-md">
-      <Container className="flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-14 items-center justify-between gap-3">
         <Link href="/" className="flex items-center gap-2 font-extrabold text-brand-600">
-          <Image src="/pureblend-light-mode-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-10 w-auto" />
+          <Image src="/pureblend-light-mode-logo.svg" alt="PureBlend Food Chemicals" width={240} height={60} priority className="h-8 w-auto" />
         </Link>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1 rounded-full bg-surface-muted px-1 py-1 text-sm font-semibold text-neutral-700">

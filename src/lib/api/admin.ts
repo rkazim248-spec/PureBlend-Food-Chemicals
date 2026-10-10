@@ -18,20 +18,32 @@ export interface AdminUser {
 }
 
 const mockUser: AdminUser = { id: "dev-admin", email: "dev@pureblend.local", name: "Dev Admin", role: "admin" };
+const MOCK_SESSION_KEY = "pureblend.mock.admin";
 
 export async function login(email: string, password: string): Promise<AdminUser> {
-  if (config.useMockData) return mockUser;
+  if (config.useMockData) {
+    if (typeof window !== "undefined") window.localStorage.setItem(MOCK_SESSION_KEY, "1");
+    return mockUser;
+  }
   const res = await apiRequest<{ user: AdminUser }>(endpoints.auth.login, { method: "POST", body: { email, password } });
   return res.user;
 }
 
 export async function logout(): Promise<void> {
-  if (config.useMockData) return;
+  if (config.useMockData) {
+    if (typeof window !== "undefined") window.localStorage.removeItem(MOCK_SESSION_KEY);
+    return;
+  }
   await apiRequest(endpoints.auth.logout, { method: "POST" });
 }
 
 export async function getMe(): Promise<AdminUser> {
-  if (config.useMockData) return mockUser;
+  if (config.useMockData) {
+    if (typeof window === "undefined" || window.localStorage.getItem(MOCK_SESSION_KEY) !== "1") {
+      throw new Error("Not authenticated");
+    }
+    return mockUser;
+  }
   return apiRequest<AdminUser>(endpoints.auth.me);
 }
 

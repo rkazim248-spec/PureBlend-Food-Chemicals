@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import path from "path";
+import { AdminRouteGuard } from "@/components/admin/AdminRouteGuard";
 
 /**
  * Renders a Stitch-exported static HTML page exactly as provided.
@@ -202,6 +203,14 @@ export function StitchPage({ designPath }: { designPath: string }) {
       .replace(/<span\b[^>]*>\s*Active Filters:\s*<\/span>/gi, "")
       .replace(/<span\b[^>]*>\s*Clear All Filters\s*<\/span>/gi, "");
   }
+  if (designPath === "products_pureblend_food_chemicals_2") {
+    bodyHtml = bodyHtml.replace(/<!--\s*3\.\s*ZERO RESULTS STATE[\s\S]*?(?=<!--\s*PAGINATION BAR)/i, "");
+  }
+  if (isAdminPage) {
+    bodyHtml = bodyHtml
+      .replace(/<[^>]+\b(?:workspace|simulator|demo)[^>]*>[\s\S]*?<\/[^>]+>/gi, "")
+      .replace(/<button\b[^>]*>[\s\S]*?(?:Empty State|Loading State|Error State|Detail Inspector|Add\/Edit Drawer)[\s\S]*?<\/button>/gi, "");
+  }
   bodyHtml = bodyHtml.replace(
     /class="([^"]*\bmin-w-max\b[^"]*)"/gi,
     'class="$1" style="min-width:0;width:100%;max-width:100%;overflow-x:auto"',
@@ -216,11 +225,14 @@ export function StitchPage({ designPath }: { designPath: string }) {
   }
 
   return (
-    <div
-      data-stitch-page={isAdminPage ? "admin" : "public"}
-      className="stitch-page"
-      suppressHydrationWarning
-      dangerouslySetInnerHTML={{ __html: bodyHtml }}
-    />
+    <>
+      {isAdminPage && <AdminRouteGuard />}
+      <div
+        data-stitch-page={isAdminPage ? "admin" : "public"}
+        className="stitch-page"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: bodyHtml }}
+      />
+    </>
   );
 }

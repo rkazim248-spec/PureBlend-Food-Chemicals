@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getUserByEmail, setCustomUserClaims, getFirestoreAdmin, verifyIdToken, checkAdminClaim, getAdminAuth } from "@/lib/firebase/admin";
+import { getUserByEmail, getFirestoreAdmin, verifyIdToken, checkAdminClaim, getAdminAuth } from "@/lib/firebase/admin";
 import { UserRecord } from "firebase-admin/auth";
 import { z } from "zod";
 
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { email, password } = validated.data;
+    const { email } = validated.data;
 
     // Step 1: Verify user exists via Firebase Admin SDK
     let userRecord: UserRecord;
@@ -34,21 +34,12 @@ export async function POST(request: Request) {
       );
     }
 
-    // Step 2: Set custom admin claim on the user
-    await setCustomUserClaims(userRecord.uid, { role: "ADMIN" });
-
-    // Step 3: Ensure Firestore admin record exists
-    const db = getFirestoreAdmin();
-    await db.collection("admins").doc(userRecord.uid).set({
-      uid: userRecord.uid,
-      email: userRecord.email,
-      role: "ADMIN",
-      isActive: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }, { merge: true });
-
-    // Step 4: Get the user's ID token to return
+    // Step 2: Get the user's ID token to return
+    // Note: Admin claims (role: "ADMIN"/"SUPERADMIN") are NOT set here.
+    // Admin claims should be granted separately via:
+    //   - scripts/set-admin.ts CLI script
+    //   - Firebase Console > Users > Set custom claims
+    //   - Dedicated admin provisioning endpoint with proper verification
     const idToken = await (userRecord as any).getIdToken();
 
     return NextResponse.json({
@@ -58,16 +49,15 @@ export async function POST(request: Request) {
         adminUser: {
           id: userRecord.uid,
           email: userRecord.email,
-          role: "ADMIN",
+          role: userRecord.customClaims?.role as string | null,
         },
       },
     });
   } catch (err: any) {
     console.error("Auth login error:", err);
-    const code = err instanceof z.ZodError ? "VALIDATION_ERROR" : "UNAUTHORIZED";
     return NextResponse.json(
-      { success: false, error: { code, message: err.message ?? "Login failed." } },
-      { status: 401 }
+      { success: false, error: { code: "SERVER_ERROR", message: "Unexpected error during login" } },
+      { status: 500 }
     );
   }
 }
@@ -120,7 +110,7 @@ export async function GET(request: Request) {
   } catch (err: any) {
     console.error("Auth verify error:", err);
     return NextResponse.json(
-      { success: false, error: { code: "SERVER_ERROR", message: err.message ?? "Verification failed." } },
+      { success: false, error: { code: "SERVER_ERROR", message: "Verification failed." } },
       { status: 500 }
     );
   }

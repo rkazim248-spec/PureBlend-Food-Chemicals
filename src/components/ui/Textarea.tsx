@@ -1,42 +1,49 @@
-import { cn } from "@/lib/utils";
-import { forwardRef, useId, type TextareaHTMLAttributes } from "react";
-import { Label } from "./Label";
+'use client';
 
-interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+import React from 'react';
+
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
+  helperText?: string;
   error?: string;
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
-  { label, error, id, className, ...props },
-  ref,
-) {
-  const generatedId = useId();
-  const inputId = id ?? generatedId;
-  const errorId = `${inputId}-error`;
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className = '', label, helperText, error, id, rows = 4, ...props }, ref) => {
+    const generatedId = React.useId();
+    const textareaId = id || generatedId;
 
-  return (
-    <div className="flex flex-col gap-1.5">
-      {label && <Label htmlFor={inputId}>{label}</Label>}
-      <textarea
-        ref={ref}
-        id={inputId}
-        className={cn(
-          "min-h-28 w-full rounded-md border bg-white px-3 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400",
-          "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-brand-600 focus-visible:border-brand-600",
-          "disabled:bg-neutral-100 disabled:text-neutral-500",
-          error ? "border-danger-600" : "border-neutral-300",
-          className,
+    return (
+      <div className="w-full text-left">
+        {label && (
+          <label htmlFor={textareaId} className="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+            {label}
+            {props.required && <span className="text-red-600 ml-1" aria-hidden="true">*</span>}
+          </label>
         )}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error ? errorId : undefined}
-        {...props}
-      />
-      {error && (
-        <p id={errorId} role="alert" className="text-sm text-danger-600">
-          {error}
-        </p>
-      )}
-    </div>
-  );
-});
+        <textarea
+          ref={ref}
+          id={textareaId}
+          rows={rows}
+          aria-invalid={!!error}
+          aria-describedby={error ? `${textareaId}-error` : helperText ? `${textareaId}-desc` : undefined}
+          className={`w-full rounded-md border bg-white px-3.5 py-2 text-sm text-charcoal transition-colors placeholder:text-secondary-text/60 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-primary-green disabled:bg-slate-50 disabled:cursor-not-allowed resize-y ${
+            error ? 'border-red-400 focus:ring-red-400 focus:border-red-400' : 'border-border-subtle'
+          } ${className}`}
+          {...props}
+        />
+        {error ? (
+          <p id={`${textareaId}-error`} className="text-xs text-red-600 mt-1 font-medium">
+            {error}
+          </p>
+        ) : helperText ? (
+          <p id={`${textareaId}-desc`} className="text-xs text-secondary-text mt-1">
+            {helperText}
+          </p>
+        ) : null}
+      </div>
+    );
+  }
+);
+
+Textarea.displayName = 'Textarea';

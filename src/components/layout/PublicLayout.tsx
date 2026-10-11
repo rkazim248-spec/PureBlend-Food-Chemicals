@@ -1,17 +1,24 @@
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+'use client';
+
+import React from 'react';
+import { usePathname } from 'next/navigation';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { FloatingAIChat } from '@/components/chat/FloatingAIChat';
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isAuthPage = pathname?.startsWith('/auth/login') || pathname?.startsWith('/auth/signup') || pathname?.startsWith('/auth');
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white">
-        Skip to content
-      </a>
+    <div className="min-h-screen flex flex-col bg-warm-white text-charcoal">
       <Header />
-      <main id="main-content" className="flex-1">
+      <main className="flex-1">
         {children}
       </main>
       <Footer />
+      {!isAuthPage && <FloatingAIChat />}
     </div>
   );
 }
+

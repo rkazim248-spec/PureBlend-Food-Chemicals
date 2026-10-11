@@ -1,33 +1,33 @@
-import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+import type { Metadata } from 'next';
+import './globals.css';
+import { ToastProvider } from '@/components/ui/Toast';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  icons: {
-    icon: "/pureblend-symbol.svg",
+  title: 'PureBlend Food Chemicals | Industrial Food Ingredients & Chemicals',
+  description:
+    'B2B food chemicals, acidulants, antimicrobial preservatives, hydrocolloids, and specialty ingredient solutions for industrial food and beverage manufacturing.',
+  openGraph: {
+    title: 'PureBlend Food Chemicals | Industrial Food Ingredients & Chemicals',
+    description:
+      'B2B food chemicals, acidulants, antimicrobial preservatives, hydrocolloids, and specialty ingredient solutions for industrial food and beverage manufacturing.',
+    type: 'website'
   },
-  title: {
-    default: "PureBlend Food Chemicals",
-    template: "%s | PureBlend Food Chemicals",
-  },
-  description: "PureBlend Food Chemicals — food ingredients and ingredient solutions.",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PureBlend Food Chemicals | Industrial Food Ingredients & Chemicals',
+    description:
+      'B2B food chemicals, acidulants, antimicrobial preservatives, hydrocolloids, and specialty ingredient solutions for industrial food and beverage manufacturing.'
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      className={`${inter.variable} ${manrope.variable}`}
-    >
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body className="font-sans">{children}</body>
+    <html lang="en">
+      <body suppressHydrationWarning className="bg-warm-white text-charcoal min-h-screen antialiased">
+        <ToastProvider>
+          {children}
+        </ToastProvider>
+      </body>
     </html>
   );
 }

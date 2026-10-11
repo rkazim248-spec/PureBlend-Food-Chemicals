@@ -1,5 +1,10 @@
-import { cn } from "@/lib/utils";
+import React from 'react';
 
-export function Skeleton({ className }: { className?: string }) {
-  return <div aria-hidden="true" className={cn("animate-pulse rounded-md bg-neutral-200", className)} />;
+export function Skeleton({ className = '' }: { className?: string }) {
+  return (
+    <div
+      className={`animate-pulse bg-slate-200/80 rounded ${className}`}
+      aria-hidden="true"
+    />
+  );
 }

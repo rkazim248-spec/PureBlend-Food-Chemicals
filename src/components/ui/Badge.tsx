@@ -1,22 +1,40 @@
-import { cn } from "@/lib/utils";
-import type { HTMLAttributes } from "react";
+import React from 'react';
 
-type Tone = "neutral" | "success" | "warning" | "danger" | "info" | "brand";
+export interface BadgeProps {
+  children: React.ReactNode;
+  variant?: 'neutral' | 'success' | 'warning' | 'error' | 'forest';
+  tone?: 'neutral' | 'success' | 'warning' | 'danger' | 'info' | 'brand';
+  size?: 'sm' | 'md';
+  className?: string;
+}
 
-const tones: Record<Tone, string> = {
-  neutral: "bg-neutral-100 text-neutral-700",
-  success: "bg-green-100 text-green-800",
-  warning: "bg-amber-100 text-amber-800",
-  danger: "bg-red-100 text-red-800",
-  info: "bg-sky-100 text-sky-800",
-  brand: "bg-brand-100 text-brand-800",
-};
+export function Badge({
+  children,
+  variant = 'neutral',
+  tone,
+  size = 'sm',
+  className = ''
+}: BadgeProps) {
+  const sizeStyles = {
+    sm: 'text-[11px] px-2 py-0.5 font-medium tracking-tight',
+    md: 'text-xs px-2.5 py-1 font-medium'
+  };
 
-export function Badge({ tone = "neutral", className, ...props }: HTMLAttributes<HTMLSpanElement> & { tone?: Tone }) {
+  const variantStyles = {
+    neutral: 'bg-slate-100 text-charcoal border border-border-subtle',
+    success: 'bg-[#edf7f1] text-[#1c633d] border border-[#cbe6d5]',
+    warning: 'bg-[#fdf8ee] text-[#9c6414] border border-[#f5e3bc]',
+    error: 'bg-[#fef2f2] text-[#b42318] border border-[#fecdca]',
+    forest: 'bg-soft-green text-forest border border-[#cbe0d3]'
+  };
+
+  const resolvedVariant = tone === 'danger' ? 'error' : tone === 'info' || tone === 'brand' ? 'forest' : tone ?? variant;
+
   return (
     <span
-      className={cn("inline-flex items-center rounded-pill px-2.5 py-0.5 text-xs font-semibold", tones[tone], className)}
-      {...props}
-    />
+      className={`inline-flex items-center rounded border font-mono uppercase tracking-wider ${sizeStyles[size]} ${variantStyles[resolvedVariant]} ${className}`}
+    >
+      {children}
+    </span>
   );
 }

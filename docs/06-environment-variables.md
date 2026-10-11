@@ -1,112 +1,161 @@
-# 06 — Environment Variables Strategy: PureBlend Food Chemicals
+# 06 — Environment Variables: PureBlend Food Chemicals
 
-## 1. Environment Variable Architecture & Security Philosophy
+## 1. Overview
 
-Environment variables in **PureBlend Food Chemicals** follow strict segmentation between public browser configuration and server-only cryptographic secrets.
+This document documents all environment variables used by the PureBlend Food Chemicals application. Variables are split into two categories:
 
-### Cardinal Rules
-1. **Never Commit Secrets**: No real database connection strings, API tokens, passwords, or encryption keys may ever be committed to the Git repository.
-2. **Next.js Prefix Isolation**: Only variables explicitly prefixed with `NEXT_PUBLIC_` are bundled into client-side JavaScript. All other variables are server-only.
-3. **Fail-Fast Server Validation**: Missing required server environment variables during production initialization trigger immediate application startup errors rather than silent runtime failures.
-4. **Git Hygiene**: `.env` and `.env.local` are explicitly ignored in `.gitignore`. Only `.env.example`, `.env.development`, and `.env.production` (containing public flags and placeholders only) are tracked in version control.
+- **`NEXT_PUBLIC_*`**: Safe for browser exposure (client-side Next.js)
+- **(no prefix)**: Server-only — never committed to client bundles
 
----
+## 2. Client-Safe Variables (`NEXT_PUBLIC_*`)
 
-## 2. Environment Variables Inventory
+These variables are exposed to the browser via `process.env.NEXT_PUBLIC_*`. They must NOT contain secrets or credentials.
 
-### 2.1. Client-Facing Public Variables (Browser Accessible)
+| Variable | Scope | Default/Notes |
+|----------|-------|---------------|
+| `NEXT_PUBLIC_API_BASE_URL` | Client + Server | Base API prefix (`/api/` or full URL). Leave empty for relative Next.js API routes. |
+| `NEXT_PUBLIC_SITE_URL` | Client | Site URL for Open Graph, sitemap. `http://localhost:3000` by default. |
+| `NEXT_PUBLIC_USE_MOCK_DATA` | Client | Toggle mock data mode. `true` = use fixtures without backend; `false` = require real API. |
+| `NEXT_PUBLIC_FIREBASE_API_KEY` | Client | Firebase API key — safe for auth initialization. |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | Client | Firebase auth domain (e.g., `pureblend-12345.firebaseapp.com`). |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | Client | Firebase project ID. |
+| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` | Client | Firebase storage bucket (e.g., `pureblend-12345.appspot.com`). |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | Client | Firebase Cloud messaging sender ID. |
+| `NEXT_PUBLIC_FIREBASE_APP_ID` | Client | Firebase app ID (full string: `1:123456789:web:abc123...`). |
 
-These variables configure frontend routing, base API domains, and mock data toggles. They contain **zero confidential credentials**.
-
-| Variable Name | Purpose | Scope | Example / Default | Required in Prod? |
-|---|---|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Canonical origin URL for Open Graph and sitemaps | Client + Server | `https://www.pureblend.example.com` | Yes |
-| `NEXT_PUBLIC_API_BASE_URL` | Base URL for API calls (empty string for same-origin relative calls) | Client | `""` (empty for same-origin Next.js routes) | No |
-| `NEXT_PUBLIC_USE_MOCK_DATA` | Development toggle to use mock fixtures when backend is detached | Client + Server | `"false"` (must be `false` in production) | Yes |
-
----
-
-### 2.2. Server-Only Secrets & Infrastructure Credentials
-
-These variables are **never exposed to the browser**. They are consumed exclusively by Next.js Route Handlers (`src/app/api/...`), Server Components, and the backend service layer (`src/lib/server/...`).
-
-#### A. Database & ORM
-| Variable Name | Purpose | Scope | Format / Example |
-|---|---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string for Prisma ORM | Server Only | `postgresql://user:password@db.provider.com:5432/pureblend?sslmode=require` |
-| `DIRECT_URL` | Direct unpooled connection URL (required for Supabase/Neon migrations) | Server Only | `postgresql://user:password@db.provider.com:5432/pureblend?sslmode=require` |
-
-#### B. Authentication & Session Security
-| Variable Name | Purpose | Scope | Format / Example |
-|---|---|---|---|
-| `AUTH_SECRET` | Cryptographic secret key used to sign and verify administrative session tokens / cookies | Server Only | 64-character hexadecimal or base64 string (`openssl rand -hex 32`) |
-| `ADMIN_INITIAL_EMAIL` | Default administrator seed email address | Server Only | `admin@pureblend.com` |
-| `ADMIN_INITIAL_PASSWORD`| Default administrator seed password for first-time migration seeding | Server Only | High-entropy string (e.g., `Admin_PureBlend!2026`) |
-
-#### C. AI & RAG Subsystem
-| Variable Name | Purpose | Scope | Format / Example |
-|---|---|---|---|
-| `OPENAI_API_KEY` | OpenAI API key for `text-embedding-3-small` (1536-dim) and `gpt-4o-mini` | Server Only | `sk-proj-...` |
-| `RAG_SIMILARITY_THRESHOLD` | Minimum cosine similarity score required for grounding before triggering refusal | Server Only | `0.70` (default: 0.70) |
-
-#### D. SMTP Email Dispatch (Contact Form)
-| Variable Name | Purpose | Scope | Format / Example |
-|---|---|---|---|
-| `SMTP_HOST` | Hostname of SMTP mail relay | Server Only | `smtp.resend.com` or `smtp.sendgrid.net` |
-| `SMTP_PORT` | SMTP port | Server Only | `587` (STARTTLS) or `465` (SSL) |
-| `SMTP_USER` | Authenticated SMTP username | Server Only | `apikey` or `pureblend-mailer` |
-| `SMTP_PASSWORD` | Authenticated SMTP password or secret API key | Server Only | Strong alphanumeric token |
-| `SMTP_FROM` | Sender address shown in outbound email envelope | Server Only | `"PureBlend Inquiries" <no-reply@pureblend.example.com>` |
-| `CONTACT_RECIPIENT` | Business inbox receiving customer inquiries and sample requests | Server Only | `orders@pureblend.example.com` |
-
-#### E. Cloud Media Storage (Cloudinary / Supabase Storage)
-| Variable Name | Purpose | Scope | Format / Example |
-|---|---|---|---|
-| `STORAGE_PROVIDER` | Object storage provider selector (`cloudinary` or `supabase`) | Server Only | `cloudinary` |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary account identifier | Server Only | `pureblend-media` |
-| `CLOUDINARY_API_KEY` | Cloudinary access key | Server Only | `123456789012345` |
-| `CLOUDINARY_API_SECRET` | Cloudinary secret access token | Server Only | Alphanumeric secret |
+**Security Rules**:
+- All `NEXT_PUBLIC_*` variables are opt-in; if undefined, the code gracefully falls back
+- Never prefix `CLOUDINARY_API_SECRET`, `FIREBASE_PRIVATE_KEY`, `SMTP_PASSWORD`, or `OPENAI_API_KEY` with `NEXT_PUBLIC_`
+- The `.env.local` file (git-ignored) contains real values; `.env.example` contains only templates
 
 ---
 
-## 3. Environment Strategy Across Stages
+## 3. Server-Only Variables (no prefix)
 
-### 3.1. Local Development (`.env.development` & `.env.local`)
-- `.env.development`: Tracked in Git with `NEXT_PUBLIC_USE_MOCK_DATA=true` and empty base URL for safe out-of-the-box frontend development.
-- `.env.local`: Untracked file created by each developer with local PostgreSQL and test SMTP configurations:
-  ```bash
-  cp .env.example .env.local
-  ```
+These variables must NEVER be exposed to the browser. They are accessed via `process.env.VAR_NAME` only in `src/lib/server/` or `src/app/api/...` routes.
 
-### 3.2. Staging & Production Deployment
-- Deployed on Vercel / Cloud Container.
-- Environment variables configured via provider dashboard (Vercel Project Settings &rarr; Environment Variables).
-- Production forces:
-  - `NEXT_PUBLIC_USE_MOCK_DATA=false`
-  - Valid `DATABASE_URL` with SSL mode enabled.
-  - Valid `AUTH_SECRET` generated via `openssl rand -hex 32`.
-  - Active `OPENAI_API_KEY` and `SMTP_*` credentials.
+| Variable | Scope | Source/Notes |
+|----------|-------|--------------|
+| `FIREBASE_PROJECT_ID` | Server | Firebase project ID. |
+| `FIREBASE_CLIENT_EMAIL` | Server | Service account client email (from Firebase Console > Service Accounts). |
+| `FIREBASE_PRIVATE_KEY` | Server | Service account private key (PEM format). **Must have literal `\n` escaped** for `.env` file: `PRIVATE_KEY="abc\\ndef"` → actual value `abc\ndef`. |
+| `CLOUDINARY_CLOUD_NAME` | Server | Cloudinary subdomain (e.g., `pureblend-media`). |
+| `CLOUDINARY_API_KEY` | Server | Cloudinary API key number. |
+| `CLOUDINARY_API_SECRET` | Server | Cloudinary API secret — **CRITICAL: never expose to browser**. Used for signed upload URLs server-side only. |
+| `SMTP_HOST` | Server | SMTP server hostname (e.g., `smtp.sendgrid.net`). |
+| `SMTP_PORT` | Server | SMTP port number. Default: `587`. |
+| `SMTP_USER` | Server | SMTP authentication username. |
+| `SMTP_PASSWORD` | Server | SMTP authentication password — **CRITICAL: never expose to browser**. |
+| `SMTP_FROM` | Server | Sender email address (e.g., `PureBlend Inquiries <no-reply@pureblend.example.com>`). |
+| `CONTACT_RECIPIENT` | Server | Email address that receives contact form submissions. |
+| `OPENAI_API_KEY` | Server | OpenAI API key (starts with `sk-`). Used for embeddings and LLM. |
+| `RAG_SIMILARITY_THRESHOLD` | Server | Float 0.0–1.0. Default: `0.70`. Controls vector search strictness. |
+| `AUTH_SECRET` | Server | Random 64-char hex string for custom session token signing (if used). |
+| `ADMIN_INITIAL_EMAIL` | Server | Email for initial admin user creation. |
+| `ADMIN_INITIAL_PASSWORD` | Server | Password for initial admin user (Firebase Auth). |
+
+**Security Rules**:
+- **NEVER** commit real values to the repository
+- `.env*` secret files must be listed in `.gitignore`
+- `.env.example` remains committable (contains only variable names and descriptions, no values)
+- Deployment platforms (Vercel, Netlify) must have these variables configured in their dashboards, NOT in the repo
+- Use `git-crypt`, `.env.gitignore`, or platform-specific secret management to protect values
 
 ---
 
-## 4. Server-Side Environment Validator (`src/lib/server/env.ts`)
+## 4. Deprecated/Removed Variables
 
-To ensure fail-fast safety, the backend implements a runtime schema validation utility using Zod that validates critical environment variables whenever server route handlers boot:
+| Variable | Replacement | Reason |
+|----------|-------------|--------|
+| `DATABASE_URL` | (removed — Firebase Firestore) | Previous Prisma/PostgreSQL; no longer used |
+| `DIRECT_URL` | (removed) | Prisma direct connection URL; not needed |
+| `AUTH_SECRET` (custom session) | Firebase Custom Claims | Replaced by Firebase Auth + custom claims system |
+| `ADMIN_INITIAL_EMAIL` / `ADMIN_INITIAL_PASSWORD` | Firebase Auth onboarding | Admin creation now via Firebase Console or `/api/auth/login` flow |
 
-```typescript
-import { z } from "zod";
+**Note**: The previous Prisma/PostgreSQL variables (`DATABASE_URL`, etc.) remain in `.env.example` with a "Deprecated" comment for reference during migration, but are no longer read by the application.
 
-const serverEnvSchema = z.object({
-  DATABASE_URL: z.string().url(),
-  AUTH_SECRET: z.string().min(32),
-  OPENAI_API_KEY: z.string().optional(),
-  SMTP_HOST: z.string().optional(),
-  SMTP_PORT: z.string().optional(),
-  SMTP_USER: z.string().optional(),
-  SMTP_PASSWORD: z.string().optional(),
-  SMTP_FROM: z.string().optional(),
-  CONTACT_RECIPIENT: z.string().email().optional(),
-});
+---
 
-export const serverEnv = serverEnvSchema.parse(process.env);
+## 5. .env File Priority & Loading
+
+Next.js automatically loads environment variables in this order (last wins):
+
+1. `.env` (base, committed to repo — non-sensitive defaults only)
+2. `.env.local` (overrides, **git-ignored**, contains real secrets)
+3. `.env.${NODE_ENV}` (e.g., `.env.production`, `.env.development`)
+4. `.env.${NODE_LOCAL}` (overrides)
+5. System environment variables
+
+**Important**: `.env.local` is automatically added to `.gitignore`. Never commit real secrets.
+
+---
+
+## 6. .env.example Current Content
+
+The `.env.example` file (committable to repo) contains:
+
+```env
+# Firebase Client (safe for browser)
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# Firebase Admin (server-only)
+FIREBASE_PROJECT_ID=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_PRIVATE_KEY=
+
+# Cloudinary (server-only)
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+# SMTP Email (server-only)
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASSWORD=
+SMTP_FROM=
+CONTACT_RECIPIENT=
+
+# AI/RAG (server-only)
+OPENAI_API_KEY=
+RAG_SIMILARITY_THRESHOLD=0.70
+
+# Auth (server-only)
+AUTH_SECRET=replace-with-a-secure-random-64-character-hex-string
+ADMIN_INITIAL_EMAIL=admin@pureblend.com
+ADMIN_INITIAL_PASSWORD=ChangeMeInProduction!2026
+
+# Deprecated (reference only)
+# DATABASE_URL="postgresql://postgres:postgres@localhost:5432/pureblend?schema=public"
 ```
+
+---
+
+## 7. Adding New Environment Variables
+
+When adding a new variable:
+
+1. **Decide scope**: Is it `NEXT_PUBLIC_` (client-safe) or server-only?
+2. **Add to `.env.example`**: Document the variable name and description
+3. **Add to documentation**: Update `docs/06-environment-variables.md` (this file)
+4. **Add to code**: Read via `process.env.YOUR_VAR` in appropriate location
+5. **Set in deployment**: Configure the variable in your hosting platform (Vercel, Netlify, etc.)
+6. **TypeScript check**: Ensure `next-env.d.ts` or TypeScript config accommodates the new variable if needed
+
+---
+
+## 8. Validation Checklist
+
+Before committing any `.env*` changes:
+
+- [ ] `.env.example` contains no secret values (only variable names and descriptions)
+- [ ] No `NEXT_PUBLIC_` variable exposes `API_SECRET`, `PRIVATE_KEY`, `PASSWORD`, or `KEY`
+- [ ] `.env.local` (if it exists with real values) is git-ignored
+- [ ] All server-only variables have a plan for deployment configuration (Vercel/Netlify dashboard)
+- [ ] No environment variable name conflicts with Next.js internal vars
+- [ ] Run `npx tsc --noEmit` to ensure no type errors from new env vars

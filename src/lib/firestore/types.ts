@@ -109,6 +109,8 @@ export interface ContactMessage extends Timestampable {
   email: string;
   subject: string;
   message: string;
+  phone?: string;
+  company?: string;
   ipAddress?: string;
   status: "UNREAD" | "READ" | "ARCHIVED";
 }

@@ -1,71 +1,120 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import nodemailer from "nodemailer";
+import { contactService } from "@/lib/firestore/entities";
 
 /**
  * POST /api/contact — server boundary for the contact form.
- * Validates, sanitizes, rate-limits, and delivers via SMTP.
+ * Validates with Zod, rate-limits, saves inquiry, and delivers via SMTP.
  * Secrets come from server-only env vars; nothing sensitive reaches the client.
  */
 
-const MAX = { name: 120, email: 200, subject: 200, message: 5000 };
+const MAX = {
+  name: 120,
+  email: 200,
+  phone: 50,
+  company: 200,
+  subject: 200,
+  message: 5000,
+};
 
-// Simple in-memory rate limit (per serverless instance) — reasonable abuse protection.
-const hits = new Map<string, { count: number; resetAt: number }>();
-const WINDOW_MS = 10 * 60 * 1000;
-const LIMIT = 5;
+const MIN = {
+  message: 10,
+};
 
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const entry = hits.get(ip);
-  if (!entry || entry.resetAt < now) {
-    hits.set(ip, { count: 1, resetAt: now + WINDOW_MS });
-    return false;
-  }
-  entry.count += 1;
-  return entry.count > LIMIT;
-}
+const phoneRegex = /^[\+]?[0-9\s\-\(\)]{7,30}$/;
 
-const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const stripHeaderChars = (s: string) => s.replace(/[\r\n]+/g, " ").trim();
+// Zod schema for contact form validation
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(MAX.name, "Name is too long"),
+  email: z
+    .string()
+    .trim()
+    .email("A valid email is required")
+    .max(MAX.email, "Email is too long"),
+  phone: z.string().trim().refine((val) => !val || phoneRegex.test(val), "Phone number format is invalid"),
+  company: z
+    .string()
+    .trim()
+    .optional()
+    .refine((val) => !val || val.length <= MAX.company, "Company is too long"),
+  subject: z.string().trim().min(1, "Subject is required").max(MAX.subject, "Subject is too long"),
+  message: z
+    .string()
+    .trim()
+    .min(MIN.message, "Message must be at least 10 characters")
+    .max(MAX.message, "Message is too long"),
+});
+
+// Type for the parsed and validated fields
+type ContactFormData = z.infer<typeof contactSchema>;
 
 function fail(status: number, code: string, message: string) {
   return NextResponse.json({ error: { code, message } }, { status });
 }
 
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = (global as any).contactHits?.get(ip);
+  if (!entry || entry.resetAt < now) {
+    (global as any).contactHits = (global as any).contactHits || new Map();
+    (global as any).contactHits.set(ip, { count: 1, resetAt: now + 10 * 60 * 1000 });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > 5;
+}
+
 export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+
   if (rateLimited(ip)) {
-    return fail(429, "RATE_LIMITED", "Too many submissions. Please try again later.");
+    return NextResponse.json(
+      { error: { code: "RATE_LIMITED", message: "Too many submissions. Please try again later." } },
+      { status: 429 }
+    );
   }
 
-  let body: Record<string, unknown>;
+  let body: unknown;
   try {
     body = await request.json();
   } catch {
-    return fail(400, "VALIDATION_ERROR", "Invalid request body.");
+    return NextResponse.json(
+      { error: { code: "VALIDATION_ERROR", message: "Invalid request body." } },
+      { status: 400 }
+    );
   }
 
-  const name = String(body.name ?? "").trim();
-  const email = String(body.email ?? "").trim();
-  const subject = String(body.subject ?? "").trim();
-  const message = String(body.message ?? "").trim();
-  const honeypot = String(body.honeypot ?? "");
+  const result = contactSchema.safeParse(body);
 
-  // Honeypot: pretend success to avoid tipping off bots, but send nothing.
-  if (honeypot) {
-    return NextResponse.json({ ok: true });
+if (!result.success) {
+    const errors = result.error.flatten();
+    return NextResponse.json(
+      { error: { code: "VALIDATION_ERROR", message: errors.formErrors.join(". ") } },
+      { status: 400 }
+    );
   }
 
-  if (!name) return fail(422, "VALIDATION_ERROR", "Name is required.");
-  if (name.length > MAX.name) return fail(422, "VALIDATION_ERROR", "Name is too long.");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > MAX.email) {
-    return fail(422, "VALIDATION_ERROR", "A valid email is required.");
-  }
-  if (!subject) return fail(422, "VALIDATION_ERROR", "Subject is required.");
-  if (subject.length > MAX.subject) return fail(422, "VALIDATION_ERROR", "Subject is too long.");
-  if (message.length < 10) return fail(422, "VALIDATION_ERROR", "Message must be at least 10 characters.");
-  if (message.length > MAX.message) return fail(422, "VALIDATION_ERROR", "Message is too long.");
+  const data: ContactFormData = result.data;
 
+  const { name, email, phone, company, subject, message } = data;
+
+  // Save inquiry to Firestore
+  try {
+    await contactService.create({
+      name,
+      email,
+      phone: phone || undefined,
+      company: company || undefined,
+      subject,
+      message,
+    });
+  } catch (saveError) {
+    console.error("Failed to save contact inquiry:", saveError);
+    // Continue even if Firestore save fails - we'll still try to send email
+  }
+
+  // SMTP configuration from server-only env vars
   const host = process.env.SMTP_HOST;
   const port = Number(process.env.SMTP_PORT ?? "587");
   const user = process.env.SMTP_USER;
@@ -75,7 +124,10 @@ export async function POST(request: Request) {
 
   if (!host || !user || !pass || !from || !to) {
     console.error("SMTP is not configured (missing SMTP_HOST/SMTP_USER/SMTP_PASSWORD/SMTP_FROM/CONTACT_RECIPIENT).");
-    return fail(503, "UNAVAILABLE", "Unable to send your message right now. Please try again later.");
+    return NextResponse.json(
+      { error: { code: "UNAVAILABLE", message: "Unable to send your message right now. Please try again later." } },
+      { status: 503 }
+    );
   }
 
   try {
@@ -89,15 +141,26 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from,
       to,
-      replyTo: stripHeaderChars(email),
-      subject: `[Website Inquiry] ${stripHeaderChars(subject)}`,
-      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
-      html: `<p><strong>Name:</strong> ${esc(name)}</p><p><strong>Email:</strong> ${esc(email)}</p><p><strong>Subject:</strong> ${esc(subject)}</p><hr/><p>${esc(message).replace(/\n/g, "<br/>")}</p>`,
+      replyTo: email,
+      subject: `[Website Inquiry] ${subject}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"}\nCompany: ${company || "N/A"}\nSubject: ${subject}\n\n${message}`,
+      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone || "N/A"}</p><p><strong>Company:</strong> ${company || "N/A"}</p><p><strong>Subject:</strong> ${subject}</p><hr/><p>${message}</p>`,
     });
 
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("SMTP delivery failed:", err instanceof Error ? err.message : err);
-    return fail(502, "DELIVERY_FAILED", "Unable to send your message right now. Please try again later.");
+
+    // Even if email fails, the inquiry is saved in Firestore
+    return NextResponse.json(
+      {
+        error: {
+          code: "DELIVERY_FAILED",
+          message:
+            "Your inquiry has been saved, but we were unable to send the email notification. An administrator will follow up shortly.",
+        },
+      },
+      { status: 502 }
+    );
   }
 }

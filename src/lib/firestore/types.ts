@@ -89,6 +89,7 @@ export interface Page extends Timestampable {
   id: string;
   pageKey: string;
   title: string;
+  published: boolean;
   sections: PageSection[];
 }
 

@@ -9,8 +9,34 @@ import { Button } from '@/components/ui/Button';
 import { useToast } from '@/components/ui/Toast';
 import { Eye, EyeOff, Lock, User, Mail, ShieldCheck, ArrowRight } from 'lucide-react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { FirebaseError } from 'firebase/app';
 import { getFirebaseAuth } from '@/lib/firebase/client';
 import { clearAdminToken } from '@/lib/api/admin';
+
+function getSignupErrorMessage(error: unknown): string {
+  if (!(error instanceof FirebaseError)) {
+    return 'Check your Firebase client configuration and try again.';
+  }
+
+  switch (error.code) {
+    case 'auth/email-already-in-use':
+      return 'An account with this email already exists. Please sign in instead.';
+    case 'auth/invalid-email':
+      return 'Enter a valid email address and try again.';
+    case 'auth/weak-password':
+      return 'Choose a stronger password with at least 6 characters.';
+    case 'auth/operation-not-allowed':
+      return 'Email and password sign-up is disabled. Enable the Email/Password provider in Firebase Authentication settings.';
+    case 'auth/invalid-api-key':
+      return 'Firebase configuration is invalid. Check the public Firebase settings for this deployment.';
+    case 'auth/network-request-failed':
+      return 'Firebase could not be reached. Check your internet connection and try again.';
+    case 'auth/too-many-requests':
+      return 'Too many attempts were made. Wait a while, then try again.';
+    default:
+      return 'Account creation failed. Check your Firebase Authentication settings and try again.';
+  }
+}
 
 export default function SignupPage() {
   const router = useRouter();
@@ -67,7 +93,7 @@ export default function SignupPage() {
       console.error('Account creation failed:', error);
       showToast({
         title: 'Unable to Create Account',
-        description: 'Check your details and try again. If the problem continues, contact support.',
+        description: getSignupErrorMessage(error),
         type: 'error'
       });
     } finally {

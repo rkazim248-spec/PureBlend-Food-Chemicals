@@ -8,20 +8,30 @@ import { Button } from '@/components/ui/Button';
 import { RFQModal } from '@/components/forms/RFQModal';
 import { PureBlendLogo } from '@/components/ui/PureBlendLogo';
 import { useFavorites } from '@/hooks/useFavorites';
+import { admin } from '@/lib/api';
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isRfqOpen, setIsRfqOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { favoriteIds } = useFavorites();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 8);
+    let cancelled = false;
+    const timeout = setTimeout(async () => {
+      try {
+        const res = await admin.getMe();
+        setIsAdmin(!!res.role && (res.role === "ADMIN" || res.role === "SUPERADMIN"));
+      } catch {
+        setIsAdmin(false);
+      }
+    }, 0);
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
@@ -208,14 +218,16 @@ export function Header() {
                   <User className="w-3.5 h-3.5 text-[#52615A]" />
                   <span>Client Portal</span>
                 </Link>
-                <Link
-                  href="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2 px-3 rounded-md border border-[#D8E2DC] text-xs font-semibold text-[#17211D] hover:bg-[#F8FAF7] flex items-center justify-center gap-1.5"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#52615A]" />
-                  <span>Admin Console</span>
-                </Link>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full text-center py-2 px-3 rounded-md border border-[#D8E2DC] text-xs font-semibold text-[#17211D] hover:bg-[#F8FAF7] flex items-center justify-center gap-1.5"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#52615A]" />
+                    <span>Admin Console</span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

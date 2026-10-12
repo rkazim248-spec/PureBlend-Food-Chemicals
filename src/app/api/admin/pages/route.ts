@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getAdminAuth } from "@/lib/firebase/admin";
 import { pageService } from "@/lib/firestore/entities";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<Record<string, string>> }) {
   try {
     const url = new URL(request.url);
     const authHeader = request.headers.get("authorization") ?? "";
@@ -47,7 +47,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function POST(request: Request, { params }: { params: {} }) {
+export async function POST(request: Request, { params }: { params: Promise<Record<string, string>> }) {
   try {
     const body: any = await request.json();
 
@@ -96,7 +96,7 @@ export async function POST(request: Request, { params }: { params: {} }) {
   }
 }
 
-export async function PATCH(request: Request, { params }: { params: { id: string } }) {
+export async function PATCH(request: Request, { params }: { params: Promise<Record<string, string>> }) {
   try {
     const { id } = await params;
 
@@ -148,7 +148,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<Record<string, string>> }) {
   try {
     const url = new URL(request.url);
     const authHeader = request.headers.get("authorization") ?? "";

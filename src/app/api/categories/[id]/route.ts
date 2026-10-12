@@ -4,18 +4,19 @@ import { z } from "zod";
 
 const categoryIdSchema = z.string().min(1, "Category ID required");
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const validation = categoryIdSchema.safeParse(params.id);
+    const { id } = await params;
+    const validation = categoryIdSchema.safeParse(id);
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.errors[0].message } },
+        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.issues[0]?.message ?? "Invalid category ID." } },
         { status: 400 }
       );
     }
 
-    const category = await categoryService.getById(params.id);
+    const category = await categoryService.getById(id);
 
     if (!category) {
       return NextResponse.json(

@@ -219,6 +219,10 @@ export const offerService = {
     return getAllDocuments<Offer>(COLLECTIONS.offers, { field: "createdAt", direction: "desc" });
   },
 
+  async count(filters?: Array<[string, string, unknown]>): Promise<number> {
+    return countDocuments(COLLECTIONS.offers, filters);
+  },
+
   async getStatus(offer: Offer): Promise<"DRAFT" | "SCHEDULED" | "ACTIVE" | "EXPIRED"> {
     const now = new Date();
     if (!offer.active) return "DRAFT";
@@ -255,6 +259,10 @@ export const faqService = {
 
   async getAll(): Promise<FAQ[]> {
     return getAllDocuments<FAQ>(COLLECTIONS.faqs, { field: "displayOrder", direction: "asc" });
+  },
+
+  async count(filters?: Array<[string, string, unknown]>): Promise<number> {
+    return countDocuments(COLLECTIONS.faqs, filters);
   },
 
   async reorder(ids: string[]): Promise<void> {

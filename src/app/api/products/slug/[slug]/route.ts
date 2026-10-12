@@ -4,18 +4,19 @@ import { z } from "zod";
 
 const productSlugSchema = z.string().min(1, "Product slug required");
 
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
-    const validation = productSlugSchema.safeParse(params.slug);
+    const { slug } = await params;
+    const validation = productSlugSchema.safeParse(slug);
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.errors[0].message } },
+        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.issues[0]?.message ?? "Invalid product slug." } },
         { status: 400 }
       );
     }
 
-    const product = await productService.getBySlug(params.slug);
+    const product = await productService.getBySlug(slug);
 
     if (!product) {
       return NextResponse.json(

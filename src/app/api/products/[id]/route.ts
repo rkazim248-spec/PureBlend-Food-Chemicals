@@ -4,18 +4,19 @@ import { z } from "zod";
 
 const productIdSchema = z.string().min(1, "Product ID required");
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const validation = productIdSchema.safeParse(params.id);
+    const { id } = await params;
+    const validation = productIdSchema.safeParse(id);
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.errors[0].message } },
+        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.issues[0]?.message ?? "Invalid product ID." } },
         { status: 400 }
       );
     }
 
-    const product = await productService.getById(params.id);
+    const product = await productService.getById(id);
 
     if (!product) {
       return NextResponse.json(

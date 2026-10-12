@@ -4,18 +4,19 @@ import { z } from "zod";
 
 const categorySlugSchema = z.string().min(1, "Category slug required");
 
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
-    const validation = categorySlugSchema.safeParse(params.slug);
+    const { slug } = await params;
+    const validation = categorySlugSchema.safeParse(slug);
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.errors[0].message } },
+        { success: false, error: { code: "VALIDATION_ERROR", message: validation.error.issues[0]?.message ?? "Invalid category slug." } },
         { status: 400 }
       );
     }
 
-    const category = await categoryService.getBySlug(params.slug);
+    const category = await categoryService.getBySlug(slug);
 
     if (!category) {
       return NextResponse.json(

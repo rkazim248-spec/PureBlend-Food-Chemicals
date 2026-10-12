@@ -51,8 +51,8 @@ These variables must NEVER be exposed to the browser. They are accessed via `pro
 | `OPENAI_API_KEY` | Server | OpenAI API key (starts with `sk-`). Used for embeddings and LLM. |
 | `RAG_SIMILARITY_THRESHOLD` | Server | Float 0.0–1.0. Default: `0.70`. Controls vector search strictness. |
 | `AUTH_SECRET` | Server | Random 64-char hex string for custom session token signing (if used). |
-| `ADMIN_INITIAL_EMAIL` | Server | Email for initial admin user creation. |
-| `ADMIN_INITIAL_PASSWORD` | Server | Password for initial admin user (Firebase Auth). |
+| `ADMIN_INITIAL_EMAIL` | Server | Email for the one-time admin bootstrap command. |
+| `ADMIN_INITIAL_PASSWORD` | Server | Unique password (at least 12 characters) for the initial Firebase admin account; never use a shared default. |
 
 **Security Rules**:
 - **NEVER** commit real values to the repository
@@ -70,9 +70,10 @@ These variables must NEVER be exposed to the browser. They are accessed via `pro
 | `DATABASE_URL` | (removed — Firebase Firestore) | Previous Prisma/PostgreSQL; no longer used |
 | `DIRECT_URL` | (removed) | Prisma direct connection URL; not needed |
 | `AUTH_SECRET` (custom session) | Firebase Custom Claims | Replaced by Firebase Auth + custom claims system |
-| `ADMIN_INITIAL_EMAIL` / `ADMIN_INITIAL_PASSWORD` | Firebase Auth onboarding | Admin creation now via Firebase Console or `/api/auth/login` flow |
 
 **Note**: The previous Prisma/PostgreSQL variables (`DATABASE_URL`, etc.) remain in `.env.example` with a "Deprecated" comment for reference during migration, but are no longer read by the application.
+
+`ADMIN_INITIAL_EMAIL` and `ADMIN_INITIAL_PASSWORD` are used only by the manual `npm run admin:bootstrap` command; the running application does not read them.
 
 ---
 
@@ -127,8 +128,8 @@ RAG_SIMILARITY_THRESHOLD=0.70
 
 # Auth (server-only)
 AUTH_SECRET=replace-with-a-secure-random-64-character-hex-string
-ADMIN_INITIAL_EMAIL=admin@pureblend.com
-ADMIN_INITIAL_PASSWORD=ChangeMeInProduction!2026
+ADMIN_INITIAL_EMAIL=
+ADMIN_INITIAL_PASSWORD=
 
 # Deprecated (reference only)
 # DATABASE_URL="postgresql://postgres:postgres@localhost:5432/pureblend?schema=public"

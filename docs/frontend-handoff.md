@@ -190,7 +190,7 @@ fetch('/api/chat', {
 fetch('/api/login', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: 'admin@pureblend.com', password: 'password123' })
+  body: JSON.stringify({ email: 'admin@example.com', password: '<your-firebase-password>' })
 })
   .then(r => r.json())
   .then(data => {

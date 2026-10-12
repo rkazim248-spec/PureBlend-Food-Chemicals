@@ -36,6 +36,7 @@ npm run dev
 - `npm start` — production server
 - `npm run lint` — ESLint
 - `npx tsc --noEmit` — type check
+- `npm run admin:bootstrap` — create or provision the initial Firebase admin using private `.env.local` values
 
 ## 7. Environment Variables
 Public (safe): `NEXT_PUBLIC_API_BASE_URL`, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_USE_MOCK_DATA`
@@ -43,7 +44,7 @@ Server-only: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_FROM`
 Never commit real values. Only placeholder env files are tracked.
 
 ## 8. Admin Access
-`/admin/login` — credentials are provisioned by the backend teammate and shared via the official submission channel.
+To create an initial admin, set `ADMIN_INITIAL_EMAIL` and a unique, strong `ADMIN_INITIAL_PASSWORD` in your ignored `.env.local` file, then run `npm run admin:bootstrap`. This creates the Firebase user if needed and grants it the admin role. If that email already belongs to a Firebase account, the script grants the role without changing its password. Keep the credentials private. Sign in at `/admin/login`.
 
 ## 9. Testing Guides
 - `/docs/admin-testing.md`

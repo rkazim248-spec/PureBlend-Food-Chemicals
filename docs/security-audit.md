@@ -518,9 +518,9 @@ No API security matrix documented.
 
 ## 21. Environment Configuration
 
-### Findings: **GOOD - .env.example is proper template**
+### Findings: **GOOD - .env.example is a placeholder-only template**
 - ✅ All sensitive variables have clear documentation
-- ✅ Placeholder values (`replace-with-...`, `ChangeMeInProduction!2026`)
+- ✅ Sensitive credentials are blank placeholders and must be provided outside the repository
 - ✅ Development vs production distinctions noted
 - ✅ `.gitignore` properly excludes `.env` files
 - ✅ `.env.example` committed as template (not real config)
@@ -542,14 +542,14 @@ CONTACT_RECIPIENT
 OPENAI_API_KEY
 RAG_SIMILARITY_THRESHOLD (0.70)
 AUTH_SECRET (must be 64-char hex)
-ADMIN_INITIAL_EMAIL (admin@pureblend.com)
-ADMIN_INITIAL_PASSWORD (ChangeMeInProduction!2026 - MUST CHANGE)
+ADMIN_INITIAL_EMAIL (set privately for one-time bootstrap)
+ADMIN_INITIAL_PASSWORD (set privately; use a unique password of at least 12 characters)
 ```
 
 ### Recommendation:
 1. Create `.env.local` with actual values for development (git-ignored)
 2. Ensure all production values are set before deployment
-3. Rotate `ADMIN_INITIAL_PASSWORD` on first deployment
+3. Never commit or reuse the initial admin password
 4. Set `AUTH_SECRET` to a 64-character hex string
 
 ---

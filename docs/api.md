@@ -244,8 +244,8 @@ All secrets are sourced from `process.env.*` in server-side files only. Never co
 
 **Authentication & Security (server-only):**
 - `AUTH_SECRET` (64-character hex string recommended)
-- `ADMIN_INITIAL_EMAIL` (e.g., `admin@pureblend.com`)
-- `ADMIN_INITIAL_PASSWORD` (must change in production)
+- `ADMIN_INITIAL_EMAIL` (set privately for the one-time `npm run admin:bootstrap` command)
+- `ADMIN_INITIAL_PASSWORD` (unique password of at least 12 characters; never commit or reuse)
 
 **Public/Browser (safe for client bundle, prefixed with `NEXT_PUBLIC_`):**
 - `NEXT_PUBLIC_API_BASE_URL`

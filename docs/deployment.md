@@ -95,8 +95,8 @@ cp .env.example .env.local
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `AUTH_SECRET` | Secret for session/signing; generate with `openssl rand -hex 32` | `a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2` |
-| `ADMIN_INITIAL_EMAIL` | Initial admin account email | `admin@pureblend.com` |
-| `ADMIN_INITIAL_PASSWORD` | Initial admin password — **MUST CHANGE in production** | `ChangeMeInProduction!2026` |
+| `ADMIN_INITIAL_EMAIL` | Email for the one-time initial admin bootstrap | (set privately; no default) |
+| `ADMIN_INITIAL_PASSWORD` | Unique password (at least 12 characters) for the one-time bootstrap | (set privately; never commit) |
 
 ### Public / Browser (safe for client bundle)
 
@@ -342,7 +342,7 @@ Used by:
 - [ ] OpenAI API key configured; RAG knowledge base populated
 - [ ] `NODE_ENV=production` set in production environment
 - [ ] `AUTH_SECRET` set to a 64-character hex string
-- [ ] `ADMIN_INITIAL_PASSWORD` changed from default
+- [ ] Initial admin password set privately to a unique value; no shared default is used
 - [ ] `NEXT_PUBLIC_API_BASE_URL` configured for production domain
 - [ ] CORS origins configured for frontend domain(s)
 - [ ] Security headers verified (next.config.ts already configured)

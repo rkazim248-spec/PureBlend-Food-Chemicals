@@ -5,8 +5,7 @@
  * and checks custom claims (role: "ADMIN" or "SUPERADMIN") before permitting
  * any admin operation.
  *
- * Mock mode (NEXT_PUBLIC_USE_MOCK_DATA=true) is retained for local development
- * without a backend, but uses a dev user with admin claims so the UI is demoable.
+ * Mock mode may use fixture data, but never bypasses Firebase admin authentication.
  */
 
 import { apiRequest } from "./client";
@@ -24,17 +23,10 @@ export interface AdminUser {
   role: string;
 }
 
-const MOCK_SESSION_KEY = "pureblend.mock.admin";
-
 /**
  * Get the current Firebase ID token from storage.
- * In mock mode, returns a dummy token string.
- * In production mode, reads the token from localStorage.
  */
 function getIdToken(): string | undefined {
-  if (config.useMockData) {
-    return MOCK_SESSION_KEY; // special token that signals mock mode to apiRequest
-  }
   if (typeof window === "undefined") return undefined;
   return localStorage.getItem("pureblend.firebase.idToken") ?? undefined;
 }
@@ -43,14 +35,7 @@ function getIdToken(): string | undefined {
  * Set the Firebase ID token in storage.
  */
 function setIdToken(token: string | null | undefined): void {
-  if (config.useMockData) {
-    if (token) {
-      localStorage.setItem(MOCK_SESSION_KEY, "1");
-    } else {
-      localStorage.removeItem(MOCK_SESSION_KEY);
-    }
-    return;
-  }
+  if (typeof window === "undefined") return;
   if (token) {
     localStorage.setItem("pureblend.firebase.idToken", token);
   } else {
@@ -67,9 +52,6 @@ export function clearAdminToken(): void {
  */
 export async function login(email: string, password: string): Promise<AdminUser> {
   clearAdminToken();
-  if (config.useMockData) {
-    throw new Error("Admin sign-in requires a configured authentication backend.");
-  }
 
   const credential = await signInWithEmailAndPassword(getFirebaseAuth(), email, password);
   const tokenResult = await credential.user.getIdTokenResult();
@@ -92,12 +74,6 @@ export async function login(email: string, password: string): Promise<AdminUser>
 
 /** Logout: remove the Firebase ID token. */
 export async function logout(): Promise<void> {
-  if (config.useMockData) {
-    if (typeof window !== "undefined") window.localStorage.removeItem(MOCK_SESSION_KEY);
-    setIdToken(null);
-    return;
-  }
-
   try {
     await signOut(getFirebaseAuth());
   } catch {
@@ -109,13 +85,6 @@ export async function logout(): Promise<void> {
 
 /** Get current authenticated admin user. */
 export async function getMe(): Promise<AdminUser> {
-  if (config.useMockData) {
-    if (typeof window !== "undefined") {
-      clearAdminToken();
-    }
-    throw new Error("Admin authentication requires a configured authentication backend.");
-  }
-
   const token = getIdToken();
   if (!token) {
     throw new Error("Not authenticated");

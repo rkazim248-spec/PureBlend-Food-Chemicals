@@ -6,9 +6,8 @@ import { admin } from "@/lib/api";
 import { Spinner } from "@/components/ui/Spinner";
 
 /*
- * UX-level route protection: checks the backend session and redirects to login.
- * NOTE: This is NOT the security boundary — every admin API call is still
- * authorized by the backend. Mock mode (dev only) treats the dev user as signed in.
+ * UX-level route protection: checks the Firebase admin claim and redirects to login.
+ * Admin API routes remain the security boundary and independently verify each token.
  */
 export function AdminGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();

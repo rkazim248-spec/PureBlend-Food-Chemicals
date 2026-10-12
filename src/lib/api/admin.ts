@@ -52,7 +52,7 @@ export function clearAdminToken(): void {
  */
 export async function login(email: string, password: string): Promise<AdminUser> {
   const credential = await signInWithEmailAndPassword(getFirebaseAuth(), email, password);
-  const tokenResult = await credential.user.getIdTokenResult();
+  const tokenResult = await credential.user.getIdTokenResult(true);
   const role = tokenResult.claims.role;
   if (role !== "ADMIN" && role !== "SUPERADMIN") {
     await signOut(getFirebaseAuth());
@@ -83,23 +83,26 @@ export async function logout(): Promise<void> {
 
 /** Get current authenticated admin user. */
 export async function getMe(): Promise<AdminUser> {
-  const token = getIdToken();
-  if (!token) {
+  const auth = getFirebaseAuth();
+  await auth.authStateReady();
+  const user = auth.currentUser;
+
+  if (!user) {
+    clearAdminToken();
     throw new Error("Not authenticated");
   }
 
-  // Verify via the backend — this checks Firebase ID token + custom claims
-  const res = await apiRequest<{ success: boolean; data: { uid: string; email: string; name?: string; role: string } }>(endpoints.auth.me, {
-    method: "GET",
-    authToken: token,
-  });
+  const tokenResult = await user.getIdTokenResult();
+  const role = tokenResult.claims.role;
 
-  return {
-    id: res.data.uid,
-    email: res.data.email,
-    name: res.data.name ?? "",
-    role: res.data.role,
-  };
+  if (role !== "ADMIN" && role !== "SUPERADMIN") {
+    clearAdminToken();
+    throw new Error("Administrative privileges required.");
+  }
+
+  setIdToken(await user.getIdToken());
+
+  return { id: user.uid, email: user.email ?? "", name: user.displayName ?? "", role };
 }
 
 /* Products */

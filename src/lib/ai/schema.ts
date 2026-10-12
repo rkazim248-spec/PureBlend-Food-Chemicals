@@ -65,6 +65,7 @@ export function buildGroundedPrompt(
     } else if (result.sourceType) {
       sourceLabel = result.sourceType;
     }
+
     contextSections.push("[" + sourceLabel + "]: " + result.content);
   }
 

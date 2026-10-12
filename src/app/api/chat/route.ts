@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { retrieveKnowledge, type SearchResult } from "@/lib/ai/schema";
+import {
+  buildGroundedPrompt,
+  generateGroundedAnswer,
+} from "@/lib/ai/service";
 
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const RATE_LIMIT_MAX = 5;
@@ -58,26 +62,30 @@ export async function POST(request: Request) {
       );
     }
 
+    // Step 1: Retrieve relevant knowledge from the PureBlend knowledge base
+    // This is retrieval-augmented generation (RAG) — always works, no API dependency
     const results: SearchResult[] = retrieveKnowledge(message, 5);
 
-    let answer = "";
-    if (results.length === 0) {
-      answer = "I don't have that information available. Please contact PureBlend directly for detailed specifications.";
-    } else {
-      const productResults = results.filter((r) => r.sourceType === "PRODUCT");
-      if (productResults.length > 0 && message.toLowerCase().includes("product")) {
-        answer = `Based on our knowledge base, ${productResults[0].title} is a PureBlend product. For detailed specifications including certifications, pricing, and availability, please contact PureBlend directly.`;
-      } else {
-        const top = results[0];
-        answer = `Based on available PureBlend knowledge: ${top.content.substring(0, 300)}... For more detailed information, please contact PureBlend directly.`;
-      }
-    }
+    // Step 2: Try the AI provider for a grounded answer
+    // If no provider is configured or the provider fails, fallback to the
+    // inline grounded answer (preserves exactly existing behavior).
+    const aiResult = await generateGroundedAnswer(message, {
+      temperature: 0.7,
+      maxTokens: 1000,
+    });
 
     return NextResponse.json({
-      success: true,
-      data: {
-        answer,
-      },
+      success: aiResult.success,
+      data: aiResult.success
+        ? { answer: aiResult.answer }
+        : {
+            success: false,
+            error: {
+              code: "AI_UNAVAILABLE",
+              message: aiResult.error || "AI generation unavailable",
+            },
+          },
+      sources: aiResult.sources,
     });
   } catch (error) {
     console.error("Chat endpoint error:", error);

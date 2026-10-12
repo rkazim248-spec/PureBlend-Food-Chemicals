@@ -8,6 +8,9 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useToast } from '@/components/ui/Toast';
 import { Eye, EyeOff, Lock, User, Mail, ShieldCheck, ArrowRight } from 'lucide-react';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getFirebaseAuth } from '@/lib/firebase/client';
+import { clearAdminToken } from '@/lib/api/admin';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -15,7 +18,6 @@ export default function SignupPage() {
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [accountType, setAccountType] = useState<'normal' | 'buyer' | 'staff'>('normal');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +25,7 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
@@ -50,16 +52,27 @@ export default function SignupPage() {
 
     setErrors({});
     setIsLoading(true);
+    clearAdminToken();
 
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const credential = await createUserWithEmailAndPassword(getFirebaseAuth(), email.trim(), password);
+      await updateProfile(credential.user, { displayName: fullName.trim() });
       showToast({
         title: 'Account Created Successfully',
-        description: `Welcome to PureBlend, ${fullName}! Your ${accountType} account has been provisioned.`,
+        description: `Welcome to PureBlend, ${fullName}! Your account has standard client access.`,
         type: 'success'
       });
       router.push('/auth/login');
-    }, 800);
+    } catch (error) {
+      console.error('Account creation failed:', error);
+      showToast({
+        title: 'Unable to Create Account',
+        description: 'Check your details and try again. If the problem continues, contact support.',
+        type: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -73,7 +86,7 @@ export default function SignupPage() {
             Create Your PureBlend Account
           </h1>
           <p className="text-xs text-secondary-text">
-            Register for normal client access, commercial bulk procurement, or laboratory verification portals.
+            Create a client account. Administrative access is granted separately.
           </p>
         </div>
 
@@ -160,7 +173,7 @@ export default function SignupPage() {
             isLoading={isLoading}
             rightIcon={<ArrowRight className="w-4 h-4" />}
           >
-            Create Account & Provision Portal
+            Create Client Account
           </Button>
 
           <div className="pt-4 border-t border-border-subtle text-center text-xs text-secondary-text">

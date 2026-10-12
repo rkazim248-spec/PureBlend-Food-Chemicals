@@ -14,6 +14,8 @@ import { endpoints } from "./endpoints";
 import { config } from "@/lib/config";
 import type { Banner, Faq, Offer, Product } from "./types";
 import { devBanners, devFaqs, devOffers, devProducts } from "@/mocks/dev-fixtures";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getFirebaseAuth } from "@/lib/firebase/client";
 
 export interface AdminUser {
   id: string;
@@ -22,7 +24,6 @@ export interface AdminUser {
   role: string;
 }
 
-const mockUser: AdminUser = { id: "dev-admin", email: "dev@pureblend.local", name: "Dev Admin", role: "admin" };
 const MOCK_SESSION_KEY = "pureblend.mock.admin";
 
 /**
@@ -57,27 +58,36 @@ function setIdToken(token: string | null | undefined): void {
   }
 }
 
+export function clearAdminToken(): void {
+  setIdToken(null);
+}
+
 /**
- * Login via Firebase Authentication.
- * Calls /api/auth/login which verifies credentials and sets custom claims { role: "ADMIN" }.
+ * Sign in only users provisioned with an administrative Firebase custom claim.
  */
 export async function login(email: string, password: string): Promise<AdminUser> {
+  clearAdminToken();
   if (config.useMockData) {
-    if (typeof window !== "undefined") window.localStorage.setItem(MOCK_SESSION_KEY, "1");
-    return mockUser;
+    throw new Error("Admin sign-in requires a configured authentication backend.");
   }
 
-  const res = await apiRequest<{ user: AdminUser; idToken: string }>(
-    endpoints.auth.login,
-    { method: "POST", body: { email, password } }
-  );
-
-  // Store the real Firebase ID token so subsequent requests are authorised
-  if (res.idToken) {
-    setIdToken(res.idToken);
+  const credential = await signInWithEmailAndPassword(getFirebaseAuth(), email, password);
+  const tokenResult = await credential.user.getIdTokenResult();
+  const role = tokenResult.claims.role;
+  if (role !== "ADMIN" && role !== "SUPERADMIN") {
+    await signOut(getFirebaseAuth());
+    throw new Error("Administrative privileges required.");
   }
 
-  return res.user;
+  const idToken = await credential.user.getIdToken();
+  setIdToken(idToken);
+
+  return {
+    id: credential.user.uid,
+    email: credential.user.email ?? email,
+    name: credential.user.displayName ?? "",
+    role,
+  };
 }
 
 /** Logout: remove the Firebase ID token. */
@@ -88,11 +98,11 @@ export async function logout(): Promise<void> {
     return;
   }
 
-  // Call the backend logout endpoint (revokes refresh tokens if uid provided)
   try {
-    await apiRequest(endpoints.auth.logout, { method: "POST" });
+    await signOut(getFirebaseAuth());
   } catch {
-    // Best-effort — always clear local state even if backend call fails
+    setIdToken(null);
+    throw new Error("Unable to sign out from Firebase.");
   }
   setIdToken(null);
 }
@@ -100,10 +110,10 @@ export async function logout(): Promise<void> {
 /** Get current authenticated admin user. */
 export async function getMe(): Promise<AdminUser> {
   if (config.useMockData) {
-    if (typeof window === "undefined" || window.localStorage.getItem(MOCK_SESSION_KEY) !== "1") {
-      throw new Error("Not authenticated");
+    if (typeof window !== "undefined") {
+      clearAdminToken();
     }
-    return mockUser;
+    throw new Error("Admin authentication requires a configured authentication backend.");
   }
 
   const token = getIdToken();
@@ -112,12 +122,17 @@ export async function getMe(): Promise<AdminUser> {
   }
 
   // Verify via the backend — this checks Firebase ID token + custom claims
-  const res = await apiRequest<{ user: AdminUser }>(endpoints.auth.me, {
+  const res = await apiRequest<{ success: boolean; data: { uid: string; email: string; name?: string; role: string } }>(endpoints.auth.me, {
     method: "GET",
     authToken: token,
   });
 
-  return res.user;
+  return {
+    id: res.data.uid,
+    email: res.data.email,
+    name: res.data.name ?? "",
+    role: res.data.role,
+  };
 }
 
 /* Products */

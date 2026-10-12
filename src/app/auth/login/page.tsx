@@ -8,29 +8,22 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { useToast } from '@/components/ui/Toast';
 import { Eye, EyeOff, Lock, User, ShieldCheck, ArrowRight } from 'lucide-react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirebaseAuth } from '@/lib/firebase/client';
+import { clearAdminToken } from '@/lib/api/admin';
 
 export default function LoginPage() {
   const router = useRouter();
   const { showToast } = useToast();
 
-  const [email, setEmail] = useState('procurement@beveragepartner.com');
-  const [password, setPassword] = useState('PureBlend2026!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleQuickDemoRole = (roleEmail: string, roleTitle: string) => {
-    setEmail(roleEmail);
-    setPassword('PureBlend2026!');
-    showToast({
-      title: `${roleTitle} Loaded`,
-      description: `Credentials populated for ${roleEmail}`,
-      type: 'info'
-    });
-  };
-
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
     if (!email.trim() || !email.includes('@')) {
@@ -47,16 +40,26 @@ export default function LoginPage() {
 
     setErrors({});
     setIsLoading(true);
+    clearAdminToken();
 
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await signInWithEmailAndPassword(getFirebaseAuth(), email.trim(), password);
       showToast({
-        title: 'Authentication Successful',
-        description: `Welcome back. Redirecting to PureBlend Portal Console...`,
+        title: 'Sign In Successful',
+        description: 'You are signed in to your PureBlend client account.',
         type: 'success'
       });
-      router.push('/admin');
-    }, 700);
+      router.push('/');
+    } catch (error) {
+      console.error('Client sign-in failed:', error);
+      showToast({
+        title: 'Unable to Sign In',
+        description: 'Check your email and password, then try again.',
+        type: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

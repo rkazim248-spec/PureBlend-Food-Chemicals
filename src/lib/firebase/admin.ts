@@ -97,7 +97,7 @@ export async function verifyIdToken(idToken: string) {
  */
 export async function checkAdminClaim(idToken: string): Promise<{ isAdmin: boolean; role: string | null; uid: string }> {
   const decoded = await verifyIdToken(idToken);
-  const role = (decoded.customClaims?.role as string | null);
+  const role = (decoded.role as string | null);
   const isAdmin = role === "ADMIN" || role === "SUPERADMIN";
   return { isAdmin, role, uid: decoded.uid };
 }

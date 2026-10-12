@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, 
   Package, 
@@ -20,10 +20,23 @@ import {
   SlidersHorizontal
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { AdminGuard } from '@/components/admin/AdminGuard';
+import { admin } from '@/lib/api';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  async function handleSignOut() {
+    try {
+      await admin.logout();
+    } catch (error) {
+      console.error('Admin sign-out failed:', error);
+    } finally {
+      router.replace('/auth/login');
+    }
+  }
 
   const navigation = [
     { name: 'Dashboard Overview', href: '/admin', icon: LayoutDashboard },
@@ -41,8 +54,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return pathname.startsWith(href);
   };
 
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
+
   return (
-    <div className="min-h-screen bg-[#F4F6F4] flex flex-col md:flex-row text-charcoal">
+    <AdminGuard>
+      <div className="min-h-screen bg-[#F4F6F4] flex flex-col md:flex-row text-charcoal">
       {/* Mobile Header Bar */}
       <div className="md:hidden bg-[#112921] text-white px-4 py-3 flex items-center justify-between border-b border-[#1b3d32] sticky top-0 z-50">
         <div className="flex items-center gap-2">
@@ -144,13 +162,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Globe className="w-3.5 h-3.5" />
               <span>Public Website</span>
             </Link>
-            <Link
-              href="/auth/login"
+            <button
+              type="button"
+              onClick={handleSignOut}
               className="text-red-300 hover:text-red-200 flex items-center gap-1 transition-colors text-xs"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Sign Out</span>
-            </Link>
+            </button>
           </div>
         </div>
       </aside>
@@ -191,6 +210,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           {children}
         </main>
       </div>
-    </div>
+      </div>
+    </AdminGuard>
   );
 }

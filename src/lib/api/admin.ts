@@ -51,8 +51,6 @@ export function clearAdminToken(): void {
  * Sign in only users provisioned with an administrative Firebase custom claim.
  */
 export async function login(email: string, password: string): Promise<AdminUser> {
-  clearAdminToken();
-
   const credential = await signInWithEmailAndPassword(getFirebaseAuth(), email, password);
   const tokenResult = await credential.user.getIdTokenResult();
   const role = tokenResult.claims.role;

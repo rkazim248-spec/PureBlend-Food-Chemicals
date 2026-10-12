@@ -385,7 +385,7 @@ The AI chat/knowledge retrieval system needs verification that it cannot leak ad
 - ✅ `X-Frame-Options: DENY` - Prevents clickjacking
 - ✅ `Referrer-Policy: strict-origin-when-cross-origin` - Controls referrer info
 - ✅ `Permissions-Policy: camera=(), microphone=(), geolocation=()` - Disables device access
-- ✅ `Content-Security-Policy` - Restrictive CSP with `'unsafe-inline'` only in development
+- ✅ `Content-Security-Policy` - Restrictive CSP permits Firebase Authentication API connections
 - ✅ `base-uri 'self'` - Prevents base URI manipulation
 - ✅ `form-action 'self'` - Prevents form submission to external domains
 

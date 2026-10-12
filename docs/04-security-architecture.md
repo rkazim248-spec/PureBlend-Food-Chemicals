@@ -127,6 +127,7 @@ Implemented in `next.config.ts` across all HTTP responses:
 - `Permissions-Policy: camera=(), microphone=(), geolocation=()`: Disables unused browser hardware APIs.
 - `Content-Security-Policy`:
   - `default-src 'self'`
+  - `connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebaseinstallations.googleapis.com` for Firebase Authentication
   - `img-src 'self' data: https:`
   - `frame-ancestors 'none'`
   - `base-uri 'self'`

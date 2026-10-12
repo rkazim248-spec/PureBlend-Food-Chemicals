@@ -17,7 +17,7 @@ const securityHeaders = [
       "img-src 'self' data: https:",
       // Google Fonts font files for Material Symbols icons.
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' http://localhost:4000",
+      "connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firebaseinstallations.googleapis.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

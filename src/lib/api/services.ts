@@ -92,6 +92,29 @@ export async function submitContact(input: {
   await apiRequest(endpoints.contact.submit, { method: "POST", body: input });
 }
 
+export interface RfqSubmissionInput {
+  companyName: string;
+  contactName: string;
+  email: string;
+  phone?: string;
+  productId: string;
+  volume: string;
+  volumeUnit: "kg" | "Metric Tons (MT)" | "Pallets" | "FCL (20ft Container)";
+  packaging: string;
+  targetDate?: string;
+  deliveryLocation: string;
+  incoterm: "FOB" | "CIF" | "DDP" | "EXW";
+  notes?: string;
+}
+
+export async function submitRfq(input: RfqSubmissionInput): Promise<{ id: string }> {
+  const response = await apiRequest<{ success: true; data: { id: string } }>(
+    endpoints.rfqs.submit,
+    { method: "POST", body: input }
+  );
+  return response.data;
+}
+
 export const services = {
   getProducts,
   getProductBySlug,
@@ -100,6 +123,7 @@ export const services = {
   getFaqs,
   sendChatMessage,
   submitContact,
+  submitRfq,
 };
 
 export { cached };

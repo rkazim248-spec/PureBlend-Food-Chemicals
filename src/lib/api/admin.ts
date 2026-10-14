@@ -23,6 +23,26 @@ export interface AdminUser {
   role: string;
 }
 
+export interface AdminRfqRequest {
+  id: string;
+  createdAt: string;
+  companyName: string;
+  contactName: string;
+  email: string;
+  phone?: string;
+  productId: string;
+  productName: string;
+  volume: string;
+  volumeUnit: "kg" | "Metric Tons (MT)" | "Pallets" | "FCL (20ft Container)";
+  packaging: string;
+  targetDate?: string;
+  deliveryLocation: string;
+  incoterm: "FOB" | "CIF" | "DDP" | "EXW";
+  notes?: string;
+  status: "Pending Review" | "Technical Review" | "Quote Issued" | "Contract Drafted";
+}
+export type AdminRfqStatus = AdminRfqRequest["status"];
+
 /**
  * Get the current Firebase ID token from storage.
  */
@@ -326,4 +346,21 @@ export async function adminSaveSeo(input: SeoRecord): Promise<SeoRecord> {
 // Helper: get the currently stored auth token (for use in components, guards, etc.)
 export function getCurrentToken(): string | undefined {
   return getIdToken();
+}
+
+export async function adminGetRfqRequests(): Promise<AdminRfqRequest[]> {
+  const token = getIdToken();
+  const response = await apiRequest<{ success: true; data: AdminRfqRequest[] }>("/api/rfqs", {
+    authToken: token,
+  });
+  return response.data;
+}
+
+export async function adminUpdateRfqStatus(id: string, status: AdminRfqStatus): Promise<void> {
+  const token = getIdToken();
+  await apiRequest(`/api/rfqs/${encodeURIComponent(id)}`, {
+    method: "PATCH",
+    body: { status },
+    authToken: token,
+  });
 }

@@ -18,6 +18,7 @@ export const endpoints = {
   content: { page: (pageKey: string) => `/api/content/${pageKey}` },
   seo: { get: "/api/seo" },
   contact: { submit: "/api/contact" },
+  rfqs: { submit: "/api/rfqs" },
   chat: { send: "/api/chat" },
 } as const;
 

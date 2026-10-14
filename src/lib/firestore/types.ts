@@ -115,6 +115,24 @@ export interface ContactMessage extends Timestampable {
   status: "UNREAD" | "READ" | "ARCHIVED";
 }
 
+export interface QuotationRequest extends Timestampable {
+  id: string;
+  companyName: string;
+  contactName: string;
+  email: string;
+  phone?: string;
+  productId: string;
+  productName: string;
+  volume: string;
+  volumeUnit: "kg" | "Metric Tons (MT)" | "Pallets" | "FCL (20ft Container)";
+  packaging: string;
+  targetDate?: string;
+  deliveryLocation: string;
+  incoterm: "FOB" | "CIF" | "DDP" | "EXW";
+  notes?: string;
+  status: "Pending Review" | "Technical Review" | "Quote Issued" | "Contract Drafted";
+}
+
 export interface KnowledgeDocument extends Timestampable {
   id: string;
   title: string;
@@ -153,6 +171,7 @@ export type CollectionName =
   | "pages"
   | "seo"
   | "contactMessages"
+  | "quotationRequests"
   | "knowledgeDocuments"
   | "knowledgeChunks"
   | "chatLogs"
@@ -167,6 +186,7 @@ export const COLLECTIONS: Record<CollectionName, CollectionName> = {
   pages: "pages",
   seo: "seo",
   contactMessages: "contactMessages",
+  quotationRequests: "quotationRequests",
   knowledgeDocuments: "knowledgeDocuments",
   knowledgeChunks: "knowledgeChunks",
   chatLogs: "chatLogs",

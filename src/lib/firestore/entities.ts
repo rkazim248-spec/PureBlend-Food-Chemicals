@@ -8,7 +8,7 @@ import {
   countDocuments,
   queryDocumentsWithCursor,
 } from "./service";
-import { COLLECTIONS, type Category, type Product, type Banner, type Offer, type FAQ, type Page, type PageSection, type SEO, type ContactMessage, type KnowledgeDocument, type KnowledgeChunk, type ChatLog, type AdminUser } from "./types";
+import { COLLECTIONS, type Category, type Product, type Banner, type Offer, type FAQ, type Page, type PageSection, type SEO, type ContactMessage, type QuotationRequest, type KnowledgeDocument, type KnowledgeChunk, type ChatLog, type AdminUser } from "./types";
 import { Timestamp } from "firebase-admin/firestore";
 
 export const categoryService = {
@@ -352,6 +352,30 @@ export const contactService = {
 
   async count(filters?: Array<[string, string, unknown]>): Promise<number> {
     return countDocuments(COLLECTIONS.contactMessages, filters);
+  },
+};
+
+export const quotationRequestService = {
+  async create(data: Omit<QuotationRequest, "id" | "createdAt" | "updatedAt">): Promise<QuotationRequest> {
+    return createDocument<QuotationRequest>(COLLECTIONS.quotationRequests, data);
+  },
+
+  async getById(id: string): Promise<QuotationRequest | null> {
+    return getDocument<QuotationRequest>(COLLECTIONS.quotationRequests, id);
+  },
+
+  async updateStatus(id: string, status: QuotationRequest["status"]): Promise<QuotationRequest | null> {
+    if (!(await this.getById(id))) return null;
+    return updateDocument<QuotationRequest>(COLLECTIONS.quotationRequests, id, { status });
+  },
+
+  async list(limit = 100): Promise<QuotationRequest[]> {
+    return queryDocuments<QuotationRequest>(
+      COLLECTIONS.quotationRequests,
+      undefined,
+      { field: "createdAt", direction: "desc" },
+      limit
+    );
   },
 };
 

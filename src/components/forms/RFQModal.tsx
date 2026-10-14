@@ -10,6 +10,7 @@ import { useToast } from '@/components/ui/Toast';
 import { PRODUCTS_DATA } from '@/data/mockData';
 import { CheckCircle2, ShieldCheck, Tag, Check, AlertCircle } from 'lucide-react';
 import { validatePromoCode } from '@/lib/discount';
+import { submitRfq, type RfqSubmissionInput } from '@/lib/api/services';
 
 interface RFQModalProps {
   isOpen: boolean;
@@ -24,8 +25,9 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
   const { showToast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [rfqReference, setRfqReference] = useState('');
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<RfqSubmissionInput>({
     companyName: '',
     contactName: '',
     email: '',
@@ -88,24 +90,40 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const submission = await submitRfq({
+        ...formData,
+        productId: effectiveProductId,
+        phone: formData.phone || undefined,
+        targetDate: formData.targetDate || undefined,
+        notes: formData.notes || undefined,
+      });
+      setRfqReference(submission.id);
       setIsSuccess(true);
       showToast({
         title: 'Quotation Request Registered',
         description: `RFQ reference generated for ${formData.companyName} ${appliedDiscount ? `with ${appliedDiscount.percent}% discount` : ''}.`,
         type: 'success'
       });
-    }, 800);
+    } catch (error) {
+      showToast({
+        title: 'Unable to submit quotation request',
+        description: error instanceof Error ? error.message : 'Please try again.',
+        type: 'error'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setIsSuccess(false);
+    setRfqReference('');
     setAppliedDiscount(null);
     setCouponCode('');
     onClose();
@@ -120,7 +138,7 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
       title={isSuccess ? 'Quotation Request Received' : 'Request Commercial Quotation (RFQ)'}
       subtitle={
         isSuccess
-          ? 'PureBlend Commercial Operations Reference #PB-RFQ-2026'
+          ? `PureBlend Commercial Operations Reference #PB-RFQ-${rfqReference}`
           : 'Submit your technical specifications, required volume, and delivery terms for volume pricing.'
       }
       maxWidth="2xl"
@@ -209,7 +227,7 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
                   { value: 'FCL (20ft Container)', label: 'FCL (20ft Container)' }
                 ]}
                 value={formData.volumeUnit}
-                onChange={(e) => setFormData({ ...formData, volumeUnit: e.target.value as any })}
+                onChange={(e) => setFormData({ ...formData, volumeUnit: e.target.value as RfqSubmissionInput["volumeUnit"] })}
               />
             </div>
           </div>
@@ -282,7 +300,7 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
                 { value: 'EXW', label: 'EXW (Ex Works Facility)' }
               ]}
               value={formData.incoterm}
-              onChange={(e) => setFormData({ ...formData, incoterm: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, incoterm: e.target.value as RfqSubmissionInput["incoterm"] })}
             />
             <Input
               label="Delivery Port / City"

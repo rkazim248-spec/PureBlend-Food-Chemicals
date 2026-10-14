@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Banner / Carousel', href: '/admin/banners', icon: SlidersHorizontal },
     { name: 'SEO & Site Metadata', href: '/admin/seo', icon: Globe },
     { name: 'Product Inventory', href: '/admin/products', icon: Package },
-    { name: 'Quotation RFQs', href: '/admin/rfqs', icon: FileSpreadsheet, badge: '3' },
+    { name: 'Quotation Requests & Tender RFQs', href: '/admin/rfqs', icon: FileSpreadsheet },
     { name: 'Quality & Batch COAs', href: '/admin/quality', icon: FileCheck2 },
     { name: 'Supply Contracts & Offers', href: '/admin/offers', icon: Tag },
     { name: 'Discount & Promo Codes', href: '/admin/discounts', icon: Tag },
@@ -130,11 +130,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <Icon className="w-4 h-4 shrink-0" />
                     <span>{item.name}</span>
                   </div>
-                  {item.badge && (
-                    <span className="bg-emerald-400/20 text-emerald-300 border border-emerald-400/40 text-[10px] font-mono px-1.5 py-0.2 rounded font-bold">
-                      {item.badge}
-                    </span>
-                  )}
                 </Link>
               );
             })}

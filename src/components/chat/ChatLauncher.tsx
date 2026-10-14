@@ -16,7 +16,6 @@ export function ChatLauncher() {
   return (
     <>
       {open && <ChatWindow onClose={() => setOpen(false)} />}
-      {!open && <span className="hidden">Ask PureBlend</span>}
       <button
         type="button"
         aria-label={open ? "Close chat" : "Open chat"}

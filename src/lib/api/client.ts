@@ -6,13 +6,14 @@ type RequestOptions = {
   body?: unknown;
   headers?: Record<string, string>;
   authToken?: string;
+  sameOrigin?: boolean;
   signal?: AbortSignal;
   timeoutMs?: number;
   query?: Record<string, string | number | boolean | undefined>;
 };
 
-function buildUrl(path: string, query?: RequestOptions["query"]): string {
-  const url = `${config.apiBaseUrl}${path}`;
+function buildUrl(path: string, query?: RequestOptions["query"], sameOrigin = false): string {
+  const url = sameOrigin ? path : `${config.apiBaseUrl}${path}`;
   if (!query) return url;
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(query)) {
@@ -23,13 +24,13 @@ function buildUrl(path: string, query?: RequestOptions["query"]): string {
 }
 
 export async function apiRequest<T>(path: string, options: RequestOptions = {}): Promise<T> {
-  const { method = "GET", body, headers = {}, authToken, signal, timeoutMs = 15000, query } = options;
+  const { method = "GET", body, headers = {}, authToken, sameOrigin = false, signal, timeoutMs = 15000, query } = options;
   const timeout = AbortSignal.timeout(timeoutMs);
   const combinedSignal = signal ? AbortSignal.any([signal, timeout]) : timeout;
 
   let res: Response;
   try {
-    res = await fetch(buildUrl(path, query), {
+    res = await fetch(buildUrl(path, query, sameOrigin), {
       method,
       headers: {
         "Content-Type": "application/json",

@@ -352,6 +352,7 @@ export async function adminGetRfqRequests(): Promise<AdminRfqRequest[]> {
   const token = getIdToken();
   const response = await apiRequest<{ success: true; data: AdminRfqRequest[] }>("/api/rfqs", {
     authToken: token,
+    sameOrigin: true,
   });
   return response.data;
 }
@@ -362,5 +363,6 @@ export async function adminUpdateRfqStatus(id: string, status: AdminRfqStatus): 
     method: "PATCH",
     body: { status },
     authToken: token,
+    sameOrigin: true,
   });
 }

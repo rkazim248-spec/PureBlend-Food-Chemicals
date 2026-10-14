@@ -110,7 +110,7 @@ export interface RfqSubmissionInput {
 export async function submitRfq(input: RfqSubmissionInput): Promise<{ id: string }> {
   const response = await apiRequest<{ success: true; data: { id: string } }>(
     endpoints.rfqs.submit,
-    { method: "POST", body: input }
+    { method: "POST", body: input, sameOrigin: true }
   );
   return response.data;
 }

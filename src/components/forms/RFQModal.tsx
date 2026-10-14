@@ -11,6 +11,7 @@ import { PRODUCTS_DATA } from '@/data/mockData';
 import { CheckCircle2, ShieldCheck, Tag, Check, AlertCircle } from 'lucide-react';
 import { validatePromoCode } from '@/lib/discount';
 import { submitRfq, type RfqSubmissionInput } from '@/lib/api/services';
+import { ApiError } from '@/lib/api/types';
 
 interface RFQModalProps {
   isOpen: boolean;
@@ -111,9 +112,13 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
         type: 'success'
       });
     } catch (error) {
+      let message = 'Please try again.';
+      if (error instanceof Error) {
+        message = error instanceof ApiError ? error.message : error.message;
+      }
       showToast({
         title: 'Unable to submit quotation request',
-        description: error instanceof Error ? error.message : 'Please try again.',
+        description: message,
         type: 'error'
       });
     } finally {

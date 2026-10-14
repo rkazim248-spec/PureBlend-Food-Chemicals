@@ -117,6 +117,8 @@ export function RFQModal({ isOpen, onClose, preselectedProductId, initialProduct
         message = error.message;
       } else if (error instanceof Error) {
         message = error.message;
+      } else if (error && typeof error === 'object' && 'message' in error) {
+        message = (error as { message: string }).message;
       }
       showToast({
         title: 'Unable to submit quotation request',

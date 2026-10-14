@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase-admin/app";
-import { getFirestore, Timestamp, FieldValue, Filter } from "firebase-admin/firestore";
+import { Timestamp, FieldValue, Filter } from "firebase-admin/firestore";
+import { getAdminDb } from "@/lib/firebase/admin";
 
 import {
   type Category,
@@ -20,8 +20,7 @@ import {
   COLLECTIONS,
 } from "./types";
 
-const adminApp = initializeApp();
-const db = getFirestore(adminApp);
+const db = getAdminDb();
 
 function toTimestamp(date?: Date | string | null): Timestamp | undefined {
   if (!date) return undefined;

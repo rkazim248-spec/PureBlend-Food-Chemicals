@@ -56,12 +56,13 @@ export async function POST(request: Request) {
   }
 
   try {
+    const { phone, targetDate, notes, ...requestFields } = parsed.data;
     const submission = await quotationRequestService.create({
-      ...parsed.data,
+      ...requestFields,
       productName: product.name,
-      phone: parsed.data.phone || undefined,
-      targetDate: parsed.data.targetDate || undefined,
-      notes: parsed.data.notes || undefined,
+      ...(phone ? { phone } : {}),
+      ...(targetDate ? { targetDate } : {}),
+      ...(notes ? { notes } : {}),
       status: "Pending Review",
     });
 
